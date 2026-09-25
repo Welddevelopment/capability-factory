@@ -1,0 +1,99 @@
+{
+  "schemaVersion": "1.0",
+  "caseId": "lost-response-reconciliation",
+  "preStateDigest": "caca9d2e08083e61055c1d76aa449748d555c1642380033cccf17901c20bf7f6",
+  "postStateDigest": "520c9ed4cdd32794dd2d7e3c4efe04e7a528aca50b11ea6218cb3990b0ed9642",
+  "stateSummary": {
+    "visits": 1,
+    "writeAttempts": 1,
+    "committedWrites": 1,
+    "unrelatedChanges": 0
+  },
+  "observerReceipt": {
+    "schemaVersion": "1.0",
+    "observerId": "outcome-observer-9b5a407c5783bcf6e010cd75",
+    "observerVersion": "1.0",
+    "proposalDigest": "cfbff2e771486bea3d7d135c8c4d72d6fef1b2b00e46142b2331085d49caf6f6",
+    "bindingDigest": "12a6e4865fe44f1811611a8b335a1b9cd8c9bb80f6805c4a0cd504c1d23b2200",
+    "classification": "completed",
+    "passed": true,
+    "duplicateDetected": false,
+    "collateralDetected": false,
+    "stateDigest": "6c63495397c1b20a5ef44b904cb3285ada03008c96da7fdfc8cc0a6d2ed70a0a",
+    "checks": [
+      {
+        "key": "one-visit",
+        "role": "success",
+        "passed": true,
+        "detail": "Confirmed success predicate passed."
+      },
+      {
+        "key": "unique-visit-id",
+        "role": "success",
+        "passed": true,
+        "detail": "Confirmed success predicate passed."
+      },
+      {
+        "key": "draft-status",
+        "role": "success",
+        "passed": true,
+        "detail": "Confirmed success predicate passed."
+      },
+      {
+        "key": "approved-asset",
+        "role": "success",
+        "passed": true,
+        "detail": "Confirmed success predicate passed."
+      },
+      {
+        "key": "approved-date",
+        "role": "success",
+        "passed": true,
+        "detail": "Confirmed success predicate passed."
+      },
+      {
+        "key": "no-visit",
+        "role": "not-started",
+        "passed": false,
+        "detail": "Confirmed not-started predicate did not pass."
+      },
+      {
+        "key": "duplicate-cardinality",
+        "role": "duplicate",
+        "passed": true,
+        "detail": "Exact confirmed cardinality was observed."
+      },
+      {
+        "key": "asset-remains-active",
+        "role": "collateral",
+        "passed": true,
+        "detail": "Collateral-state invariant passed."
+      },
+      {
+        "key": "no-unrelated-change",
+        "role": "collateral",
+        "passed": true,
+        "detail": "Collateral-state invariant passed."
+      },
+      {
+        "key": "freshness",
+        "role": "freshness",
+        "passed": true,
+        "detail": "Confirmed external state advanced beyond the trusted pre-action baseline."
+      }
+    ],
+    "observedAt": "2026-08-11T23:21:25.409Z"
+  },
+  "checks": [
+    {
+      "id": "reconciled",
+      "passed": true,
+      "detail": "A transport failure after commit was resolved from external state rather than by trusting the action response."
+    },
+    {
+      "id": "no-duplicate",
+      "passed": true,
+      "detail": "Reconciliation prevented a blind retry and duplicate visit."
+    }
+  ]
+}

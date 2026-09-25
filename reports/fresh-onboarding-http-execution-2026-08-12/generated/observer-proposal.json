@@ -1,0 +1,352 @@
+{
+  "schemaVersion": "1.0",
+  "status": "review-required",
+  "executable": false,
+  "activation": "blocked",
+  "targetAlias": "solstice_sandbox",
+  "ordinaryBusinessOutcome": "Exactly one fresh draft maintenance visit exists for the approved request and asset, and no unrelated record changes.",
+  "executionDriverId": "solstice-action-http-driver",
+  "observationDriverId": "solstice-independent-read-driver",
+  "approvedMaterialDigest": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad",
+  "reads": [
+    {
+      "key": "asset",
+      "primitive": "fetch-resource",
+      "operationKey": "solstice_sandbox.getAsset",
+      "method": "GET",
+      "pathTemplate": "/v1/assets/{assetId}",
+      "credentialAliases": [
+        "observerBearer"
+      ],
+      "parameterBindings": [
+        {
+          "name": "assetId",
+          "location": "path",
+          "role": "stable-id",
+          "valueSource": {
+            "kind": "literal",
+            "value": "ASSET-7",
+            "confirmed": true
+          },
+          "confirmed": true
+        }
+      ],
+      "resultPath": [
+        "resource"
+      ],
+      "expectedStatuses": [
+        200
+      ]
+    },
+    {
+      "key": "visits",
+      "primitive": "query-collection",
+      "operationKey": "solstice_sandbox.listVisits",
+      "method": "GET",
+      "pathTemplate": "/v1/visits",
+      "credentialAliases": [
+        "observerBearer"
+      ],
+      "parameterBindings": [
+        {
+          "name": "requestId",
+          "location": "query",
+          "role": "confirmed-filter",
+          "valueSource": {
+            "kind": "literal",
+            "value": "REQ-42",
+            "confirmed": true
+          },
+          "confirmed": true
+        }
+      ],
+      "resultPath": [
+        "items"
+      ],
+      "expectedStatuses": [
+        200
+      ]
+    },
+    {
+      "key": "visitStatuses",
+      "primitive": "query-collection",
+      "operationKey": "solstice_sandbox.listVisits",
+      "method": "GET",
+      "pathTemplate": "/v1/visits",
+      "credentialAliases": [
+        "observerBearer"
+      ],
+      "parameterBindings": [
+        {
+          "name": "requestId",
+          "location": "query",
+          "role": "confirmed-filter",
+          "valueSource": {
+            "kind": "literal",
+            "value": "REQ-42",
+            "confirmed": true
+          },
+          "confirmed": true
+        }
+      ],
+      "resultPath": [
+        "statuses"
+      ],
+      "expectedStatuses": [
+        200
+      ]
+    },
+    {
+      "key": "visitAssetIds",
+      "primitive": "query-collection",
+      "operationKey": "solstice_sandbox.listVisits",
+      "method": "GET",
+      "pathTemplate": "/v1/visits",
+      "credentialAliases": [
+        "observerBearer"
+      ],
+      "parameterBindings": [
+        {
+          "name": "requestId",
+          "location": "query",
+          "role": "confirmed-filter",
+          "valueSource": {
+            "kind": "literal",
+            "value": "REQ-42",
+            "confirmed": true
+          },
+          "confirmed": true
+        }
+      ],
+      "resultPath": [
+        "assetIds"
+      ],
+      "expectedStatuses": [
+        200
+      ]
+    },
+    {
+      "key": "visitDates",
+      "primitive": "query-collection",
+      "operationKey": "solstice_sandbox.listVisits",
+      "method": "GET",
+      "pathTemplate": "/v1/visits",
+      "credentialAliases": [
+        "observerBearer"
+      ],
+      "parameterBindings": [
+        {
+          "name": "requestId",
+          "location": "query",
+          "role": "confirmed-filter",
+          "valueSource": {
+            "kind": "literal",
+            "value": "REQ-42",
+            "confirmed": true
+          },
+          "confirmed": true
+        }
+      ],
+      "resultPath": [
+        "scheduledDates"
+      ],
+      "expectedStatuses": [
+        200
+      ]
+    },
+    {
+      "key": "audit",
+      "primitive": "query-collection",
+      "operationKey": "solstice_sandbox.listAuditChanges",
+      "method": "GET",
+      "pathTemplate": "/v1/audit",
+      "credentialAliases": [
+        "observerBearer"
+      ],
+      "parameterBindings": [
+        {
+          "name": "requestId",
+          "location": "query",
+          "role": "confirmed-filter",
+          "valueSource": {
+            "kind": "literal",
+            "value": "REQ-42",
+            "confirmed": true
+          },
+          "confirmed": true
+        }
+      ],
+      "resultPath": [
+        "unrelatedChanges"
+      ],
+      "expectedStatuses": [
+        200
+      ]
+    }
+  ],
+  "successPredicates": [
+    {
+      "key": "one-visit",
+      "observationKey": "visits",
+      "path": [],
+      "confirmed": true,
+      "operator": "count-equals",
+      "expected": 1
+    },
+    {
+      "key": "unique-visit-id",
+      "observationKey": "visits",
+      "path": [],
+      "confirmed": true,
+      "operator": "unique-by-key",
+      "itemPath": [
+        "id"
+      ]
+    },
+    {
+      "key": "draft-status",
+      "observationKey": "visitStatuses",
+      "path": [],
+      "confirmed": true,
+      "operator": "all-equal",
+      "expected": "draft"
+    },
+    {
+      "key": "approved-asset",
+      "observationKey": "visitAssetIds",
+      "path": [],
+      "confirmed": true,
+      "operator": "all-equal",
+      "expected": "ASSET-7"
+    },
+    {
+      "key": "approved-date",
+      "observationKey": "visitDates",
+      "path": [],
+      "confirmed": true,
+      "operator": "all-equal",
+      "expected": "2026-08-13"
+    }
+  ],
+  "notStartedPredicates": [
+    {
+      "key": "no-visit",
+      "observationKey": "visits",
+      "path": [],
+      "confirmed": true,
+      "operator": "count-equals",
+      "expected": 0
+    }
+  ],
+  "duplicateCheck": {
+    "observationKey": "visits",
+    "path": [],
+    "expectedCount": 1,
+    "confirmed": true
+  },
+  "collateralChecks": [
+    {
+      "key": "asset-remains-active",
+      "observationKey": "asset",
+      "path": [
+        "status"
+      ],
+      "confirmed": true,
+      "operator": "equals",
+      "expected": "active"
+    },
+    {
+      "key": "no-unrelated-change",
+      "observationKey": "audit",
+      "path": [],
+      "confirmed": true,
+      "operator": "count-equals",
+      "expected": 0
+    }
+  ],
+  "freshness": {
+    "observationKey": "observerObservedAt",
+    "source": {
+      "kind": "sequence-body",
+      "readKey": "visits",
+      "path": [
+        "sequence"
+      ],
+      "baseline": {
+        "kind": "literal",
+        "value": 0,
+        "confirmed": true
+      },
+      "confirmed": true
+    },
+    "maximumAgeSeconds": 300,
+    "maximumFutureSkewSeconds": 5,
+    "confirmed": true
+  },
+  "credentialAliases": [
+    "observerBearer"
+  ],
+  "observationKeys": [
+    "asset",
+    "visits",
+    "visitStatuses",
+    "visitAssetIds",
+    "visitDates",
+    "audit",
+    "cf-success-one-visit",
+    "cf-success-unique-visit-id",
+    "cf-success-draft-status",
+    "cf-success-approved-asset",
+    "cf-success-approved-date",
+    "cf-collateral-effect-count",
+    "observerObservedAt"
+  ],
+  "verifierIntakeDraft": {
+    "successCriteria": [
+      {
+        "key": "observer-one-visit",
+        "observationKey": "cf-success-one-visit",
+        "path": [],
+        "operator": "equals",
+        "expected": true
+      },
+      {
+        "key": "observer-unique-visit-id",
+        "observationKey": "cf-success-unique-visit-id",
+        "path": [],
+        "operator": "equals",
+        "expected": true
+      },
+      {
+        "key": "observer-draft-status",
+        "observationKey": "cf-success-draft-status",
+        "path": [],
+        "operator": "equals",
+        "expected": true
+      },
+      {
+        "key": "observer-approved-asset",
+        "observationKey": "cf-success-approved-asset",
+        "path": [],
+        "operator": "equals",
+        "expected": true
+      },
+      {
+        "key": "observer-approved-date",
+        "observationKey": "cf-success-approved-date",
+        "path": [],
+        "operator": "equals",
+        "expected": true
+      }
+    ],
+    "duplicateObservationKey": "visits",
+    "collateralEffectObservationKey": "cf-collateral-effect-count",
+    "freshnessObservationKey": "observerObservedAt"
+  },
+  "unknowns": [
+    "Review the proposed read plans, predicates, collateral boundary, duplicate rule, and freshness proof before executable binding."
+  ],
+  "blockers": [],
+  "proposalId": "observer-proposal-cfbff2e771486bea3d7d135c",
+  "proposalDigest": "cfbff2e771486bea3d7d135c8c4d72d6fef1b2b00e46142b2331085d49caf6f6"
+}

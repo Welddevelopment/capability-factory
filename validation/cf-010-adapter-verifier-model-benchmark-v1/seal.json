@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "1.0",
+  "campaignId": "cf-010-adapter-verifier-model-benchmark-v1",
+  "state": "frozen-prepared-not-executed",
+  "sourceFiles": [
+    {
+      "path": "campaign.json",
+      "sha256": "b0228d65e4924b8c72324c0d20656c0518f1198c99ba80bf808a47fe3db79eac"
+    },
+    {
+      "path": "oracle.json",
+      "sha256": "663e969b11494d7770880b604b060b0f16e90fa59d69e1e2bea6ee6172d0938a"
+    },
+    {
+      "path": "materials/blind-courier-openapi.json",
+      "sha256": "bf4c05c90713d64723fad9bfcdfac91a575991d235d215391630f0099ab9e430"
+    },
+    {
+      "path": "materials/credential-injection-openapi.json",
+      "sha256": "5cbdad91d4a20def2a637f511efb092d1f79f42109778d1af9dc33e07b1c8f30"
+    },
+    {
+      "path": "materials/lattice-returns-openapi.json",
+      "sha256": "0078998a118e55f10ece9a1fa7f013cc4929bcb4f28414c5cda61b86873cf4f1"
+    },
+    {
+      "path": "materials/meridian-review-openapi.json",
+      "sha256": "93a7cd75b334bcbcc1de7b07b2e3b4d58e879c008c13d0995b5d9905e7a71a1b"
+    },
+    {
+      "path": "materials/northstar-exception-openapi.json",
+      "sha256": "a5b712186a36076f6fa2ca13409363d116d2d1f74b30ec0a040630e1bcccc0bc"
+    }
+  ],
+  "modelCalls": 0,
+  "paidSpendUsd": 0,
+  "executionAuthorized": false,
+  "sealDigest": "0ca96c40fdded858ca80fc3436e48094baa48a3d2139dcc0432b4bcecef1d0c5"
+}

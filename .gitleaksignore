@@ -1,0 +1,14 @@
+# Reviewed 2026-07-30. These exact historical fingerprints are synthetic
+# operation/work-item identifiers, explicit examples, or test-only secrets.
+# New findings in the same files are not ignored.
+06ad3f340a9abb325e42e6bd654ae6d012562181:test/experimental-browser-driver.test.ts:generic-api-key:16
+06ad3f340a9abb325e42e6bd654ae6d012562181:test/product-continuation.test.ts:generic-api-key:21
+1e869c5048afe77b2832adeaee26eac6b0eedb7d:config/pilot.env.example:generic-api-key:2
+51162f7980ad7b978fc74a9c9ff4dee6ce272017:test/product-goal-coordination.test.ts:generic-api-key:45
+51162f7980ad7b978fc74a9c9ff4dee6ce272017:test/product-goal-coordination.test.ts:generic-api-key:57
+66891844f8335da92616ceccd68cae0333f91be7:src/customer-world/broad-goal-reference-world.ts:generic-api-key:143
+66891844f8335da92616ceccd68cae0333f91be7:src/customer-world/broad-goal-reference-world.ts:generic-api-key:78
+67d59cfc15508bd40da5d6cb1ed816264fcf9ad8:test/experimental-browser-driver.test.ts:generic-api-key:75
+73ab0a464b92246c54fc8d65e57d684cb7895416:apps/console/server/goal-plan-fixture.ts:generic-api-key:17
+ce4bbb9309f698e92e90afac3d6623f65cca2717:docs/SIDECAR_PILOT.md:generic-api-key:56
+ce4bbb9309f698e92e90afac3d6623f65cca2717:src/customer-world/run-broad-goal-sidecar-reference.ts:generic-api-key:16

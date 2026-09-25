@@ -1,0 +1,76 @@
+{
+  "schemaVersion": "1.0",
+  "evidenceBoundary": "deterministic-fixture-behavior-not-customer-system-evidence",
+  "cases": {
+    "read-only-happy-path": {
+      "intendedWrites": 0,
+      "checks": [
+        "approved read returned the expected fictional work request",
+        "write counter remained zero"
+      ]
+    },
+    "approved-write": {
+      "intendedWrites": 1,
+      "checks": [
+        "one fictional draft inspection was written",
+        "independent fixture state contained exactly one matching record"
+      ]
+    },
+    "fresh-process-reuse": {
+      "intendedWrites": 1,
+      "checks": [
+        "a fresh executor loaded the retained fictional capability identity",
+        "no replacement capability was declared"
+      ]
+    },
+    "missing-credential": {
+      "intendedWrites": 0,
+      "checks": [
+        "the exact missing credential alias was reported",
+        "write counter remained zero"
+      ]
+    },
+    "missing-permission": {
+      "intendedWrites": 0,
+      "checks": [
+        "the exact missing write permission was reported",
+        "write counter remained zero"
+      ]
+    },
+    "lost-response-reconciliation": {
+      "intendedWrites": 1,
+      "checks": [
+        "the fictional write committed before response loss",
+        "independent state reconciliation found one record and prevented retry"
+      ]
+    },
+    "wrong-or-partial-outcome": {
+      "intendedWrites": 1,
+      "checks": [
+        "the partial fictional state was rejected as completion",
+        "the fictional capability was not marked healthy"
+      ]
+    },
+    "sidecar-restart": {
+      "intendedWrites": 1,
+      "checks": [
+        "the same fictional work identity survived restart",
+        "reconciliation prevented a duplicate"
+      ]
+    },
+    "duplicate-submission": {
+      "intendedWrites": 1,
+      "checks": [
+        "two identical submissions resolved to one fictional durable job",
+        "one fictional business write existed"
+      ]
+    },
+    "conflicting-parent-reuse": {
+      "intendedWrites": 0,
+      "checks": [
+        "changed intent under an existing parent identity was rejected",
+        "existing fictional state remained unchanged"
+      ]
+    }
+  }
+}

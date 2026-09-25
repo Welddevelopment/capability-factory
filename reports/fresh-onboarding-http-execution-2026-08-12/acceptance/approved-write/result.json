@@ -1,0 +1,27 @@
+{
+  "caseId": "approved-write",
+  "passed": true,
+  "intendedWrites": 1,
+  "incorrectSideEffects": 0,
+  "checks": [
+    {
+      "id": "new-capability-path",
+      "passed": true,
+      "detail": "The first unsupported operation used deterministic construction and pre-use probing."
+    },
+    {
+      "id": "exact-write",
+      "passed": true,
+      "detail": "Exactly one intended draft visit was committed."
+    },
+    {
+      "id": "independent-outcome",
+      "passed": true,
+      "detail": "The separate read-side observer confirmed the business result."
+    }
+  ],
+  "artifactReferences": [
+    "/Users/joeljeon/Desktop/Capability Factory/reports/fresh-onboarding-http-execution-2026-08-12/acceptance/approved-write/evidence.json"
+  ],
+  "completedAt": "2026-08-11T23:21:25.393Z"
+}

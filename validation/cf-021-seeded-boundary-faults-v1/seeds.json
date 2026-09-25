@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "1.0",
+  "campaignId": "cf-021-seeded-boundary-faults-v1",
+  "generator": "xorshift32",
+  "seeds": [
+    1,
+    17,
+    257,
+    4099,
+    65537,
+    104729,
+    262147,
+    524309,
+    1000003,
+    2147483647,
+    2654435761,
+    3735928559
+  ]
+}

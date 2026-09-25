@@ -1,0 +1,356 @@
+{
+  "schemaVersion": "1.0",
+  "candidateCommit": "19002ec40e527bb4f28d11aff4dc462b93582591",
+  "environment": "genuine disposable local ERPNext with fictional data",
+  "capabilityMode": "constrained-http-api",
+  "preflight": [
+    {
+      "id": "schema-version",
+      "passed": true,
+      "detail": "The adapter uses the supported descriptor schema."
+    },
+    {
+      "id": "capability-mode",
+      "passed": true,
+      "detail": "The current pilot accepts only the constrained HTTP API driver."
+    },
+    {
+      "id": "adapter-identity",
+      "passed": true,
+      "detail": "The adapter has a stable ID and semantic version."
+    },
+    {
+      "id": "environment-identity",
+      "passed": true,
+      "detail": "The customer-controlled environment has a stable alias."
+    },
+    {
+      "id": "scope-keys",
+      "passed": true,
+      "detail": "At least one unique trusted scope key is declared."
+    },
+    {
+      "id": "workflow-keys",
+      "passed": true,
+      "detail": "At least one unique workflow key is declared."
+    },
+    {
+      "id": "target-aliases",
+      "passed": true,
+      "detail": "Targets are represented by unique aliases."
+    },
+    {
+      "id": "credential-aliases",
+      "passed": true,
+      "detail": "Credentials are represented by unique aliases."
+    },
+    {
+      "id": "no-obvious-secret-values",
+      "passed": true,
+      "detail": "The adapter descriptor contains aliases and hashes, not obvious credential values."
+    },
+    {
+      "id": "documentation",
+      "passed": true,
+      "detail": "Every documentation record belongs to a declared target and has a SHA-256 digest."
+    },
+    {
+      "id": "operations",
+      "passed": true,
+      "detail": "Every operation is unique, bounded to a target and linked to an independent verifier."
+    },
+    {
+      "id": "write-reconciliation",
+      "passed": true,
+      "detail": "Every declared write requires inspection before retry."
+    },
+    {
+      "id": "data-boundary",
+      "passed": true,
+      "detail": "Execution, secrets and direct verification remain inside the customer-controlled boundary."
+    },
+    {
+      "id": "acceptance-coverage",
+      "passed": true,
+      "detail": "The adapter declares every mandatory controlled-pilot acceptance case exactly once."
+    },
+    {
+      "id": "erpnext-local-health",
+      "passed": true,
+      "detail": "The disposable ERPNext target is bound to localhost."
+    },
+    {
+      "id": "documentation-hash",
+      "passed": true,
+      "detail": "The adapter is pinned to hashed ERPNext documentation."
+    },
+    {
+      "id": "credential-alias-resolution",
+      "passed": true,
+      "detail": "The customer-local runtime resolves the declared credential alias."
+    },
+    {
+      "id": "direct-verifier-access",
+      "passed": true,
+      "detail": "The privileged direct-state verifier is reachable without exposing its access through the sidecar request."
+    }
+  ],
+  "acceptance": {
+    "passed": true,
+    "abortedForSafety": false,
+    "requiredCases": 10,
+    "completedCases": 10,
+    "failedCases": [],
+    "notRunCases": [],
+    "incorrectSideEffects": 0,
+    "results": [
+      {
+        "caseId": "read-only-happy-path",
+        "passed": true,
+        "intendedWrites": 0,
+        "incorrectSideEffects": 0,
+        "checks": [
+          {
+            "id": "read-succeeded",
+            "passed": true,
+            "detail": "The approved customer-local read returned HTTP 200."
+          },
+          {
+            "id": "state-unchanged",
+            "passed": true,
+            "detail": "Direct database state was unchanged after the read-only action."
+          }
+        ],
+        "artifactReferences": [
+          "deterministic/acceptance-evidence/read-only-happy-path.json"
+        ],
+        "completedAt": "2026-07-27T01:23:34.593Z"
+      },
+      {
+        "caseId": "approved-write",
+        "passed": true,
+        "intendedWrites": 2,
+        "incorrectSideEffects": 0,
+        "checks": [
+          {
+            "id": "direct-outcome",
+            "passed": true,
+            "detail": "Direct ERPNext inspection found the exact approved outcome."
+          },
+          {
+            "id": "no-incorrect-side-effects",
+            "passed": true,
+            "detail": "No duplicate, wrong-record or collateral write survived."
+          }
+        ],
+        "artifactReferences": [
+          "deterministic/acceptance-evidence/approved-write.json"
+        ],
+        "completedAt": "2026-07-27T01:23:36.688Z"
+      },
+      {
+        "caseId": "fresh-process-reuse",
+        "passed": true,
+        "intendedWrites": 2,
+        "incorrectSideEffects": 0,
+        "checks": [
+          {
+            "id": "initial-build",
+            "passed": true,
+            "detail": "The first SDK process built and retained the capability."
+          },
+          {
+            "id": "fresh-process-reuse",
+            "passed": true,
+            "detail": "A new SDK object reused the retained verified capability."
+          },
+          {
+            "id": "builder-called-once",
+            "passed": true,
+            "detail": "Reuse did not call the builder again."
+          },
+          {
+            "id": "direct-outcome",
+            "passed": true,
+            "detail": "The reused capability produced the exact verified ERPNext outcome."
+          }
+        ],
+        "artifactReferences": [
+          "deterministic/acceptance-evidence/fresh-process-reuse.json"
+        ],
+        "completedAt": "2026-07-27T01:23:42.589Z"
+      },
+      {
+        "caseId": "missing-credential",
+        "passed": true,
+        "intendedWrites": 0,
+        "incorrectSideEffects": 0,
+        "checks": [
+          {
+            "id": "credential-stop",
+            "passed": true,
+            "detail": "The trusted runtime rejected the missing credential alias before execution."
+          },
+          {
+            "id": "zero-write-state",
+            "passed": true,
+            "detail": "Direct database state remained unchanged."
+          }
+        ],
+        "artifactReferences": [
+          "deterministic/acceptance-evidence/missing-credential.json"
+        ],
+        "completedAt": "2026-07-27T01:23:44.617Z"
+      },
+      {
+        "caseId": "missing-permission",
+        "passed": true,
+        "intendedWrites": 0,
+        "incorrectSideEffects": 0,
+        "checks": [
+          {
+            "id": "permission-stop",
+            "passed": true,
+            "detail": "The restricted ERPNext role could read but could not perform the write."
+          },
+          {
+            "id": "zero-write-state",
+            "passed": true,
+            "detail": "The permission failure left business state unchanged."
+          }
+        ],
+        "artifactReferences": [
+          "deterministic/acceptance-evidence/missing-permission.json"
+        ],
+        "completedAt": "2026-07-27T01:23:47.144Z"
+      },
+      {
+        "caseId": "lost-response-reconciliation",
+        "passed": true,
+        "intendedWrites": 2,
+        "incorrectSideEffects": 0,
+        "checks": [
+          {
+            "id": "reconciled-existing-write",
+            "passed": true,
+            "detail": "After the first result was treated as lost, recovery inspected external state and completed without a second order."
+          },
+          {
+            "id": "no-duplicate",
+            "passed": true,
+            "detail": "Direct verification found exactly one Purchase Order."
+          }
+        ],
+        "artifactReferences": [
+          "deterministic/acceptance-evidence/lost-response-reconciliation.json"
+        ],
+        "completedAt": "2026-07-27T01:23:49.311Z"
+      },
+      {
+        "caseId": "wrong-or-partial-outcome",
+        "passed": true,
+        "intendedWrites": 0,
+        "incorrectSideEffects": 0,
+        "checks": [
+          {
+            "id": "partial-execution-observed",
+            "passed": true,
+            "detail": "The deliberately incomplete capability could not finish its declared workflow."
+          },
+          {
+            "id": "direct-verifier-rejected",
+            "passed": true,
+            "detail": "Independent ERPNext inspection rejected the partial external state."
+          },
+          {
+            "id": "test-damage-removed",
+            "passed": true,
+            "detail": "The disposable test fixture was reset after detection; no injected bad state survived."
+          }
+        ],
+        "artifactReferences": [
+          "deterministic/acceptance-evidence/wrong-or-partial-outcome.json"
+        ],
+        "completedAt": "2026-07-27T01:23:52.868Z"
+      },
+      {
+        "caseId": "sidecar-restart",
+        "passed": true,
+        "intendedWrites": 6,
+        "incorrectSideEffects": 0,
+        "checks": [
+          {
+            "id": "job-recovered",
+            "passed": true,
+            "detail": "A running durable job was re-queued after a simulated sidecar restart."
+          },
+          {
+            "id": "recovered-completion",
+            "passed": true,
+            "detail": "The recovered job completed through the unchanged product core."
+          },
+          {
+            "id": "direct-outcome",
+            "passed": true,
+            "detail": "The recovered job produced the exact aggregate ERPNext outcome."
+          }
+        ],
+        "artifactReferences": [
+          "deterministic/acceptance-evidence/sidecar-restart.json"
+        ],
+        "completedAt": "2026-07-27T01:24:04.692Z"
+      },
+      {
+        "caseId": "duplicate-submission",
+        "passed": true,
+        "intendedWrites": 6,
+        "incorrectSideEffects": 0,
+        "checks": [
+          {
+            "id": "same-job",
+            "passed": true,
+            "detail": "The duplicate parent submission resolved to the original durable job."
+          },
+          {
+            "id": "one-worker-attempt",
+            "passed": true,
+            "detail": "The duplicate did not start a second worker attempt."
+          },
+          {
+            "id": "no-duplicate-write",
+            "passed": true,
+            "detail": "Direct ERPNext inspection found no duplicated business write."
+          }
+        ],
+        "artifactReferences": [
+          "deterministic/acceptance-evidence/duplicate-submission.json"
+        ],
+        "completedAt": "2026-07-27T01:24:16.690Z"
+      },
+      {
+        "caseId": "conflicting-parent-reuse",
+        "passed": true,
+        "intendedWrites": 0,
+        "incorrectSideEffects": 0,
+        "checks": [
+          {
+            "id": "conflict-rejected",
+            "passed": true,
+            "detail": "The durable store rejected a different request attempting to reuse the same parent goal ID."
+          },
+          {
+            "id": "no-run-started",
+            "passed": true,
+            "detail": "The conflict was rejected at persistence before a worker or external write started."
+          }
+        ],
+        "artifactReferences": [
+          "deterministic/acceptance-evidence/conflicting-parent-reuse.json"
+        ],
+        "completedAt": "2026-07-27T01:24:16.692Z"
+      }
+    ]
+  },
+  "evidenceBoundary": "Private local controlled-pilot acceptance evidence; not a customer result or production-reliability claim.",
+  "completedAt": "2026-07-27T01:24:16.692Z"
+}

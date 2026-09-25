@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "1.0",
+  "engagementId": "fictional-pilot-one",
+  "environment": { "execution": "customer-local", "sidecarExposure": "localhost-only", "productionAccess": false, "personalDataAllowed": false, "fictionalOrSandboxDataOnly": true },
+  "credentials": { "externalCredentialValuesLeaveCustomerBoundary": false, "requestsContainAliasesOnly": true, "owner": "customer-technical-owner", "rotationProcedure": "Rotate the sandbox credential in the customer secret provider and rerun readiness.", "revocationProcedure": "Revoke the sandbox credential and halt the customer-local runtime." },
+  "model": { "enabled": true, "provider": "pending-customer-selection", "modelId": "pending-customer-selection", "seesCredentialValues": false, "allowedContext": ["ordinary-goal", "bounded-documentation", "failed-checks", "synthetic-records"], "providerRetentionStatement": "pending customer review", "customerApproved": false },
+  "network": { "targetAliases": ["customer_sandbox"], "redirectsBlocked": true, "localhostControlBoundary": true, "arbitraryEgressAllowed": false },
+  "controls": { "declarativeHttpOnly": true, "arbitraryGeneratedCodeExecution": false, "leastPrivilegeMethods": true, "writeIdempotencyOrReconciliation": true, "independentCapabilityVerification": true, "independentOutcomeVerification": true, "blindRetryBlocked": true, "redactedAudit": true, "customerHaltControl": true, "responseAndTimeLimits": true, "acceptanceCampaignRequired": true },
+  "retention": { "runtimeStateDays": 30, "auditDays": 90, "evidenceDays": 90, "deletionOwner": "customer-security-owner", "deletionProcedure": "Export agreed evidence, verify the archive, uninstall locally, and record deletion confirmation." },
+  "incident": { "customerContact": "customer-incident-owner", "capabilityFactoryContact": "joel-contact-to-confirm", "haltProcedure": "Set the customer-local runtime to halted and revoke affected capability/credential authority.", "unknownOutcomeProcedure": "Do not retry; inspect external state, quarantine the capability, preserve redacted evidence, and obtain explicit recovery authority.", "notificationTargetHours": 4 },
+  "assurance": { "penetrationTestCompleted": false, "securityCertification": false, "cyberInsuranceConfirmed": false, "formalSla": false, "statement": "Controlled fictional/sandbox pilot only; no certification, penetration-test, insurance, or SLA claim." },
+  "customerApprovals": { "technical": false, "security": false, "dataOwner": false, "incidentOwner": false },
+  "evidenceReferences": ["docs/CUSTOMER_SECURITY_AND_DATA_BOUNDARY.md"]
+}

@@ -1,0 +1,14 @@
+{
+  "sessionId": "fresh-start-teardown-session",
+  "expectedInputDigest": "5764436dd39198b211159c7927fe8f5372b5294bec2b907e3ac03d1aa476d794",
+  "expectedSnapshotDigest": "922989620b2a1e329fc8491d342fca2cdca50b7d499c1353c0f79ec2d0211989",
+  "review": {
+    "adapterProposalDigest": "a96f26b03219510647d906b2f48ecd24cace0bfebd8cb4d286e8fca3eaef73d9",
+    "verifierContractDigest": "e527cd59d88885bb9b8ff056fcf361b3be9670b0d4fb0a3762ae42a873ffa457",
+    "authorityCompilationDigest": "87550f75b15ef47b049d935084c227def1dbf5fe95aa8b8ea3e3c0d4cb43d7b9",
+    "authorityRuntimeBindingDigest": "207637b95284bda89045082354e32d5582b2826a409109570c4fddb036d4f1c3",
+    "observationAdapterBindingDigest": "62f9529c37252f88fc4bc170b408c00f6aeb49fd89ce3c241efce219ec174730",
+    "confirmedByAlias": "automatedFixtureOwner",
+    "confirmedAt": "2026-08-14T01:00:00.000Z"
+  }
+}

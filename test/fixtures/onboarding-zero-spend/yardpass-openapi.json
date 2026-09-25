@@ -1,0 +1,123 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "YardPass Sandbox API",
+    "version": "2026-08-12"
+  },
+  "servers": [
+    { "url": "https://sandbox.yardpass.example/v1" }
+  ],
+  "paths": {
+    "/shipments/{shipmentId}": {
+      "get": {
+        "operationId": "getShipment",
+        "summary": "Read one shipment",
+        "parameters": [
+          { "name": "shipmentId", "in": "path", "required": true, "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "Shipment state",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Shipment" }
+              }
+            }
+          },
+          "404": { "description": "Shipment not found" }
+        },
+        "security": [{ "sandboxBearer": [] }]
+      }
+    },
+    "/dock-allocations": {
+      "get": {
+        "operationId": "listDockAllocations",
+        "summary": "Observe dock allocations independently from a create response",
+        "parameters": [
+          { "name": "shipmentId", "in": "query", "required": false, "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "Current allocations",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/DockAllocation" }
+                }
+              }
+            }
+          }
+        },
+        "security": [{ "sandboxBearer": [] }]
+      },
+      "post": {
+        "operationId": "createDockAllocation",
+        "summary": "Create one draft dock allocation",
+        "parameters": [
+          { "name": "Idempotency-Key", "in": "header", "required": true, "schema": { "type": "string" } }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/CreateDockAllocation" }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Draft allocation created",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/DockAllocation" }
+              }
+            }
+          },
+          "409": { "description": "Idempotency conflict" }
+        },
+        "security": [{ "sandboxBearer": ["dock.write"] }]
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "sandboxBearer": { "type": "http", "scheme": "bearer" }
+    },
+    "schemas": {
+      "Shipment": {
+        "type": "object",
+        "required": ["shipmentId", "status", "carrier"],
+        "properties": {
+          "shipmentId": { "type": "string" },
+          "status": { "type": "string", "enum": ["approved", "held", "cancelled"] },
+          "carrier": { "type": "string" }
+        }
+      },
+      "CreateDockAllocation": {
+        "type": "object",
+        "required": ["shipmentId", "dockId", "startAt", "status"],
+        "additionalProperties": false,
+        "properties": {
+          "shipmentId": { "type": "string" },
+          "dockId": { "type": "string" },
+          "startAt": { "type": "string", "format": "date-time" },
+          "status": { "type": "string", "const": "draft" }
+        }
+      },
+      "DockAllocation": {
+        "allOf": [
+          { "$ref": "#/components/schemas/CreateDockAllocation" },
+          {
+            "type": "object",
+            "required": ["allocationId", "createdAt"],
+            "properties": {
+              "allocationId": { "type": "string" },
+              "createdAt": { "type": "string", "format": "date-time" }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

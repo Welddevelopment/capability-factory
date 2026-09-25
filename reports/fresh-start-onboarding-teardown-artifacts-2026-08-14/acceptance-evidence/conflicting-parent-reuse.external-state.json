@@ -1,0 +1,10 @@
+{
+  "caseId": "conflicting-parent-reuse",
+  "intendedWrites": 0,
+  "incorrectSideEffects": 0,
+  "checks": [
+    "changed intent under an existing parent identity was rejected",
+    "existing fictional state remained unchanged"
+  ],
+  "fixtureClassification": "expected-case-behavior-observed"
+}

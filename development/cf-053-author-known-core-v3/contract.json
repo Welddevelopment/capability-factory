@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "1.0",
+  "contractId": "author_known_contract",
+  "tenantId": "author_known_tenant",
+  "sourceChain": {
+    "cf041ReviewedContractDigest": "1111111111111111111111111111111111111111111111111111111111111111",
+    "cf051SourceReviewReceiptDigest": "2222222222222222222222222222222222222222222222222222222222222222",
+    "cf036WorkPackDigest": "3333333333333333333333333333333333333333333333333333333333333333",
+    "cf051BoardSnapshotDigest": "4444444444444444444444444444444444444444444444444444444444444444"
+  },
+  "workspaceIssuerPublicKeyDigest": "5555555555555555555555555555555555555555555555555555555555555555",
+  "inputSchema": [
+    { "key": "unit_code", "type": "string", "required": true },
+    { "key": "amount", "type": "number", "required": true },
+    { "key": "confirmed", "type": "boolean", "required": true }
+  ],
+  "stableIdentityKeys": ["unit_code"],
+  "exactOutcomeKeys": ["unit_code", "amount", "confirmed"],
+  "actionScope": "commit one exact fictional author-known unit",
+  "observerScope": "observe one exact fictional author-known unit",
+  "targetAlias": "author_known_target",
+  "policyVersion": "author_known_policy_v1",
+  "maximumAgeSeconds": 30,
+  "reconcileBeforeAction": true,
+  "blindRetryAllowed": false,
+  "separateObserverRequired": true
+}

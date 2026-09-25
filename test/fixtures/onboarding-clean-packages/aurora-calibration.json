@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "1.0",
+  "packageId": "aurora-calibration",
+  "sessionId": "aurora-calibration-session",
+  "tenantId": "clean-package-tenant",
+  "adapterId": "aurora-calibration-adapter",
+  "adapterVersion": "1.0.0",
+  "targetAlias": "aurora_lab",
+  "serverUrl": "https://aurora-calibration.local.invalid/v1",
+  "workflowId": "reserve-calibration-slot",
+  "summary": "Reserve exactly one draft calibration slot for an approved sensor capsule.",
+  "requiredOutcome": "Exactly one draft calibration slot exists for the confirmed slot reference and collateral state remains unchanged.",
+  "action": {
+    "driverId": "aurora-calibration-action",
+    "sourceId": "aurora-calibration-write-api",
+    "operationId": "reserveCalibrationSlot",
+    "credentialAlias": "auroraCalibrationWriter",
+    "path": "/calibration-slots"
+  },
+  "observer": {
+    "driverId": "aurora-calibration-observer",
+    "sourceId": "aurora-calibration-read-model",
+    "operationId": "listCalibrationSlots",
+    "credentialAlias": "auroraCalibrationObserver",
+    "path": "/calibration-slots",
+    "queryName": "slot_ref"
+  },
+  "stableInputKey": "slot_ref",
+  "conflictInputKey": "sensor_class",
+  "workflowInput": {
+    "slot_ref": "CAL-A17",
+    "sensor_class": "ion-array",
+    "duration_minutes": 45
+  },
+  "alternativeConflictValue": "thermal-array",
+  "approvedDocument": {
+    "localReference": "package://aurora-calibration/openapi.json",
+    "approvedByAlias": "fixtureAuthor",
+    "approvedAt": "2026-08-14T11:00:00.000Z",
+    "sourceOpenApiSha256": "c662deb3a9d63d23c14b414243bcda133fbaf2a4c66e41c40681d96354da4b71",
+    "derivedOpenApiSha256": "c662deb3a9d63d23c14b414243bcda133fbaf2a4c66e41c40681d96354da4b71"
+  }
+}

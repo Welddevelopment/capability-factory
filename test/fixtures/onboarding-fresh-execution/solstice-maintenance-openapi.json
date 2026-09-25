@@ -1,0 +1,82 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Solstice Maintenance API",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/v1/assets/{assetId}": {
+      "get": {
+        "operationId": "getAsset",
+        "summary": "Read one maintenance asset",
+        "security": [{ "observerBearer": [] }],
+        "parameters": [
+          { "name": "assetId", "in": "path", "required": true, "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": { "description": "Asset state" }
+        }
+      }
+    },
+    "/v1/visits": {
+      "get": {
+        "operationId": "listVisits",
+        "summary": "List visits by approved request",
+        "security": [{ "observerBearer": [] }],
+        "parameters": [
+          { "name": "requestId", "in": "query", "required": true, "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": { "description": "Matching visit collection" }
+        }
+      },
+      "post": {
+        "operationId": "createDraftVisit",
+        "summary": "Create one draft maintenance visit",
+        "security": [{ "actionBearer": [] }],
+        "parameters": [
+          { "name": "Idempotency-Key", "in": "header", "required": true, "schema": { "type": "string" } }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["requestId", "assetId", "scheduledDate"],
+                "additionalProperties": false,
+                "properties": {
+                  "requestId": { "type": "string" },
+                  "assetId": { "type": "string" },
+                  "scheduledDate": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": { "description": "Draft visit created" }
+        }
+      }
+    },
+    "/v1/audit": {
+      "get": {
+        "operationId": "listAuditChanges",
+        "summary": "List unrelated changes for one request",
+        "security": [{ "observerBearer": [] }],
+        "parameters": [
+          { "name": "requestId", "in": "query", "required": true, "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": { "description": "Independent change audit" }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "actionBearer": { "type": "http", "scheme": "bearer" },
+      "observerBearer": { "type": "http", "scheme": "bearer" }
+    }
+  }
+}

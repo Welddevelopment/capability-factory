@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "1.0",
+  "campaignId": "cf-006-lichen-transfer-v1",
+  "sealedAt": "2026-08-14T08:30:00.000Z",
+  "spendMode": "zero-spend",
+  "networkAllowed": false,
+  "authorBridgeAllowedAfterUnseal": false,
+  "files": [
+    {
+      "role": "fixture",
+      "path": "fixture.json",
+      "sha256": "f8970444b5f27961f66616bfe98baa66b9e1c97ab2980ef939a02fde5b420280"
+    },
+    {
+      "role": "input",
+      "path": "input.json",
+      "sha256": "561bd8ecf442d15a0fd6360bb50bce40f925f25ee0ca973d01a17ad7c4b0b938"
+    },
+    {
+      "role": "oracle",
+      "path": "oracle.json",
+      "sha256": "ce59a548e8dd01845352ba1358f2a1b63517583dcbbc4fc90af92392e49d7408"
+    }
+  ],
+  "sealDigest": "4296af5cb4433796f81125a7d0e8bed5aaeae8d047b22d48a2a745f07637f7cc"
+}

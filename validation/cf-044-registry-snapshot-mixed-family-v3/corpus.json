@@ -1,0 +1,12 @@
+{
+  "schemaVersion":"3.0",
+  "campaignId":"cf-044-registry-snapshot-mixed-family-v3",
+  "frozenAt":"2026-08-13T19:18:35.000Z",
+  "tenantId":"tenant-cf044",
+  "environment":"fictional-local",
+  "cases":[
+    {"caseId":"clean-snapshot-restart","fault":"none","schedule":["plan","lost-response","restart","document","cross-family-attack","evidence-substitution","message","database","parent","parent-replay"]},
+    {"caseId":"quarantine-no-replacement","fault":"quarantine-no-replacement","schedule":["plan","document","lost-response","restart","message","perturb-database","database","parent","parent-replay"]},
+    {"caseId":"qualified-replacement-replan","fault":"quarantine-with-replacement","schedule":["plan","document","lost-response","restart","message","perturb-database","replan","cross-family-attack","evidence-substitution","database","parent","parent-replay"]}
+  ]
+}

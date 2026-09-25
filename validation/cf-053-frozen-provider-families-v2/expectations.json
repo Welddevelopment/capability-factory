@@ -1,0 +1,85 @@
+{
+  "schemaVersion": "1.0",
+  "campaignId": "cf-053-frozen-provider-families-v2",
+  "state": "precommitted-before-run",
+  "frozenAt": "2026-08-14T13:00:00.000+09:00",
+  "runnerMustRejectInputMutation": true,
+  "runnerMustNotRewriteOracle": true,
+  "supportedFamilies": [
+    {
+      "familyId": "polar-calibration",
+      "expectedStrictSubsetAccepted": true,
+      "expectedStableIdentityKey": "maintenanceRequestId",
+      "expectedStableIdentityType": "string",
+      "expectedActionFieldTypes": {
+        "maintenanceRequestId": "string",
+        "sensorChannel": "number",
+        "quarantineRequired": "boolean"
+      },
+      "expectedObserverSurface": "polar-calibration-audit-sdk::ComplianceLogReader::observeCalibrationByRequest::v1",
+      "expectedActionAndObserverCredentialAliasesDistinct": true,
+      "expectedFirstExecution": "committed-once",
+      "expectedDuplicateExecution": "already-exists-zero-additional-write",
+      "expectedIndependentObservation": "completed-fresh-exactly-one-collateral-clean",
+      "expectedFreshProcessReuse": true,
+      "expectedParentResumption": true,
+      "maximumBusinessWrites": 1,
+      "maximumObserverWrites": 0,
+      "incorrectSideEffectsAllowed": 0
+    },
+    {
+      "familyId": "grid-curtailment",
+      "expectedStrictSubsetAccepted": true,
+      "expectedStableIdentityKey": "eventSequence",
+      "expectedStableIdentityType": "number",
+      "expectedActionFieldTypes": {
+        "eventSequence": "number",
+        "siteCode": "string",
+        "shedApproved": "boolean"
+      },
+      "expectedObserverSurface": "grid-settlement-ledger-sdk::SettlementLedgerReader::observeCommittedEvent::numeric-event-v1",
+      "expectedActionAndObserverCredentialAliasesDistinct": true,
+      "expectedFirstExecution": "committed-once",
+      "expectedDuplicateExecution": "already-exists-zero-additional-write",
+      "expectedIndependentObservation": "completed-fresh-exactly-one-collateral-clean",
+      "expectedFreshProcessReuse": true,
+      "expectedParentResumption": true,
+      "maximumBusinessWrites": 1,
+      "maximumObserverWrites": 0,
+      "incorrectSideEffectsAllowed": 0
+    }
+  ],
+  "unsupportedControls": [
+    {
+      "familyId": "nested-freight-stop",
+      "expectedStrictSubsetAccepted": false,
+      "expectedStopPhase": "strict-subset-validation-before-candidate-generation",
+      "expectedBlockerCode": "unsupported-collection-parameter",
+      "messageMustMatch": "nested, collection, union or custom parameter",
+      "candidateGenerated": false,
+      "transportLaunched": false,
+      "authorityGranted": false,
+      "businessWrites": 0,
+      "observerWrites": 0
+    }
+  ],
+  "sharedHardGates": {
+    "exactFrozenInputDigestsRequired": true,
+    "sourceAuthorChangesAfterFreezeAllowed": false,
+    "retrospectiveExpectationChangesAllowed": false,
+    "credentialValuesAllowedInArtifacts": false,
+    "actionResponseEligibleAsIndependentProof": false,
+    "reconcileBeforeAnyRetry": true,
+    "blindRetryAllowed": false,
+    "authorityMustBindExactInputCandidateTenantScopeTargetPolicyAndTime": true,
+    "observerMustUseSeparateCredentialAndProcessSurface": true,
+    "customerAcceptanceClaimed": false,
+    "activationClaimed": false,
+    "productionClaimed": false,
+    "modelCallsAllowed": 0,
+    "externalNetworkCallsAllowed": 0,
+    "spendUsdAllowed": 0
+  },
+  "campaignPassRule": "Both supported families must satisfy every family and shared hard gate from fresh state without fixture or oracle edits after this seal, and the unsupported control must stop at the precommitted boundary with zero process launch or writes.",
+  "campaignFailRule": "Any surviving incorrect side effect, observer write, duplicate write, blind retry, unsupported-family candidate, source/oracle mutation, authority widening, credential persistence, false parent resumption, or unrecorded exception fails the campaign."
+}

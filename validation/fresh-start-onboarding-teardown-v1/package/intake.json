@@ -1,0 +1,230 @@
+{
+  "schemaVersion": "1.0",
+  "sessionId": "fresh-start-teardown-session",
+  "tenantId": "northstar-local-tenant",
+  "adapterId": "northstar-work-order-adapter",
+  "adapterVersion": "1.0.0",
+  "executionDriverId": "northstar-action-http-driver",
+  "duplicatePrevention": "both",
+  "resetStrategy": {
+    "kind": "fixture-reset",
+    "reference": "fixture://northstar/reset",
+    "independentlyChecked": true
+  },
+  "persistence": {
+    "durableJobStore": true,
+    "durableCapabilityRegistry": true
+  },
+  "adapter": {
+    "schemaVersion": "1.0",
+    "workflow": {
+      "workflowId": "schedule-inspection",
+      "summary": "Schedule exactly one approved draft inspection for work request WR-104.",
+      "requiredOutcome": "Exactly one draft inspection exists for work request WR-104, and unrelated work requests remain unchanged.",
+      "approvedTargetAliases": [
+        "northstar_system"
+      ],
+      "requestedOperationNames": [
+        "readInspection",
+        "createDraftInspection"
+      ],
+      "customerConfirmed": true
+    },
+    "materials": [
+      {
+        "kind": "openapi",
+        "materialId": "northstar-openapi",
+        "localReference": "package/northstar-openapi.json",
+        "approved": true,
+        "targetAlias": "northstar_system",
+        "document": {
+          "openapi": "3.1.0",
+          "info": {
+            "title": "Northstar Work Orders"
+          },
+          "security": [
+            {
+              "northstarCredential": []
+            }
+          ],
+          "paths": {
+            "/inspections/{id}": {
+              "get": {
+                "operationId": "readInspection",
+                "summary": "Read one inspection",
+                "responses": {
+                  "200": {
+                    "description": "Inspection"
+                  }
+                }
+              }
+            },
+            "/inspections": {
+              "post": {
+                "operationId": "createDraftInspection",
+                "summary": "Create one draft inspection",
+                "parameters": [
+                  {
+                    "name": "Idempotency-Key",
+                    "in": "header",
+                    "required": true,
+                    "schema": {
+                      "type": "string"
+                    }
+                  }
+                ],
+                "requestBody": {
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "object",
+                        "required": [
+                          "workRequestId",
+                          "status"
+                        ],
+                        "properties": {
+                          "workRequestId": {
+                            "type": "string"
+                          },
+                          "status": {
+                            "const": "draft"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "responses": {
+                  "201": {
+                    "description": "Draft inspection created"
+                  }
+                }
+              }
+            }
+          },
+          "components": {
+            "securitySchemes": {
+              "northstarCredential": {
+                "type": "http",
+                "scheme": "bearer"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "verifier": {
+    "schemaVersion": "1.0",
+    "outcomeKey": "northstar-draft-inspection-recorded",
+    "ordinaryBusinessOutcome": "Exactly one draft inspection exists for work request WR-104, and unrelated work requests remain unchanged.",
+    "executionDriverId": "northstar-action-http-driver",
+    "successCriteria": [
+      {
+        "key": "draft-status",
+        "observationKey": "inspection",
+        "path": [
+          "status"
+        ],
+        "operator": "equals",
+        "expected": "draft"
+      }
+    ],
+    "duplicateCheck": {
+      "observationKey": "matching-inspections",
+      "path": [],
+      "expectedCount": 1
+    },
+    "collateralEffectCountObservationKey": "incorrect-side-effects",
+    "freshness": {
+      "maximumAgeSeconds": 30,
+      "observedAtKey": "observed-at",
+      "notBeforeBoundary": "trusted-operation-start",
+      "boundaryConfirmed": true
+    },
+    "observationSurfaces": [
+      {
+        "key": "northstar-read-model",
+        "sourceId": "northstar-independent-read-model",
+        "description": "A separately authenticated read model approved for checking inspection outcomes.",
+        "sourceKind": "read-model",
+        "observationKeys": [
+          "inspection",
+          "matching-inspections",
+          "incorrect-side-effects",
+          "observed-at"
+        ],
+        "approvedForThisOutcome": true,
+        "independentFromExecution": true,
+        "independenceConfirmed": true,
+        "supportsFreshnessBoundary": true
+      }
+    ]
+  },
+  "authority": {
+    "schemaVersion": "1.0",
+    "systemsAndTargets": {
+      "aliases": [
+        "northstar_system"
+      ],
+      "confirmed": true
+    },
+    "credentialAliases": {
+      "aliases": [
+        "northstarCredential"
+      ],
+      "confirmed": true
+    },
+    "readsAllowed": {
+      "actions": [
+        {
+          "actionName": "readInspection",
+          "targetAlias": "northstar_system"
+        }
+      ],
+      "confirmed": true
+    },
+    "writes": [
+      {
+        "actionName": "createDraftInspection",
+        "targetAlias": "northstar_system",
+        "method": "POST",
+        "policy": "preauthorized",
+        "confirmed": true
+      }
+    ],
+    "limits": {
+      "monetary": {
+        "kind": "none",
+        "confirmed": true
+      },
+      "quantityPerAction": {
+        "kind": "limit",
+        "maximum": 1,
+        "confirmed": true
+      },
+      "actionsPerHour": {
+        "kind": "limit",
+        "maximum": 10,
+        "confirmed": true
+      }
+    },
+    "forbiddenActions": {
+      "actionNames": [],
+      "confirmed": true
+    },
+    "approver": {
+      "kind": "not-required",
+      "confirmed": true
+    },
+    "retryAndReconciliation": {
+      "reconcileBeforeRetry": true,
+      "blindRetryAllowed": false,
+      "maximumAttempts": 1,
+      "confirmed": true
+    },
+    "finalConsequentialReview": {
+      "confirmed": true
+    }
+  }
+}

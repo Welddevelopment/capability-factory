@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "1.0",
+  "campaignId": "cf-006-lichen-transfer-v1",
+  "expectedFinalLedgerRows": [
+    {
+      "transferId": "LT-BASELINE-004",
+      "destinationCell": "vault-moss-2",
+      "cultureCode": "lichen-culture-silverleaf",
+      "trayCount": 5,
+      "status": "protected-baseline",
+      "authorityRef": "baseline-authority"
+    },
+    {
+      "transferId": "LT-7419",
+      "destinationCell": "cold-nursery-7",
+      "cultureCode": "lichen-culture-amberveil",
+      "trayCount": 37,
+      "status": "dispatched",
+      "authorityRef": "botanical-council-17"
+    }
+  ],
+  "expectedFinalOutboxFiles": [
+    {
+      "name": "LT-7419.dispatch",
+      "content": "LT-7419     |cold-nursery-7  |lichen-culture-amberveil|00037|DISPATCHED|botanical-council-17\n"
+    },
+    {
+      "name": "PROTECTED-BASELINE.txt",
+      "content": "PRESERVE|LT-BASELINE-004|vault-moss-2\n"
+    }
+  ],
+  "expected": {
+    "jobStatus": "autonomous-completion",
+    "jobAttempts": 2,
+    "externalBusinessWrites": 3,
+    "sqliteActionExecutions": 2,
+    "fileActionExecutions": 1,
+    "restartRecoveries": 1,
+    "lostResponseReconciliations": 1,
+    "parentResumptionExecutions": 1,
+    "parentResumptionReconciliations": 1,
+    "retainedCapabilityCount": 2,
+    "retainedReuseCount": 1,
+    "terminalArtifactSchema": "lichen-transfer-record-v1",
+    "incorrectSideEffects": 0
+  },
+  "negativeControlIds": [
+    "completed",
+    "not-started",
+    "partial",
+    "incorrect",
+    "duplicate",
+    "stale",
+    "collateral",
+    "unknown",
+    "unavailable",
+    "lost-response-reconciliation",
+    "adversarial-action-response"
+  ],
+  "authorBridgePolicy": "forbidden-after-unseal"
+}

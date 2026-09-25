@@ -1,0 +1,263 @@
+{
+  "schemaVersion": "1.0",
+  "campaignId": "cf-014-adversarial-family-v1",
+  "baseline": {
+    "name": "same-tools-fixed-chain-policy-v1",
+    "primitiveKeys": [
+      "generic-sqlite.record-upsert-v1",
+      "generic-file.record-transform-v1",
+      "generic-sqlite.record-merge-v1"
+    ],
+    "fixedGraphPrimitiveKeys": [
+      "generic-sqlite.record-upsert-v1",
+      "generic-file.record-transform-v1",
+      "generic-sqlite.record-upsert-v1"
+    ],
+    "fixedDependencyCounts": [0, 1, 1]
+  },
+  "bridgePolicy": {
+    "postUnsealCallbacksAllowed": false,
+    "caseSpecificSourceFilesAllowed": false,
+    "allowedDeclarativeDecisions": [
+      "record",
+      "graph",
+      "serialization",
+      "transition",
+      "authority",
+      "fault",
+      "oracle"
+    ]
+  },
+  "qualification": {
+    "qualifiedAt": "2026-08-14T10:00:00.000Z",
+    "expiresAt": "2026-09-13T10:00:00.000Z",
+    "corpusVersion": "cf-014-family-controls-v1"
+  },
+  "cases": [
+    {
+      "caseId": "subglacial-archive-custody",
+      "ordinaryGoal": "Commit the authorized subglacial archive sample, emit its fixed-width cold-custody capsule, and persist the verified capsule state without replaying a lost transaction.",
+      "identity": {
+        "tenantId": "sealed-cryo-archive",
+        "requestId": "request-subglacial-308",
+        "parentGoalId": "goal-subglacial-308"
+      },
+      "authority": {
+        "targetAliases": ["generic-record-ledger", "generic-record-outbox"],
+        "actionKeys": ["upsert-record", "write-record-file"],
+        "approvalKeys": ["approve-record-write", "approve-record-file"],
+        "maximumRisk": "reversible-write"
+      },
+      "record": {
+        "recordId": "SA-308",
+        "subjectCode": "subglacial-spore-vault",
+        "unitCount": 12,
+        "stage": "authorized",
+        "branches": [],
+        "authorityRef": "cryo-council-9"
+      },
+      "initialRows": [
+        {
+          "recordId": "SA-BASE-1",
+          "subjectCode": "protected-ice-core",
+          "unitCount": 1,
+          "stage": "protected-baseline",
+          "branches": [],
+          "authorityRef": "baseline-authority"
+        }
+      ],
+      "initialFiles": [
+        {
+          "name": "PROTECTED-CRYO.txt",
+          "content": "PRESERVE|SA-BASE-1\n"
+        }
+      ],
+      "workItems": [
+        {
+          "workItemId": "commit-authorized-sample",
+          "primitiveKey": "generic-sqlite.record-upsert-v1",
+          "dependsOn": [],
+          "inputs": [
+            {
+              "inputKey": "record",
+              "kind": "trusted-evidence",
+              "valueKey": "approved-record"
+            }
+          ]
+        },
+        {
+          "workItemId": "emit-cold-custody-capsule",
+          "primitiveKey": "generic-file.record-transform-v1",
+          "dependsOn": [
+            "commit-authorized-sample"
+          ],
+          "inputs": [
+            {
+              "inputKey": "record",
+              "kind": "verified-artifact",
+              "producerWorkItemId": "commit-authorized-sample",
+              "outputKey": "record"
+            }
+          ],
+          "fileTransform": {
+            "outputName": "SA-308.custody",
+            "encoding": "fixed-width-v1",
+            "nextStage": "capsuled",
+            "addBranch": "cold-custody"
+          }
+        },
+        {
+          "workItemId": "persist-capsule-state",
+          "primitiveKey": "generic-sqlite.record-upsert-v1",
+          "dependsOn": [
+            "emit-cold-custody-capsule"
+          ],
+          "inputs": [
+            {
+              "inputKey": "record",
+              "kind": "verified-artifact",
+              "producerWorkItemId": "emit-cold-custody-capsule",
+              "outputKey": "record"
+            }
+          ]
+        }
+      ],
+      "terminal": {
+        "workItemId": "persist-capsule-state",
+        "outputKey": "record"
+      },
+      "fault": {
+        "restartAfterCommitWorkItemId": "commit-authorized-sample",
+        "loseParentResponse": true
+      }
+    },
+    {
+      "caseId": "solar-flare-dual-signal",
+      "ordinaryGoal": "Stage the authorized solar-flare shelter rotation, issue independently verified public and private canonical notices, then merge both branches into one verified ledger outcome.",
+      "identity": {
+        "tenantId": "sealed-orbital-shelter",
+        "requestId": "request-solar-991",
+        "parentGoalId": "goal-solar-991"
+      },
+      "authority": {
+        "targetAliases": ["generic-record-ledger", "generic-record-outbox"],
+        "actionKeys": ["upsert-record", "write-record-file", "merge-records"],
+        "approvalKeys": ["approve-record-write", "approve-record-file", "approve-record-merge"],
+        "maximumRisk": "reversible-write"
+      },
+      "record": {
+        "recordId": "SF-991",
+        "subjectCode": "solar-flare-shelter-rotation",
+        "unitCount": 4,
+        "stage": "authorized",
+        "branches": [],
+        "authorityRef": "orbital-safety-3"
+      },
+      "initialRows": [
+        {
+          "recordId": "SF-BASE-2",
+          "subjectCode": "protected-radiation-plan",
+          "unitCount": 2,
+          "stage": "protected-baseline",
+          "branches": [],
+          "authorityRef": "baseline-authority"
+        }
+      ],
+      "initialFiles": [
+        {
+          "name": "PROTECTED-ORBIT.txt",
+          "content": "PRESERVE|SF-BASE-2\n"
+        }
+      ],
+      "workItems": [
+        {
+          "workItemId": "stage-shelter-rotation",
+          "primitiveKey": "generic-sqlite.record-upsert-v1",
+          "dependsOn": [],
+          "inputs": [
+            {
+              "inputKey": "record",
+              "kind": "trusted-evidence",
+              "valueKey": "approved-record"
+            }
+          ]
+        },
+        {
+          "workItemId": "issue-private-crew-signal",
+          "primitiveKey": "generic-file.record-transform-v1",
+          "dependsOn": [
+            "stage-shelter-rotation"
+          ],
+          "inputs": [
+            {
+              "inputKey": "record",
+              "kind": "verified-artifact",
+              "producerWorkItemId": "stage-shelter-rotation",
+              "outputKey": "record"
+            }
+          ],
+          "fileTransform": {
+            "outputName": "SF-991.private.json",
+            "encoding": "canonical-json-v1",
+            "nextStage": "signal-issued",
+            "addBranch": "private-crew"
+          }
+        },
+        {
+          "workItemId": "issue-public-shelter-signal",
+          "primitiveKey": "generic-file.record-transform-v1",
+          "dependsOn": [
+            "stage-shelter-rotation"
+          ],
+          "inputs": [
+            {
+              "inputKey": "record",
+              "kind": "verified-artifact",
+              "producerWorkItemId": "stage-shelter-rotation",
+              "outputKey": "record"
+            }
+          ],
+          "fileTransform": {
+            "outputName": "SF-991.public.json",
+            "encoding": "canonical-json-v1",
+            "nextStage": "signal-issued",
+            "addBranch": "public-shelter"
+          }
+        },
+        {
+          "workItemId": "merge-dual-signal",
+          "primitiveKey": "generic-sqlite.record-merge-v1",
+          "dependsOn": [
+            "issue-private-crew-signal",
+            "issue-public-shelter-signal"
+          ],
+          "inputs": [
+            {
+              "inputKey": "left",
+              "kind": "verified-artifact",
+              "producerWorkItemId": "issue-private-crew-signal",
+              "outputKey": "record"
+            },
+            {
+              "inputKey": "right",
+              "kind": "verified-artifact",
+              "producerWorkItemId": "issue-public-shelter-signal",
+              "outputKey": "record"
+            }
+          ],
+          "merge": {
+            "nextStage": "dual-signal-verified"
+          }
+        }
+      ],
+      "terminal": {
+        "workItemId": "merge-dual-signal",
+        "outputKey": "record"
+      },
+      "fault": {
+        "restartAfterCommitWorkItemId": "stage-shelter-rotation",
+        "loseParentResponse": true
+      }
+    }
+  ]
+}

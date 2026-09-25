@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "1.0",
+  "attempt": 2,
+  "classification": "product-harness-failure",
+  "passedCasesBeforeStop": 2,
+  "failedBoundary": "fresh-process-reuse",
+  "failure": "A fresh process attempted to re-derive planning state and did not reproduce the exact pre-runtime workspace authority context.",
+  "unsafeEffects": 0,
+  "repair": "Added a fail-closed durable reopen path that re-hashes the retained registry artifacts and proves the original workspace issuer keypair and planning-context digest before reconstructing an opaque handle."
+}

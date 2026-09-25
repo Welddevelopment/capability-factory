@@ -1,0 +1,306 @@
+{
+  "schemaVersion": "1.0",
+  "fixtureId": "solstice-maintenance-fresh-onboarding-v1",
+  "evidenceBoundary": "deterministic-local-development-run-not-human-or-customer-validation",
+  "spendUsd": 0,
+  "modelCalls": 0,
+  "frozenInputDigests": {
+    "openApi": "6883d8f6d68bd2cd0ac91bd421af35fbb3965e80bd3fd3b0236ef8b6af789c72",
+    "contract": "62162fddde7f63331737e9d29715ff26eb8ac172856488a71b0c0f33d3174440"
+  },
+  "proposalMetrics": {
+    "totalRequestedOperations": 4,
+    "correctlyMappedRequestedOperations": 4,
+    "proposedCredentialAliases": 2,
+    "unsupportedOperationsInvented": 0,
+    "unauthorizedAuthorityInferred": 0,
+    "credentialValuesStored": 0
+  },
+  "confirmationsRequired": [
+    "Exact target and operation mapping",
+    "Credential aliases and customer-local bindings",
+    "Preauthorized createDraftVisit write authority and limits",
+    "Independent read surface and outcome predicates",
+    "Freshness baseline and reconciliation rule",
+    "Disposable reset and acceptance environment"
+  ],
+  "generatedArtifacts": {
+    "adapterProposalId": "adapter-0085f331376568a8b281d099",
+    "observerProposalId": "observer-proposal-cfbff2e771486bea3d7d135c",
+    "authorityStatus": "review-required",
+    "acceptancePlanId": "acceptance-28f35f114c05a0835763cabc"
+  },
+  "automationTiming": {
+    "joinedRunWallClockMs": 121,
+    "firstAutonomousAcquisitionMs": 8,
+    "fullAcceptanceMs": 68,
+    "humanEngineerActiveMinutes": null
+  },
+  "codeAccounting": {
+    "customerSpecificAdapterCodeWritten": 0,
+    "customerSpecificObserverCodeWritten": 0,
+    "fixtureAndAcceptanceHarnessFiles": [
+      "test/fixtures/onboarding-fresh-execution/solstice-maintenance-openapi.json",
+      "test/fixtures/onboarding-fresh-execution/FROZEN_CONTRACT.json",
+      "src/customer-world/fresh-onboarding-http-world.ts"
+    ],
+    "note": "The adapter and observer were generated from reviewed declarative inputs. The local synthetic API and acceptance harness are test infrastructure, not evidence that a fresh engineer wrote zero integration code."
+  },
+  "capabilityMetrics": {
+    "builds": 1,
+    "preUseProbes": 1,
+    "retainedReuses": 7,
+    "reconciledLostResponses": 1,
+    "freshProcessReuseWorked": true
+  },
+  "acceptance": {
+    "passed": true,
+    "abortedForSafety": false,
+    "requiredCases": 10,
+    "completedCases": 10,
+    "failedCases": [],
+    "notRunCases": [],
+    "incorrectSideEffects": 0,
+    "results": [
+      {
+        "caseId": "read-only-happy-path",
+        "passed": true,
+        "intendedWrites": 0,
+        "incorrectSideEffects": 0,
+        "checks": [
+          {
+            "id": "read-only-completed",
+            "passed": true,
+            "detail": "The independent read path confirmed the already-satisfied outcome."
+          },
+          {
+            "id": "zero-write",
+            "passed": true,
+            "detail": "No write was attempted for the already-satisfied goal."
+          }
+        ],
+        "artifactReferences": [
+          "/Users/joeljeon/Desktop/Capability Factory/reports/fresh-onboarding-http-execution-2026-08-12/acceptance/read-only-happy-path/evidence.json"
+        ],
+        "completedAt": "2026-08-11T23:21:25.382Z"
+      },
+      {
+        "caseId": "approved-write",
+        "passed": true,
+        "intendedWrites": 1,
+        "incorrectSideEffects": 0,
+        "checks": [
+          {
+            "id": "new-capability-path",
+            "passed": true,
+            "detail": "The first unsupported operation used deterministic construction and pre-use probing."
+          },
+          {
+            "id": "exact-write",
+            "passed": true,
+            "detail": "Exactly one intended draft visit was committed."
+          },
+          {
+            "id": "independent-outcome",
+            "passed": true,
+            "detail": "The separate read-side observer confirmed the business result."
+          }
+        ],
+        "artifactReferences": [
+          "/Users/joeljeon/Desktop/Capability Factory/reports/fresh-onboarding-http-execution-2026-08-12/acceptance/approved-write/evidence.json"
+        ],
+        "completedAt": "2026-08-11T23:21:25.393Z"
+      },
+      {
+        "caseId": "fresh-process-reuse",
+        "passed": true,
+        "intendedWrites": 1,
+        "incorrectSideEffects": 0,
+        "checks": [
+          {
+            "id": "retained-selected",
+            "passed": true,
+            "detail": "A new execution-core instance loaded the retained manifest without rebuilding it."
+          },
+          {
+            "id": "direct-outcome",
+            "passed": true,
+            "detail": "Fresh-process reuse produced one independently verified visit."
+          }
+        ],
+        "artifactReferences": [
+          "/Users/joeljeon/Desktop/Capability Factory/reports/fresh-onboarding-http-execution-2026-08-12/acceptance/fresh-process-reuse/evidence.json"
+        ],
+        "completedAt": "2026-08-11T23:21:25.397Z"
+      },
+      {
+        "caseId": "missing-credential",
+        "passed": true,
+        "intendedWrites": 0,
+        "incorrectSideEffects": 0,
+        "checks": [
+          {
+            "id": "credential-refused",
+            "passed": true,
+            "detail": "The customer-local action credential alias was unresolved and execution stopped."
+          },
+          {
+            "id": "zero-write",
+            "passed": true,
+            "detail": "The request never reached the write endpoint."
+          }
+        ],
+        "artifactReferences": [
+          "/Users/joeljeon/Desktop/Capability Factory/reports/fresh-onboarding-http-execution-2026-08-12/acceptance/missing-credential/evidence.json"
+        ],
+        "completedAt": "2026-08-11T23:21:25.402Z"
+      },
+      {
+        "caseId": "missing-permission",
+        "passed": true,
+        "intendedWrites": 0,
+        "incorrectSideEffects": 0,
+        "checks": [
+          {
+            "id": "permission-refused",
+            "passed": true,
+            "detail": "The exact write permission was absent and the operation guard stopped execution."
+          },
+          {
+            "id": "zero-write",
+            "passed": true,
+            "detail": "No write reached the external system."
+          }
+        ],
+        "artifactReferences": [
+          "/Users/joeljeon/Desktop/Capability Factory/reports/fresh-onboarding-http-execution-2026-08-12/acceptance/missing-permission/evidence.json"
+        ],
+        "completedAt": "2026-08-11T23:21:25.406Z"
+      },
+      {
+        "caseId": "lost-response-reconciliation",
+        "passed": true,
+        "intendedWrites": 1,
+        "incorrectSideEffects": 0,
+        "checks": [
+          {
+            "id": "reconciled",
+            "passed": true,
+            "detail": "A transport failure after commit was resolved from external state rather than by trusting the action response."
+          },
+          {
+            "id": "no-duplicate",
+            "passed": true,
+            "detail": "Reconciliation prevented a blind retry and duplicate visit."
+          }
+        ],
+        "artifactReferences": [
+          "/Users/joeljeon/Desktop/Capability Factory/reports/fresh-onboarding-http-execution-2026-08-12/acceptance/lost-response-reconciliation/evidence.json"
+        ],
+        "completedAt": "2026-08-11T23:21:25.409Z"
+      },
+      {
+        "caseId": "wrong-or-partial-outcome",
+        "passed": true,
+        "intendedWrites": 0,
+        "incorrectSideEffects": 0,
+        "checks": [
+          {
+            "id": "partial-rejected",
+            "passed": true,
+            "detail": "The action response could not hide a partial external result."
+          },
+          {
+            "id": "capability-quarantined",
+            "passed": true,
+            "detail": "The capability was quarantined after the independent outcome rejection."
+          },
+          {
+            "id": "cleanup-verified",
+            "passed": true,
+            "detail": "The disposable fixture was reset and no injected incorrect effect survived."
+          }
+        ],
+        "artifactReferences": [
+          "/Users/joeljeon/Desktop/Capability Factory/reports/fresh-onboarding-http-execution-2026-08-12/acceptance/wrong-or-partial-outcome/evidence.json"
+        ],
+        "completedAt": "2026-08-11T23:21:25.415Z"
+      },
+      {
+        "caseId": "sidecar-restart",
+        "passed": true,
+        "intendedWrites": 1,
+        "incorrectSideEffects": 0,
+        "checks": [
+          {
+            "id": "restart-recovered",
+            "passed": true,
+            "detail": "The durable running job recovered through the same parent identity after restart."
+          },
+          {
+            "id": "reconcile-no-duplicate",
+            "passed": true,
+            "detail": "The restarted worker reconciled the committed state and did not write again."
+          }
+        ],
+        "artifactReferences": [
+          "/Users/joeljeon/Desktop/Capability Factory/reports/fresh-onboarding-http-execution-2026-08-12/acceptance/sidecar-restart/evidence.json"
+        ],
+        "completedAt": "2026-08-11T23:21:25.423Z"
+      },
+      {
+        "caseId": "duplicate-submission",
+        "passed": true,
+        "intendedWrites": 1,
+        "incorrectSideEffects": 0,
+        "checks": [
+          {
+            "id": "one-durable-job",
+            "passed": true,
+            "detail": "All exact duplicates resolved to one durable parent job."
+          },
+          {
+            "id": "one-execution",
+            "passed": true,
+            "detail": "Only one worker execution and one business write occurred."
+          }
+        ],
+        "artifactReferences": [
+          "/Users/joeljeon/Desktop/Capability Factory/reports/fresh-onboarding-http-execution-2026-08-12/acceptance/duplicate-submission/evidence.json"
+        ],
+        "completedAt": "2026-08-11T23:21:25.430Z"
+      },
+      {
+        "caseId": "conflicting-parent-reuse",
+        "passed": true,
+        "intendedWrites": 0,
+        "incorrectSideEffects": 0,
+        "checks": [
+          {
+            "id": "conflict-rejected",
+            "passed": true,
+            "detail": "A different request could not reuse the saved parent identity."
+          },
+          {
+            "id": "zero-run-zero-write",
+            "passed": true,
+            "detail": "The conflict was rejected before worker or external action execution."
+          }
+        ],
+        "artifactReferences": [
+          "/Users/joeljeon/Desktop/Capability Factory/reports/fresh-onboarding-http-execution-2026-08-12/acceptance/conflicting-parent-reuse/evidence.json"
+        ],
+        "completedAt": "2026-08-11T23:21:25.433Z"
+      }
+    ]
+  },
+  "survivingIncorrectSideEffects": 0,
+  "failuresAndFixes": [
+    "Independent audit found that observer completion needed exact rather than upper-bound cardinality; completion now requires the exact confirmed count.",
+    "Independent audit found non-timestamp freshness needed an operation-bound pre-action snapshot; the binding now records and validates the baseline capture boundary.",
+    "Independent audit found observer independence relied too heavily on self-description; source, approved material, read-only credentials, and review digests are now separately bound.",
+    "The first pre-use probe failed because its successful no-write response omitted a declared output; the fixture probe now returns a synthetic output while preserving zero writes.",
+    "Unchanged sequence state originally classified exact no-action evidence as stale; unchanged trusted-baseline state now passes only the exact not-started branch and can never pass completion."
+  ],
+  "outputDirectory": "/Users/joeljeon/Desktop/Capability Factory/reports/fresh-onboarding-http-execution-2026-08-12"
+}

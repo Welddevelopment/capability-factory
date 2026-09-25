@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "1.0",
+  "attempt": 4,
+  "classification": "product-harness-failure",
+  "passedCases": 9,
+  "failedBoundary": "sidecar-restart",
+  "failure": "The binding retained an authority-closed pair after the lost-response generation-replacement case, so the restart action never reached the provider and reconciliation correctly found not-started.",
+  "unsafeEffects": 0,
+  "repair": "The recovery path now returns and installs its current authority-bound pair; restart reconciliation was additionally moved into a genuine fresh process."
+}

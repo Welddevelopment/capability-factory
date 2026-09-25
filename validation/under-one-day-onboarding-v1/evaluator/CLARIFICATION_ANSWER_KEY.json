@@ -1,0 +1,9 @@
+{
+  "schemaVersion": "1.0",
+  "answers": [
+    { "questionId": "is-dsp-901-approved", "answer": "Yes; approval is confined to the exact request, vehicle, and date in the participant facts." },
+    { "questionId": "is-sequence-trusted", "answer": "Yes; it is the approved monotonic change counter for this disposable fixture." },
+    { "questionId": "may-action-response-prove-completion", "answer": "No. Completion must come from the observer credential and GET endpoints." }
+  ],
+  "default": "No precommitted answer exists. Preserve the fact as unknown and fail closed."
+}

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark">
+  <title>Capability Factory Console</title>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#content">Skip to content</a>
+  <div class="shell">
+    <aside class="sidebar" aria-label="Console navigation">
+      <div class="brand"><span class="brand-mark">CF</span><div><strong>Capability Factory</strong><small>Private alpha</small></div></div>
+      <div class="evidence-boundary">HTTP local pilot MVP · adjacent modes experimental</div>
+      <nav>
+        <p>Operations</p>
+        <a href="/onboarding" data-route="onboarding"><span>Assisted onboarding</span></a>
+        <a href="/pilot-setup" data-route="pilot-setup"><span>Pilot setup</span><kbd>S</kbd></a>
+        <a href="/operations" data-route="operations"><span>Runtime control</span></a>
+        <a href="/runs" data-route="runs"><span>Runs</span><kbd>R</kbd></a>
+        <a href="/handoffs" data-route="handoffs"><span>Handoffs</span></a>
+        <p>Capability control</p>
+        <a href="/capability-modes" data-route="capability-modes"><span>Mode registry</span></a>
+        <a href="/capabilities" data-route="capabilities"><span>Capabilities</span></a>
+        <a href="/environments" data-route="environments"><span>Environments</span></a>
+        <a href="/policies" data-route="policies"><span>Policies</span></a>
+        <p>Developer tools</p>
+        <a href="/playground" data-route="playground"><span>Agent Playground</span><kbd>P</kbd></a>
+      </nav>
+      <div class="sidebar-foot"><span class="live-dot" aria-hidden="true"></span><div><strong id="connection-label">Local reference</strong><small id="connection-detail">Connecting to event stream</small></div></div>
+    </aside>
+    <header class="mobile-header"><button id="menu-button" aria-label="Open navigation">Menu</button><strong>Capability Factory</strong><span>Alpha</span></header>
+    <main id="content" tabindex="-1"><div class="loading-state"><span></span><p>Building sanitized projection</p></div></main>
+  </div>
+  <div id="toast-region" class="toast-region" aria-live="polite"></div>
+  <script type="module" src="/assets/app.js"></script>
+</body>
+</html>

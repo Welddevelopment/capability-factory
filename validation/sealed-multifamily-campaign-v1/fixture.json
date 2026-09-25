@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "1.0",
+  "campaignId": "cf-006-lichen-transfer-v1",
+  "initialLedgerRows": [
+    {
+      "transferId": "LT-BASELINE-004",
+      "destinationCell": "vault-moss-2",
+      "cultureCode": "lichen-culture-silverleaf",
+      "trayCount": 5,
+      "status": "protected-baseline",
+      "authorityRef": "baseline-authority"
+    }
+  ],
+  "initialOutboxFiles": [
+    {
+      "name": "PROTECTED-BASELINE.txt",
+      "content": "PRESERVE|LT-BASELINE-004|vault-moss-2\n"
+    }
+  ],
+  "transfer": {
+    "transferId": "LT-7419",
+    "destinationCell": "cold-nursery-7",
+    "cultureCode": "lichen-culture-amberveil",
+    "trayCount": 37,
+    "status": "approved",
+    "authorityRef": "botanical-council-17"
+  }
+}

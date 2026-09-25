@@ -1,0 +1,19 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Fictional customer ERP example",
+    "version": "0.1.0"
+  },
+  "paths": {
+    "/orders/{orderId}": {
+      "get": {
+        "operationId": "read_order"
+      }
+    },
+    "/orders": {
+      "post": {
+        "operationId": "create_order"
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "openapi": "3.1.0",
+  "info": { "title": "Meridian Review Sandbox", "version": "1.0.0" },
+  "paths": {
+    "/cases/{caseId}/approval-requests": {
+      "post": { "operationId": "createApprovalRequest", "description": "Create a formal approval request routed to the configured approver.", "responses": { "202": { "description": "Queued" } } }
+    },
+    "/cases/{caseId}/manual-review-requests": {
+      "post": { "operationId": "requestManualReview", "description": "Create a non-approval manual review request routed to operations.", "responses": { "202": { "description": "Queued" } } }
+    },
+    "/cases/{caseId}/requests": {
+      "get": { "operationId": "listCaseRequests", "description": "List current approval and manual-review requests.", "responses": { "200": { "description": "Requests" } } }
+    }
+  }
+}

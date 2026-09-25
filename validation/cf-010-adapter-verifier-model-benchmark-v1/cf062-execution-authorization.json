@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "1.0",
+  "authorizationId": "cf062-standing-bounded-model-approval-2026-08-14",
+  "campaignId": "cf-010-adapter-verifier-model-benchmark-v1",
+  "sealDigest": "0ca96c40fdded858ca80fc3436e48094baa48a3d2139dcc0432b4bcecef1d0c5",
+  "executionAuthorized": true,
+  "maximumProviderCalls": 4,
+  "maximumSpendUsdPerCall": 0.2,
+  "maximumCampaignSpendUsd": 0.75,
+  "automaticRetries": false,
+  "authorizedAt": "2026-08-14T13:30:00.000Z",
+  "authoritySource": "Joel's standing instruction authorizes moderate paid model calls only at blocking decision-critical gates; CF-010 and CF-019 are complete prerequisites and this authorization narrows that approval to one frozen four-call campaign."
+}

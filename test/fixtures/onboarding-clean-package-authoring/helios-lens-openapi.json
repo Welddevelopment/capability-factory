@@ -1,0 +1,70 @@
+{
+  "openapi": "3.1.0",
+  "info": { "title": "Helios Lens Service", "version": "1.0.0" },
+  "servers": [{ "url": "https://helios-lens.local.invalid/v1" }],
+  "paths": {
+    "/cleaning-reservations": {
+      "post": {
+        "operationId": "scheduleLensCleaning",
+        "summary": "Schedule one provisional lens-cleaning reservation",
+        "security": [{ "heliosLensWriter": [] }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["reservation_ref", "lens_family", "duration_minutes"],
+                "properties": {
+                  "reservation_ref": { "type": "string" },
+                  "lens_family": { "type": "string" },
+                  "duration_minutes": { "type": "integer" }
+                }
+              }
+            }
+          }
+        },
+        "responses": { "201": { "description": "Created" }, "409": { "description": "Conflict" } }
+      },
+      "get": {
+        "operationId": "listLensCleaningReservations",
+        "summary": "Observe matching cleaning reservations",
+        "security": [{ "heliosLensObserver": [] }],
+        "parameters": [{ "name": "reservation_ref", "in": "query", "required": true, "schema": { "type": "string" } }],
+        "responses": {
+          "200": {
+            "description": "Matches",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "reservation_ref": { "type": "string" },
+                          "lens_family": { "type": "string" },
+                          "duration_minutes": { "type": "integer" }
+                        }
+                      }
+                    },
+                    "server_time": { "type": "string", "format": "date-time" },
+                    "collateral_clean": { "type": "boolean" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "heliosLensWriter": { "type": "http", "scheme": "bearer" },
+      "heliosLensObserver": { "type": "http", "scheme": "bearer" }
+    }
+  }
+}

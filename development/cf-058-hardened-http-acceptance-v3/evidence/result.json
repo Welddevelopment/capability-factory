@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "1.0",
+  "checkpointId": "CF-058",
+  "campaignId": "cf058-cold-chain-v3",
+  "status": "completed",
+  "passed": true,
+  "declaredCases": 10,
+  "passedCases": 10,
+  "reconciledCases": 1,
+  "intendedBusinessWrites": 7,
+  "survivingIncorrectSideEffects": 0,
+  "candidateBuilds": 1,
+  "retainedFreshProcess": true,
+  "genuineRestartReconciliation": true,
+  "unresolvedAuthorityLeases": 0,
+  "observerWrites": 0,
+  "blindRetries": 0,
+  "modelCalls": 0,
+  "paidSpendUsd": 0,
+  "finalReceiptHash": "f5e0cefb4066f27ad6058520306e8a28f47c1a5d561b19a372b06d7b77253b16",
+  "evidenceBoundary": "Author-designed fictional local constrained-HTTP campaign; not customer, production, arbitrary-API, independent held-out, public, universal-capability or CF-DAS integration evidence.",
+  "resultDigest": "4f37e556ebe193da2f9e1414ffd6240f6d6f1d64e117f05898f22c0326f531b6"
+}

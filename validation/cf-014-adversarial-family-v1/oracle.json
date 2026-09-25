@@ -1,0 +1,95 @@
+{
+  "schemaVersion": "1.0",
+  "campaignId": "cf-014-adversarial-family-v1",
+  "cases": [
+    {
+      "caseId": "subglacial-archive-custody",
+      "finalRecord": {
+        "recordId": "SA-308",
+        "subjectCode": "subglacial-spore-vault",
+        "unitCount": 12,
+        "stage": "capsuled",
+        "branches": [
+          "cold-custody"
+        ],
+        "authorityRef": "cryo-council-9"
+      },
+      "files": [
+        {
+          "name": "PROTECTED-CRYO.txt",
+          "content": "PRESERVE|SA-BASE-1\n"
+        },
+        {
+          "name": "SA-308.custody",
+          "content": "SA-308        |subglacial-spore-vault |00012|capsuled|cold-custody|cryo-council-9\n"
+        }
+      ],
+      "expected": {
+        "workItems": 3,
+        "sqliteActions": 2,
+        "fileActions": 1,
+        "restartRecoveries": 1,
+        "lostActionReconciliations": 1,
+        "retainedCapabilities": 2,
+        "retainedReuses": 1,
+        "parentExecutions": 1,
+        "parentReconciliations": 1,
+        "incorrectSideEffects": 0
+      }
+    },
+    {
+      "caseId": "solar-flare-dual-signal",
+      "finalRecord": {
+        "recordId": "SF-991",
+        "subjectCode": "solar-flare-shelter-rotation",
+        "unitCount": 4,
+        "stage": "dual-signal-verified",
+        "branches": [
+          "private-crew",
+          "public-shelter"
+        ],
+        "authorityRef": "orbital-safety-3"
+      },
+      "files": [
+        {
+          "name": "PROTECTED-ORBIT.txt",
+          "content": "PRESERVE|SF-BASE-2\n"
+        },
+        {
+          "name": "SF-991.private.json",
+          "content": "{\"authorityRef\":\"orbital-safety-3\",\"branches\":[\"private-crew\"],\"recordId\":\"SF-991\",\"stage\":\"signal-issued\",\"subjectCode\":\"solar-flare-shelter-rotation\",\"unitCount\":4}\n"
+        },
+        {
+          "name": "SF-991.public.json",
+          "content": "{\"authorityRef\":\"orbital-safety-3\",\"branches\":[\"public-shelter\"],\"recordId\":\"SF-991\",\"stage\":\"signal-issued\",\"subjectCode\":\"solar-flare-shelter-rotation\",\"unitCount\":4}\n"
+        }
+      ],
+      "expected": {
+        "workItems": 4,
+        "sqliteActions": 2,
+        "fileActions": 2,
+        "restartRecoveries": 1,
+        "lostActionReconciliations": 1,
+        "retainedCapabilities": 3,
+        "retainedReuses": 1,
+        "parentExecutions": 1,
+        "parentReconciliations": 1,
+        "incorrectSideEffects": 0
+      }
+    }
+  ],
+  "fixedToolBaseline": {
+    "goalsCompleted": 1,
+    "goalCount": 2,
+    "primitiveCoveredWorkItems": 7,
+    "executableWorkItems": 3,
+    "totalWorkItems": 7,
+    "coverageReason": "The fixed baseline has the same three generic primitives and completes the preconfigured chain, but its fixed graph and binding policy cannot express the fresh fork/join merge topology."
+  },
+  "authorBridgeOracle": {
+    "caseSpecificSourceFiles": 0,
+    "postUnsealCallbacks": 0,
+    "reusablePrimitiveCount": 3,
+    "preciseBlockers": 0
+  }
+}

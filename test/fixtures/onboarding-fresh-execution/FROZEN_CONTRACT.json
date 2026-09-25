@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "1.0",
+  "fixtureId": "solstice-maintenance-fresh-onboarding-v1",
+  "frozenAt": "2026-08-12T09:00:00.000Z",
+  "authoringBoundary": "This workflow and API were frozen before the joined onboarding execution. They were not used to author Outcome Observer Factory v1.",
+  "blockedWorkflow": {
+    "workflowId": "schedule-approved-maintenance",
+    "summary": "Schedule one draft maintenance visit for an approved request.",
+    "requiredOutcome": "Exactly one fresh draft maintenance visit exists for the approved request and asset, and no unrelated record changes.",
+    "targetAlias": "solstice_sandbox",
+    "requestedOperationNames": ["getAsset", "listVisits", "listAuditChanges", "createDraftVisit"]
+  },
+  "credentialAliases": ["actionBearer", "observerBearer"],
+  "authority": {
+    "reads": ["getAsset", "listVisits", "listAuditChanges"],
+    "preauthorizedWrites": ["createDraftVisit"],
+    "maximumWritesPerAction": 1,
+    "maximumActionsPerHour": 20,
+    "reconcileBeforeRetry": true,
+    "blindRetryAllowed": false
+  },
+  "completion": {
+    "requestId": "REQ-42",
+    "assetId": "ASSET-7",
+    "scheduledDate": "2026-08-13",
+    "expectedVisitCount": 1,
+    "expectedStatus": "draft",
+    "expectedUnrelatedChanges": 0,
+    "freshness": "visit collection sequence must advance beyond the confirmed pre-action baseline"
+  },
+  "expectedAcceptanceCases": [
+    "read-only-happy-path",
+    "approved-write",
+    "fresh-process-reuse",
+    "missing-credential",
+    "missing-permission",
+    "lost-response-reconciliation",
+    "wrong-or-partial-outcome",
+    "sidecar-restart",
+    "duplicate-submission",
+    "conflicting-parent-reuse"
+  ],
+  "requiredSafetyResult": {
+    "allCasesPass": true,
+    "incorrectSideEffectsSurvivingCleanup": 0,
+    "actionResponseMayProveOutcome": false
+  }
+}

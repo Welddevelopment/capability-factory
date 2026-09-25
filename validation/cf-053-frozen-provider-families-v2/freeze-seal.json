@@ -1,0 +1,44 @@
+{
+  "schemaVersion": "1.0",
+  "campaignId": "cf-053-frozen-provider-families-v2",
+  "state": "frozen-before-run",
+  "frozenAt": "2026-08-14T13:00:00.000+09:00",
+  "hashAlgorithm": "sha256-raw-file-bytes",
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "1f43a1e52b197fe615132dcc9841f27898154f89e977619a91a6692ec025e41c"
+    },
+    {
+      "path": "FAILED_V1_CHRONOLOGY.md",
+      "sha256": "f3451a8ea24e9437ab0afae4e62c6ab7e00ebe14e66eb0e9e7108a4c03db80ce"
+    },
+    {
+      "path": "expectations.json",
+      "sha256": "a5edeb4bad04938454afe892fcf4793aa962c588ddf8773f2c3fb5b680f34873"
+    },
+    {
+      "path": "grid-curtailment.json",
+      "sha256": "23fae4d39eefbc9bb5f8d18249bd0a364c2e8038b13280bfeeeda74a3ebac4d3"
+    },
+    {
+      "path": "nested-freight-stop.json",
+      "sha256": "3d73b52fdf2dd9122d1b383ffd2d9afa43be5ad7181176d73ed46642b36c2685"
+    },
+    {
+      "path": "polar-calibration.json",
+      "sha256": "d6630a1a5cc1291caebbc5fed95649cb43927a4f40f17a7e8dca53cc7d59194a"
+    }
+  ],
+  "inputFamilies": [
+    "polar-calibration",
+    "grid-curtailment",
+    "nested-freight-stop"
+  ],
+  "supportedFamilyCount": 2,
+  "unsupportedStopControlCount": 1,
+  "executionStartedAtFreeze": false,
+  "resultExistsAtFreeze": false,
+  "executionAuthorityEffect": "none",
+  "activationEffect": "none"
+}

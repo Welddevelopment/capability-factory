@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "checkpointId": "CF-060",
+  "frozenAt": "2026-08-14",
+  "status": "private-local-fictional",
+  "summary": "An expired signed authority lease that is durably issued but unconsumed can be atomically retired after restart and replaced by one bounded generation for the same exact request and execution attempt, without allowing two live or consumed generations.",
+  "verification": {
+    "deterministicTests": 45,
+    "localhostTlsIntegrationTests": 8,
+    "typescript": "passed",
+    "independentSkepticalAudit": "freeze-narrow-scope",
+    "modelCalls": 0,
+    "spendUsd": 0
+  },
+  "files": [
+    {
+      "path": "src/product/customer-local-http-write-authority.ts",
+      "sha256": "26e58bd9c31cf0c526e80dafbeb912720cb4b1ffc518c0801828b25ee13d7237"
+    },
+    {
+      "path": "src/product/http-binding-compiler.ts",
+      "sha256": "93e14976932ab6160ee0d645e770a2827bfbb855b193e15b04442b4b38850ce2"
+    },
+    {
+      "path": "test/customer-local-http-write-authority.test.ts",
+      "sha256": "333e4dc7bc782c497aae97882d36a4b28f5f6acd976345a1bcb5c808aec23807"
+    },
+    {
+      "path": "test/http-binding-signed-authority-joined.test.ts",
+      "sha256": "8836bf4442dfa5fe310711a392b686b808a89ec2928093f18c611928b208571b"
+    },
+    {
+      "path": "test/fixtures/cf060-unconsumed-generation-replacement-worker.ts",
+      "sha256": "573ece8c77fb639906d9b3509ea186f7845ae075bf077c5cc8b84be0bac91b04"
+    },
+    {
+      "path": "reports/cf-060-durable-unconsumed-lease-generation-replacement-2026-08-14.md",
+      "sha256": "009d32c690561e4df494830423db7576dd136c071e29c0347eeda7fefe58230c"
+    }
+  ],
+  "boundaries": [
+    "The frozen claim applies only to the local constrained-HTTP authority protocol backed by SQLite and a trusted customer-local clock.",
+    "Replacement requires the exact prior lease to be authentic, expired, durably issued, unconsumed, and unretired; consumed attempts still require independent external-state evidence.",
+    "At most three generations are allowed per execution attempt, and approval-gated work requires a fresh signed approval for every replacement generation.",
+    "Protocol 1.1 deliberately rejects old schema-2.0 leases; no silent migration or customer upgrade path is claimed.",
+    "Normal local crash/restart and SQLite transaction serialization are covered; distributed consensus, multi-host authority, hostile-administrator resistance, database rollback resistance, customer use, production use, and arbitrary APIs are not."
+  ],
+  "freezeRule": "Any change to a listed file requires a new checkpoint and regenerated hashes."
+}

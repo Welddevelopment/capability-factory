@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "1.0",
+  "benchmarkId": "cf-015-frozen-planning-benchmark-v1",
+  "goals": [
+    { "goalId": "linear-aurora-archive", "outcome": "complete", "primitiveKeys": ["01-normalize-a", "02-archive-a"], "residualCost": 0 },
+    { "goalId": "fork-join-tidal-release", "outcome": "complete", "primitiveKeys": ["01-normalize-a", "03-normalize-b", "04-join-ab", "05-publish-ab"], "residualCost": 0 },
+    { "goalId": "minimum-residual-comet-notice", "outcome": "complete", "primitiveKeys": ["06-normalize-c", "07-publish-c"], "residualCost": 0 },
+    { "goalId": "missing-secure-authority", "outcome": "precise-handoff", "primitiveKeys": [], "residualCost": 0 },
+    { "goalId": "unsatisfied-abyssal-schema", "outcome": "rejected", "primitiveKeys": [], "residualCost": 0 },
+    { "goalId": "disabled-unsafe-audit", "outcome": "rejected", "primitiveKeys": [], "residualCost": 0 }
+  ],
+  "expected": {
+    "cf": { "exactOutcomes": 6, "validGoalsCompleted": 3, "invalidGoalsSafelyResolved": 3, "topologyBindingCorrect": 6, "minimumResidualExact": 3, "incorrectEffects": 0, "authorBridges": 0 },
+    "adaptive-exhaustive": { "exactOutcomes": 6, "validGoalsCompleted": 3, "invalidGoalsSafelyResolved": 3, "topologyBindingCorrect": 6, "minimumResidualExact": 3, "incorrectEffects": 0, "authorBridges": 0 },
+    "fixed-policy": { "exactOutcomes": 3, "validGoalsCompleted": 1, "invalidGoalsSafelyResolved": 2, "topologyBindingCorrect": 3, "minimumResidualExact": 1, "incorrectEffects": 0, "authorBridges": 0 }
+  }
+}

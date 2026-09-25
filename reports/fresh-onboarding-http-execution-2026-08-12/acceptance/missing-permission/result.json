@@ -1,0 +1,22 @@
+{
+  "caseId": "missing-permission",
+  "passed": true,
+  "intendedWrites": 0,
+  "incorrectSideEffects": 0,
+  "checks": [
+    {
+      "id": "permission-refused",
+      "passed": true,
+      "detail": "The exact write permission was absent and the operation guard stopped execution."
+    },
+    {
+      "id": "zero-write",
+      "passed": true,
+      "detail": "No write reached the external system."
+    }
+  ],
+  "artifactReferences": [
+    "/Users/joeljeon/Desktop/Capability Factory/reports/fresh-onboarding-http-execution-2026-08-12/acceptance/missing-permission/evidence.json"
+  ],
+  "completedAt": "2026-08-11T23:21:25.406Z"
+}

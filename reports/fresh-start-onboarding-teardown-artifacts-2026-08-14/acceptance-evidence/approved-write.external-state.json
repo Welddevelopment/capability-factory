@@ -1,0 +1,10 @@
+{
+  "caseId": "approved-write",
+  "intendedWrites": 1,
+  "incorrectSideEffects": 0,
+  "checks": [
+    "one fictional draft inspection was written",
+    "independent fixture state contained exactly one matching record"
+  ],
+  "fixtureClassification": "expected-case-behavior-observed"
+}

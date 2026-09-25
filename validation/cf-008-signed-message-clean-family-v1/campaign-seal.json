@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "1.0",
+  "campaignId": "cf-008-signed-message-clean-family-v1",
+  "familySha256": "bfb2e2d1d02dfd5004edcf44ffdb86ac9c5f7871ed459d1dd7273fbd05190e74",
+  "implementation": [
+    { "path": "src/product/signed-message-factory.ts", "sha256": "3d41eee7512834148ee78a586a459bfca45e2adf9fbad74be3928a993cd473ab" },
+    { "path": "src/product/signed-message-clean-family.ts", "sha256": "d5e4326a61381a4e18d43f6dc36994ea24707103819eb1e060fd14f67779d72a" }
+  ],
+  "sealDigest": "1c249bf13374ac8995b9b896af79b1030695f02d0983d6c70e815555d71171a8"
+}

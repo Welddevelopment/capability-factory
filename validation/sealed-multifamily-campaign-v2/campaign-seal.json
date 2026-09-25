@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "2.0",
+  "campaignId": "cf-006-lichen-transfer-v1",
+  "sealedAt": "2026-08-14T09:20:00.000Z",
+  "spendMode": "zero-spend",
+  "networkAllowed": false,
+  "authorBridgeAllowedAfterUnseal": false,
+  "files": [
+    {
+      "role": "fixture",
+      "path": "fixture.json",
+      "sha256": "f8970444b5f27961f66616bfe98baa66b9e1c97ab2980ef939a02fde5b420280"
+    },
+    {
+      "role": "input",
+      "path": "input.json",
+      "sha256": "561bd8ecf442d15a0fd6360bb50bce40f925f25ee0ca973d01a17ad7c4b0b938"
+    },
+    {
+      "role": "oracle",
+      "path": "oracle.json",
+      "sha256": "ce59a548e8dd01845352ba1358f2a1b63517583dcbbc4fc90af92392e49d7408"
+    }
+  ],
+  "implementationFiles": [
+    {
+      "path": "src/product/sealed-multifamily-campaign.ts",
+      "sha256": "565a886dd87df1bca9309f4710b15ed539c1e6d53084f583399d0ec74f2b68fb"
+    },
+    {
+      "path": "src/product/capability-resolution-compiler.ts",
+      "sha256": "50f28d7e3eeba4a92084d6074b9b6788ba6c614f59c907c02f6fbed7f4e77fd5"
+    },
+    {
+      "path": "src/product/durable-capability-resolution.ts",
+      "sha256": "8bcbcb017478287f02f3f853d4a455820a74e58b88a2142500ab8d27eab8c221"
+    },
+    {
+      "path": "src/product/verified-artifact-flow.ts",
+      "sha256": "8fedeee7dbbb0183a751ab8edac63529c8a4c40a4e1d430991b7de6ea21f18e0"
+    },
+    {
+      "path": "src/product/verifier-template-qualification.ts",
+      "sha256": "f9d4e52f5a4d8ed5932c2acd73bb41b07e35b76356238af11f81289e5c6db298"
+    }
+  ],
+  "sealDigest": "6460aed47141b143fc8d3a6c8bab7bbec49080415953988d43cf441a7b58e589"
+}

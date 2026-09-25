@@ -1,0 +1,7 @@
+{
+  "schemaVersion":"2.0",
+  "campaignId":"cf-040-claims-isolated-operator-receipt-v3",
+  "configSha256":"8f1e7aebf98a6d860aa042aeea542f47c853df0940634a636ea974881e1384c3",
+  "implementationSha256":"33b6626b9c59a3227fc9e308814eddd35e28d14310eda4ff29df9891009e9047",
+  "sealDigest":"d00ccbbae60ad21b29b78f3eadd4b5c41ca1130f797a40f4b4c1bc2fb3ddc1fd"
+}

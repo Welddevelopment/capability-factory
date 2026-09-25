@@ -1,0 +1,291 @@
+{
+  "schemaVersion": "1.0",
+  "candidateCommit": "19002ec40e527bb4f28d11aff4dc462b93582591",
+  "protocol": "broad-goal-confirmation-v1",
+  "passed": true,
+  "sourceUnchanged": true,
+  "casesPassed": 2,
+  "casesAttempted": 2,
+  "modelCalls": 2,
+  "spentUsd": 0.056881,
+  "results": [
+    {
+      "id": "confirmation-build",
+      "passed": true,
+      "planning": {
+        "status": "validated",
+        "attempts": 1,
+        "validationReceiptId": "cc6fb94b7d36bde6ef46e1e985a6e368",
+        "checksPassed": 70,
+        "workItems": [
+          {
+            "key": "work-order-1042",
+            "coverageKeys": [
+              "coverage-order-1042"
+            ],
+            "workflowKey": "inspect-order-readiness",
+            "dependencyWorkItemIds": [],
+            "executionOrder": 1,
+            "currentlyAuthorized": true
+          },
+          {
+            "key": "work-order-1048",
+            "coverageKeys": [
+              "coverage-order-1048"
+            ],
+            "workflowKey": "complete-order-details",
+            "dependencyWorkItemIds": [],
+            "executionOrder": 2,
+            "currentlyAuthorized": true
+          },
+          {
+            "key": "work-coolant",
+            "coverageKeys": [
+              "coverage-coolant"
+            ],
+            "workflowKey": "restock-north-supply",
+            "dependencyWorkItemIds": [],
+            "executionOrder": 3,
+            "currentlyAuthorized": true
+          },
+          {
+            "key": "work-labels",
+            "coverageKeys": [
+              "coverage-labels"
+            ],
+            "workflowKey": "restock-north-supply",
+            "dependencyWorkItemIds": [],
+            "executionOrder": 4,
+            "currentlyAuthorized": true
+          },
+          {
+            "key": "work-crates",
+            "coverageKeys": [
+              "coverage-crates"
+            ],
+            "workflowKey": "restock-east-industrial",
+            "dependencyWorkItemIds": [],
+            "executionOrder": 5,
+            "currentlyAuthorized": true
+          },
+          {
+            "key": "work-sensors",
+            "coverageKeys": [
+              "coverage-sensors"
+            ],
+            "workflowKey": "restock-regulated-supplier",
+            "dependencyWorkItemIds": [],
+            "executionOrder": 6,
+            "currentlyAuthorized": true
+          },
+          {
+            "key": "work-order-1051",
+            "coverageKeys": [
+              "coverage-order-1051"
+            ],
+            "workflowKey": "finalize-order-readiness",
+            "dependencyWorkItemIds": [
+              "fa1e7ba8597d481096f04b6c89faa24f"
+            ],
+            "executionOrder": 7,
+            "currentlyAuthorized": true
+          }
+        ]
+      },
+      "execution": {
+        "lifecycle": "completed",
+        "aggregate": {
+          "verifierVersion": "order-operations-reference-v1:aggregate-verifier",
+          "receiptId": "39fd32ed77bbfca08d54cca6079585d9",
+          "result": "complete",
+          "passed": true,
+          "requiredItems": 7,
+          "completedItems": 7,
+          "blockedItems": 0,
+          "failedItems": 0,
+          "unknownItems": 0,
+          "incorrectSideEffects": 0,
+          "stateDigest": "32a3abb22552b79bfae69620624b5010d90f929d1530722dcb66df0936617749",
+          "checks": [
+            {
+              "id": "all-required-external-state",
+              "passed": true,
+              "detail": "Every completed required item was re-read from the external reference database."
+            },
+            {
+              "id": "no-duplicate-restocks",
+              "passed": true,
+              "detail": "No SKU has more than one restock row."
+            },
+            {
+              "id": "exact-authorized-restocks",
+              "passed": true,
+              "detail": "Every restock belongs to a completed authorized item and exactly matches its trusted contract."
+            },
+            {
+              "id": "unrelated-order-state-preserved",
+              "passed": true,
+              "detail": "Order fields outside each completed work-item contract remain unchanged."
+            }
+          ],
+          "verifiedAt": "2026-07-27T01:26:15.463Z"
+        },
+        "resume": {
+          "completed": true,
+          "summary": "The fictional customer agent received the independently verified aggregate outcome."
+        },
+        "capabilityPath": "built-capability",
+        "builderCalls": 1,
+        "capabilityEventTypes": [
+          "acquisition.requested",
+          "capability.built",
+          "capability.verified",
+          "capability.executed",
+          "outcome.verified",
+          "goal.resumed"
+        ]
+      },
+      "modelCalls": 1,
+      "spentUsd": 0.028472
+    },
+    {
+      "id": "confirmation-fresh-reuse",
+      "passed": true,
+      "planning": {
+        "status": "validated",
+        "attempts": 1,
+        "validationReceiptId": "222f1826968156b26fd727904e2e2455",
+        "checksPassed": 70,
+        "workItems": [
+          {
+            "key": "coverage-order-1042",
+            "coverageKeys": [
+              "coverage-order-1042"
+            ],
+            "workflowKey": "inspect-order-readiness",
+            "dependencyWorkItemIds": [],
+            "executionOrder": 1,
+            "currentlyAuthorized": true
+          },
+          {
+            "key": "coverage-order-1048",
+            "coverageKeys": [
+              "coverage-order-1048"
+            ],
+            "workflowKey": "complete-order-details",
+            "dependencyWorkItemIds": [],
+            "executionOrder": 2,
+            "currentlyAuthorized": true
+          },
+          {
+            "key": "coverage-coolant",
+            "coverageKeys": [
+              "coverage-coolant"
+            ],
+            "workflowKey": "restock-north-supply",
+            "dependencyWorkItemIds": [],
+            "executionOrder": 3,
+            "currentlyAuthorized": true
+          },
+          {
+            "key": "coverage-labels",
+            "coverageKeys": [
+              "coverage-labels"
+            ],
+            "workflowKey": "restock-north-supply",
+            "dependencyWorkItemIds": [],
+            "executionOrder": 4,
+            "currentlyAuthorized": true
+          },
+          {
+            "key": "coverage-crates",
+            "coverageKeys": [
+              "coverage-crates"
+            ],
+            "workflowKey": "restock-east-industrial",
+            "dependencyWorkItemIds": [],
+            "executionOrder": 5,
+            "currentlyAuthorized": true
+          },
+          {
+            "key": "coverage-sensors",
+            "coverageKeys": [
+              "coverage-sensors"
+            ],
+            "workflowKey": "restock-regulated-supplier",
+            "dependencyWorkItemIds": [],
+            "executionOrder": 6,
+            "currentlyAuthorized": true
+          },
+          {
+            "key": "coverage-order-1051",
+            "coverageKeys": [
+              "coverage-order-1051"
+            ],
+            "workflowKey": "finalize-order-readiness",
+            "dependencyWorkItemIds": [
+              "acbb932f8902aa1928b9e088b0c25023"
+            ],
+            "executionOrder": 7,
+            "currentlyAuthorized": true
+          }
+        ]
+      },
+      "execution": {
+        "lifecycle": "completed",
+        "aggregate": {
+          "verifierVersion": "order-operations-reference-v1:aggregate-verifier",
+          "receiptId": "86466c27c0c7656c8893d765c2ddeac1",
+          "result": "complete",
+          "passed": true,
+          "requiredItems": 7,
+          "completedItems": 7,
+          "blockedItems": 0,
+          "failedItems": 0,
+          "unknownItems": 0,
+          "incorrectSideEffects": 0,
+          "stateDigest": "3b8be8a5abdd4b4529f87963d4c55e1c12ea86df6318465b19da35cd5a1ce21f",
+          "checks": [
+            {
+              "id": "all-required-external-state",
+              "passed": true,
+              "detail": "Every completed required item was re-read from the external reference database."
+            },
+            {
+              "id": "no-duplicate-restocks",
+              "passed": true,
+              "detail": "No SKU has more than one restock row."
+            },
+            {
+              "id": "exact-authorized-restocks",
+              "passed": true,
+              "detail": "Every restock belongs to a completed authorized item and exactly matches its trusted contract."
+            },
+            {
+              "id": "unrelated-order-state-preserved",
+              "passed": true,
+              "detail": "Order fields outside each completed work-item contract remain unchanged."
+            }
+          ],
+          "verifiedAt": "2026-07-27T01:26:27.113Z"
+        },
+        "resume": {
+          "completed": true,
+          "summary": "The fictional customer agent received the independently verified aggregate outcome."
+        },
+        "capabilityPath": "retained-capability",
+        "builderCalls": 0,
+        "capabilityEventTypes": [
+          "acquisition.requested",
+          "capability.reused",
+          "capability.executed",
+          "outcome.verified",
+          "goal.resumed"
+        ]
+      },
+      "modelCalls": 1,
+      "spentUsd": 0.028409
+    }
+  ],
+  "evidenceBoundary": "Private model-backed development evidence in a fictional local reference world; not a customer result or general reliability claim."
+}

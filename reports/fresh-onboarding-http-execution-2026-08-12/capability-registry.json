@@ -1,0 +1,76 @@
+{
+  "schemaVersion": "1.0",
+  "health": "active",
+  "manifest": {
+    "schemaVersion": "1",
+    "id": "solstice-maintenance-visits",
+    "version": "1.0.0",
+    "service": "Solstice Maintenance",
+    "description": "Create one bounded draft maintenance visit from the confirmed API contract.",
+    "baseUrlAlias": "solstice_sandbox",
+    "auth": {
+      "kind": "bearer",
+      "secretAlias": "actionBearer"
+    },
+    "actions": [
+      {
+        "name": "create_draft_visit",
+        "description": "Create one draft visit for an approved maintenance request.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "requestId": {
+              "type": "string",
+              "description": "Approved maintenance request ID."
+            },
+            "assetId": {
+              "type": "string",
+              "description": "Approved asset ID."
+            },
+            "scheduledDate": {
+              "type": "string",
+              "description": "Approved visit date."
+            }
+          },
+          "required": [
+            "requestId",
+            "assetId",
+            "scheduledDate"
+          ],
+          "additionalProperties": false
+        },
+        "request": {
+          "method": "POST",
+          "pathTemplate": "/v1/visits",
+          "queryTemplate": {},
+          "headerTemplate": {},
+          "bodyTemplate": {
+            "requestId": "{{input.requestId}}",
+            "assetId": "{{input.assetId}}",
+            "scheduledDate": "{{input.scheduledDate}}"
+          }
+        },
+        "response": {
+          "acceptedStatuses": [
+            201
+          ],
+          "outputPointers": {
+            "visitId": "/visit/id"
+          }
+        },
+        "safety": {
+          "idempotency": "required",
+          "timeoutMs": 2000,
+          "maxResponseBytes": 50000
+        }
+      }
+    ],
+    "provenance": {
+      "documentationHash": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad",
+      "model": "deterministic-confirmed-openapi-materializer-v1",
+      "createdAt": "2026-08-12T09:00:00.000Z"
+    }
+  },
+  "manifestDigest": "6cf1f51769de60e8ed6e94c5ab10fa53069720b4d8087369696af074b44673d8",
+  "verifiedAt": "2026-08-11T23:21:25.412Z"
+}

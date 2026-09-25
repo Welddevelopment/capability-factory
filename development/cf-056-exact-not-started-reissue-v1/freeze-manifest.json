@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "checkpointId": "CF-056",
+  "frozenAt": "2026-08-14",
+  "status": "private-local-fictional",
+  "summary": "One exact signed constrained-HTTP write lease can be reissued once only after a trusted separately authenticated observer proves that the same external action was not started after durable first-attempt consumption.",
+  "verification": {
+    "deterministicTests": 42,
+    "localhostTlsIntegrationTests": 8,
+    "typescript": "passed",
+    "modelCalls": 0,
+    "spendUsd": 0
+  },
+  "files": [
+    {
+      "path": "src/product/customer-local-http-write-authority.ts",
+      "sha256": "c465bca155137e07ecf37ca47cfcc558df7aa927423fc5261a20421dc38c0334"
+    },
+    {
+      "path": "src/product/customer-local-pinned-https-transport.ts",
+      "sha256": "21eb637ba53e8defed55f90492eccd44f72458eac12f8433681b9e4c44f82f36"
+    },
+    {
+      "path": "src/product/http-binding-compiler.ts",
+      "sha256": "af20427c152afc5588983443c3f767ac1ca65079a883037c2239fd57c15e6c24"
+    },
+    {
+      "path": "test/customer-local-http-write-authority.test.ts",
+      "sha256": "7d265323a994e9c9eb354bfad3e50cf0b58fc77bb638dfb1eec78f10e2c0f600"
+    },
+    {
+      "path": "test/http-binding-signed-authority-joined.test.ts",
+      "sha256": "dbcbff9f1613d42330faa64b67b54057cf0fd738db5aa922ffd0955d33c7b132"
+    },
+    {
+      "path": "test/fixtures/cf056-not-started-recovery-provider-worker.ts",
+      "sha256": "1a0ee85cedc1df662f82b4fb7b65e5f04ac0a41a6878f172ac707129268303b3"
+    },
+    {
+      "path": "reports/cf-056-exact-not-started-signed-reissue-2026-08-14.md",
+      "sha256": "e10741bddbcabff025de52a89a73ac77db54fc45226443ec403f82d9a9b20d86"
+    }
+  ],
+  "boundaries": [
+    "The observer signer is trusted customer-local infrastructure and must not be exposed to an upstream agent or arbitrary plugin.",
+    "The action and observer bindings are separate, but the joined fixture does not prove process or failure-domain independence.",
+    "The local host clock is trusted; there is no external monotonic rollback anchor.",
+    "Only the exact not-started classification can authorize one second attempt; no third attempt or automatic compensation exists.",
+    "This is one local fictional constrained-HTTP route, not customer, production, hostile-administrator, arbitrary-API, public, or general retry evidence."
+  ],
+  "freezeRule": "Any change to a listed file requires a new checkpoint and regenerated hashes."
+}

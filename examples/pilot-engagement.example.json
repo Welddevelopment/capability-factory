@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "1.0",
+  "engagementId": "fictional-pilot-one",
+  "companyAlias": "fictional-agent-company",
+  "status": "internal-draft",
+  "phase": "synthetic-reproduction",
+  "qualification": {
+    "recentBlockedDeployment": true,
+    "authenticatedHttpResidual": true,
+    "economicImpactDescribed": true,
+    "buyVsBuildUnknownOrFavorable": true,
+    "technicalOwnerNamed": true,
+    "economicOwnerNamed": false,
+    "detail": "Fictional example: a customer-specific authenticated write delayed one deployment. This is not market evidence."
+  },
+  "workflow": {
+    "ordinaryGoal": "Create one approved draft order from the fictional request and leave every other record unchanged.",
+    "missingAction": "create_draft_order",
+    "targetAliases": ["customer_sandbox"],
+    "allowedActions": ["read_request", "read_existing_order", "create_draft_order"],
+    "forbiddenActions": ["submit_order", "delete_order", "change_inventory"],
+    "completionSummary": "Exactly one matching draft exists, its reference is recorded, and all unrelated state is unchanged."
+  },
+  "environment": { "kind": "synthetic-local", "fictionalDataOnly": true, "productionAccess": false, "personalDataAllowed": false },
+  "owners": { "technical": "technical-owner-pending", "economic": "economic-owner-pending" },
+  "commercial": {
+    "setup": { "currency": "USD", "amount": 3000, "basis": "one-time", "status": "hypothesis" },
+    "recurring": { "currency": "USD", "amount": 1500, "basis": "monthly", "status": "hypothesis" },
+    "paymentPathConfirmed": false,
+    "contractingPathConfirmed": false
+  },
+  "successCriteria": { "originalGoalCompleted": true, "independentExternalVerification": true, "incorrectSideEffects": 0, "duplicateWrites": 0, "unauthorizedWrites": 0, "freshProcessReuse": true, "safeMissingAuthorityHandoff": true, "customerConfirmsRepresentative": false },
+  "measurement": { "baselineEngineerHours": 24, "baselineDelayDays": 5, "notes": "Customer-supplied values replace this fictional example." },
+  "stopConditions": ["Mechanism is not authenticated HTTP.", "Safe representative access is unavailable.", "Completion criteria are ambiguous.", "Any incorrect, duplicate, unauthorized, or collateral write occurs.", "External state remains unknown.", "The customer says the result would not influence a buying decision."],
+  "activationEvidence": []
+}

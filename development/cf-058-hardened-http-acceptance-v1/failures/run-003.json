@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "1.0",
+  "attempt": 3,
+  "classification": "product-harness-failure",
+  "passedCasesBeforeStop": 4,
+  "failedBoundary": "missing-permission",
+  "failure": "The harness tried to construct a new authority runtime after revocation instead of exercising the already-bound runtime against the now-revoked activation.",
+  "unsafeEffects": 0,
+  "repair": "The control now revokes the exact live activation, proves the existing verifier rejects before dispatch, then imports a separately signed successor activation before later cases."
+}

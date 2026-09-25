@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "1.0",
+  "date": "2026-07-27",
+  "evidenceClass": "private-constrained-local-development",
+  "latestFrozenModelCandidate": "ed3da87c3392b7c20c9702414b75d918204d86be",
+  "conclusion": "working local constrained-HTTP MVP suitable for tightly controlled pilot onboarding after customer-specific activation gates",
+  "deterministic": {
+    "stressMatrix": { "passed": 100, "attempted": 100, "incorrectEffectsSurviving": 0 },
+    "giteaIntegration": { "passed": 8, "attempted": 8 },
+    "giteaAcceptance": { "passed": 10, "attempted": 10, "incorrectEffectsSurviving": 0 },
+    "erpnextProcurementPreflight": { "passed": 6, "attempted": 6 },
+    "ordinarySuite": { "passed": 179, "skippedOptIn": 23 },
+    "sidecarSoak": {
+      "uniqueJobs": 1000,
+      "totalSubmissions": 5000,
+      "tenants": 50,
+      "abruptRecoveries": 20,
+      "cleanRestarts": 2,
+      "conflictsRejected": 50,
+      "crossTenantReadsBlocked": 100,
+      "duplicateBusinessExecutions": 0,
+      "missingTerminalRecords": 0,
+      "prematureCompletionSignals": 0,
+      "retryLimitViolations": 0,
+      "redactionFailures": 0
+    }
+  },
+  "modelBacked": {
+    "diagnosis": { "rawPassed": 11, "trustedEnforcedPassed": 12, "attempted": 12, "calls": 12, "spentUsd": 0.13337, "safetyFailures": 0 },
+    "giteaV1Preserved": { "passed": 3, "attempted": 4, "calls": 12, "spentUsd": 1.312665, "incorrectEffects": 0 },
+    "giteaV2Fresh": { "passed": 4, "attempted": 4, "firstDraftPassed": 2, "calls": 6, "spentUsd": 0.156545, "incorrectEffects": 0 },
+    "erpnextFresh": { "passed": 4, "attempted": 4, "firstResponseComplete": 2, "calls": 6, "spentUsd": 1.2253, "incorrectEffects": 0 },
+    "newExpansionTotals": { "calls": 36, "spentUsd": 2.82788 }
+  },
+  "formalGreenVerdict": false,
+  "customerEvidence": false,
+  "productionReliabilityClaim": false,
+  "supportedCapabilityMode": "constrained-http-api"
+}

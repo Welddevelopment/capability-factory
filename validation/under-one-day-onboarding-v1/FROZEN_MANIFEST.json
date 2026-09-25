@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "1.1",
+  "status": "prepared-not-executed",
+  "frozenAt": "2026-08-14T00:42:00.000+09:00",
+  "experimentArm": "capability-factory-assisted-onboarding",
+  "maximumElapsedMinutes": 480,
+  "productBaseline": {
+    "gitHeadAtPreparation": "1dd4f8250b5ec21a2437046242d60c3139b09225",
+    "workingTreeWasDirty": false,
+    "instruction": "This kit is bound to the reviewed clean product checkpoint above. Any later product-source change requires a new manifest version before an independent developmental run.",
+    "sourceDigests": {
+      "src/product/outcome-observer-factory.ts": "1d369d38b4f2efa5f03f20cfc56f84ce985e215d642cd328654d15eec81fe08d",
+      "src/product/onboarding-adapter-factory.ts": "5ab8305e9ea6f14978185ba0256e90c90f5133109565c0b30208398c88832e0c",
+      "src/product/onboarding-verifier-authority.ts": "4cea086eac86f3d3dd20a1628ffa6c317b40317e7d2db8f26edca6e78424653a",
+      "src/product/onboarding-acceptance-factory.ts": "7c8a0392dcb074478d527029129f5cc388f052241c143299cc348c233ec7ed0d",
+      "src/product/blocked-context-contract.ts": "d8a9cdb7d23c5a1fbdb2dc5a10f49d6f34e30dab99e8260f63152e8698617044",
+      "src/product/pilot-adapter.ts": "533af00c7b5a7224f9af8ff07d9acda15c6568377e12c4564e90bd9d5001d015",
+      "src/product/sidecar-jobs.ts": "318171666058a327c2a31c60d21cecf472490ca820fbd0895eed59d769b56938",
+      "src/runtime.ts": "470d175235f5b520b3ff21bb6dc0b60b36bad5de6b970874a65724120572dbff",
+      "pnpm-lock.yaml": "a00c8df4fe4d0d7454093f9850647df2876137d25d6dc287a23c8ede1c807364"
+    }
+  },
+  "environment": { "node": "v24.19.0", "pnpm": "11.19.0" },
+  "bundleDigests": {
+    "CLAIM_BOUNDARY.md": "5e9c9002bc7779e664f549689901d9ab44ec48d7cd303556117011ac8c084294",
+    "KNOWN_ISSUES_AT_FREEZE.md": "2be17979bce99dd957e209c7c14bdf2de85d608890427e4f088d71ded07ff01b",
+    "PROTOCOL.md": "7f40d697e27fe84a3c14e82a8cafc7ca0add30c14c19c5b4eaba3c05c3ed2f46",
+    "REPRODUCIBILITY.md": "226ca6404cced27d77a51624c8511941b8321a309f1afb69439b13a99baf6733",
+    "README.md": "c15a924c07d3769f4a829f9c750dba5486755c8c4e1061c81928761a6f990bfe",
+    "evaluator/CLARIFICATION_ANSWER_KEY.json": "972e19c93fe2727c625f63ddae6fa35177eff5af2664c42b54f3a4e3265603b6",
+    "evaluator/RESULT_TEMPLATE.md": "18084f2631f1f3d55a22ec7cd5494fc1a9d1ed48cb05808cb51f0fed0906ed2d",
+    "evaluator/SCORING_RUBRIC.json": "3b33c52d71b0a11816270b2c4dee975adb65d981b11e421038fc3a1a0c54d674",
+    "evaluator/SEALED_ORACLE.json": "64feb8a871754ea0b3f3021438dc5e4c5047b19f4b2f960fa287dee57cc05e81",
+    "participant/CF_PRODUCT_GUIDE.md": "2b2fca62ced1127e81bb941abf7d5a0495c570262cc90fcb4c85fdd39dc3c4fb",
+    "participant/ENVIRONMENT.md": "7b4799aa6b8cfa8db3107ff7782d32471cdb221ea45e7192019f69c4ee5efcb3",
+    "participant/RULES.md": "3ed9a6484f78ebb0cefb41af5c4943ac10258019b6be3ac2564856abe5b325da",
+    "participant/START_HERE.md": "19bce5ebcc1160762077c0a7be6467be4031cb20fc7bd9e6c1e65a2170e4406f",
+    "participant/SUBMISSION_TEMPLATE.json": "eeba7677e2e30afd80cdfcf275acd8867609a90502132cff76c8c127ea641e2b",
+    "participant/TASK.md": "f24a9aa467dedf1db924c1b81d38c948602b4cb0359f480ab5b5b73b63788135",
+    "participant/input/approved-system-material/cedar-dispatch-openapi.json": "d182e6fece74afdcaba0a8ffc728b81d89cdeb38ee001e56e7360b7a155fb34b",
+    "participant/input/authority-policy.md": "9a38bf6e6cc4527cc4b8ceba39cf8888d6f96d2c12b37b25cbcaa155b5d36f82",
+    "participant/input/blocked-context.json": "335f254d58c8960b8612f78ee0f1fa3d9432519e2589289da4031d1b33ec86c9",
+    "participant/input/credential-aliases.json": "a88d4e27e38877bf63eae68ec7eb197496bce6bac572c305a7605fd30f6a8d2f",
+    "participant/input/customer-facts.md": "59393c765ff62169b1d2ade9d67dc14f02679704b9b3deecc8125aaf8f346594",
+    "participant/input/outcome-and-collateral.md": "a8888c68a0122c70f7871a4fbbf1b57d90b2963ef8bb35a195615f74e7fa286f",
+    "participant/input/workflow.md": "3f37e8a5bae575151c5d7abd8693cf37d6fd3a7c2d318a49c464b474bed19a90",
+    "verify-kit.mjs": "4f03eb713e1c4ef083b857634444df1748a7c343724570dff3f7ec4345b716c6"
+  },
+  "validResultLabels": {
+    "beforeRun": "prepared-not-executed",
+    "singlePassingRun": "one-independent-developmental-run-within-one-working-day",
+    "singleFailedRun": "independent-developmental-run-did-not-clear-under-one-day-gate"
+  }
+}

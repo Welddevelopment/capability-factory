@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "1.0",
+  "checkpointId": "cf-055-configured-admin-signed-immediate-authority-v1",
+  "frozenAt": "2026-08-14",
+  "claimBoundary": "One configured-workspace-admin-key-activated local fictional reviewed OpenAPI and pinned-HTTPS route only. This is not independent customer identity, real-provider, customer, production, hostile-admin, generality, deployment, or public evidence.",
+  "files": [
+    {
+      "path": "src/product/customer-local-http-write-authority.ts",
+      "sha256": "9f4ef4a4fa678665c3abdb5ba07eca3f1dbdd612be12f28beff68a0c03e2d3d6"
+    },
+    {
+      "path": "src/product/customer-local-pinned-https-transport.ts",
+      "sha256": "7bca6d8962271c049843c35a87e47e257aaf2bd73be0b09c9eceb4970a9d354e"
+    },
+    {
+      "path": "src/product/http-binding-compiler.ts",
+      "sha256": "5962afadedd4cba0944f1f690015a057bc2e1c85b3ae6c9c8b1982380b070046"
+    },
+    {
+      "path": "src/product/customer-local-binding-qualification.ts",
+      "sha256": "115857e30206e9c1e2f795715939a12512f6b82366075d314fcc2cf1a5fa6feb"
+    },
+    {
+      "path": "test/customer-local-http-write-authority.test.ts",
+      "sha256": "94f844be9264939b3c2d70993632195b8fff47c4a29d72d52f19c063e4cb8283"
+    },
+    {
+      "path": "test/http-binding-signed-authority-joined.test.ts",
+      "sha256": "2bdbfa6e92fc3d33be5edd5ec042b0dc1bb1481a900a77fe2fc9698cc5854407"
+    },
+    {
+      "path": "reports/cf-055-configured-admin-signed-immediate-http-authority-2026-08-14.md",
+      "sha256": "a6f93486294a121d6a99af58eab13f448a4fa41dc82b8149f2461ac643baf1d2"
+    }
+  ],
+  "verification": {
+    "deterministicTests": {
+      "passed": 39,
+      "failed": 0,
+      "files": 5
+    },
+    "loopbackTlsTests": {
+      "passed": 7,
+      "failed": 0,
+      "files": 3
+    },
+    "typescriptNoEmit": "passed",
+    "diffCheck": "passed",
+    "independentSkepticalReview": "approved for the exact narrowed configured-admin-key local fictional claim"
+  },
+  "freezeRule": "Any byte change to a listed file creates a new checkpoint. It cannot be described as this frozen checkpoint or used retroactively against cases opened under this manifest."
+}

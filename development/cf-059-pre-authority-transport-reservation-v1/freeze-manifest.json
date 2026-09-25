@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "checkpointId": "CF-059",
+  "frozenAt": "2026-08-14",
+  "status": "private-local-fictional",
+  "summary": "The trusted live-process constrained-HTTP compiler and pinned-HTTPS transport validate and reserve all normal fallible transport-local work before authority issuance, bind the exact reservation into the signed lease, and consume it once before network dispatch.",
+  "verification": {
+    "deterministicTests": 42,
+    "localhostTlsIntegrationTests": 8,
+    "typescript": "passed",
+    "independentSkepticalAudit": "freeze-narrow-scope",
+    "modelCalls": 0,
+    "spendUsd": 0
+  },
+  "files": [
+    {
+      "path": "src/product/customer-local-http-write-authority.ts",
+      "sha256": "b1a3d68977ec008adc0253d1563cd075dea8bd3f3d3ffa18a8570ba6c39f27e7"
+    },
+    {
+      "path": "src/product/customer-local-pinned-https-transport.ts",
+      "sha256": "30683953d064827c6187f76d28d082623e2f7e5b2017a5e1fd9e06a2797f0e11"
+    },
+    {
+      "path": "src/product/http-binding-compiler.ts",
+      "sha256": "da68405c56c2d7cee78aed51ae1968b4b5dd67ed10faedcdbbc98ced26ff1d68"
+    },
+    {
+      "path": "test/customer-local-http-write-authority.test.ts",
+      "sha256": "5ec8395d6977c1e3f84ff927f0d041e3e5303f0160fc6f87cc81c5fb3b290586"
+    },
+    {
+      "path": "test/http-binding-signed-authority-joined.test.ts",
+      "sha256": "62f94c06cc317470ab2026fdce66dea9aeceec46909ace4d29597bcbb344a925"
+    },
+    {
+      "path": "reports/cf-059-pre-authority-transport-reservation-2026-08-14.md",
+      "sha256": "1fd1d7f29d315e9dd834604cf8a00fe763335f7b93b670012f56fb6f248582a3"
+    }
+  ],
+  "boundaries": [
+    "The frozen claim applies only to the trusted live-process compiler and genuine authority-enforced pinned-HTTPS transport route.",
+    "Reservations and transport-rate capacity are process-local; restart-durable retirement and replacement of issued-but-unconsumed lease generations remain CF-060.",
+    "An authority rejection after issuance but before durable consumption produces zero network activity but can still strand the issued lease.",
+    "The proof is one local fictional constrained-HTTP route, not customer, production, real-provider, hostile-administrator, arbitrary-API, public, or general transport evidence."
+  ],
+  "freezeRule": "Any change to a listed file requires a new checkpoint and regenerated hashes."
+}

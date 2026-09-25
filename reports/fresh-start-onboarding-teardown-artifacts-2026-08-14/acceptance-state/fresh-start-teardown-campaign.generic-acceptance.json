@@ -1,0 +1,501 @@
+{
+  "schemaVersion": "1.0",
+  "state": {
+    "schemaVersion": "1.0",
+    "campaignId": "fresh-start-teardown-campaign",
+    "declarationDigest": "2282d6ed11235addb219b9da8758d6e10f6f312158022eac1446a0dac7267661",
+    "bindingId": "northstar-fixture-binding",
+    "bindingVersion": "1.0.0",
+    "bindingDigest": "5c6544256a909973d7cfdc1f73adb97b7b9e725430cbe8b946257e61f99bebc2",
+    "requiredCaseOrder": [
+      "read-only-happy-path",
+      "approved-write",
+      "fresh-process-reuse",
+      "missing-credential",
+      "missing-permission",
+      "lost-response-reconciliation",
+      "wrong-or-partial-outcome",
+      "sidecar-restart",
+      "duplicate-submission",
+      "conflicting-parent-reuse"
+    ],
+    "status": "completed",
+    "revision": 22,
+    "cases": [
+      {
+        "caseId": "read-only-happy-path",
+        "status": "passed",
+        "attemptCount": 1,
+        "latestReceiptHash": "d697c817394cf9fd37479113798b53dbb9e6f6e140ebee3cbbba15f57fdb7055"
+      },
+      {
+        "caseId": "approved-write",
+        "status": "passed",
+        "attemptCount": 1,
+        "latestReceiptHash": "72dd6a5883ef6de387a4ed1672b87c68559ffb7974c81a497a5e677508e3d47b"
+      },
+      {
+        "caseId": "fresh-process-reuse",
+        "status": "passed",
+        "attemptCount": 1,
+        "latestReceiptHash": "5a0392a7ab7c799a2b0119ca428bf019ed335426435cee2944df5a2acbe9176b"
+      },
+      {
+        "caseId": "missing-credential",
+        "status": "passed",
+        "attemptCount": 1,
+        "latestReceiptHash": "b6476f6e0629dbd3a11392b9121dd9f4c457e4d59cf4a75ecef9094570375beb"
+      },
+      {
+        "caseId": "missing-permission",
+        "status": "passed",
+        "attemptCount": 1,
+        "latestReceiptHash": "42d17e6f1950d3791b39f959f886f6745c4fd52437dff6fa15f26c34e55a6705"
+      },
+      {
+        "caseId": "lost-response-reconciliation",
+        "status": "passed",
+        "attemptCount": 1,
+        "latestReceiptHash": "e5ac299026c7a8f7d28ff4a346c2a314b79f976f960830e2e59e2d9ff4558067"
+      },
+      {
+        "caseId": "wrong-or-partial-outcome",
+        "status": "passed",
+        "attemptCount": 1,
+        "latestReceiptHash": "e19e013315971bc4228079f7cfa4d78f93be4bb9247c9b7264e266fa6e3a7091"
+      },
+      {
+        "caseId": "sidecar-restart",
+        "status": "passed",
+        "attemptCount": 1,
+        "latestReceiptHash": "549b38bbcd63b39ffc58bc7cde72980882105090c937fb78aa87b33acd43d8f8"
+      },
+      {
+        "caseId": "duplicate-submission",
+        "status": "passed",
+        "attemptCount": 1,
+        "latestReceiptHash": "0609bf3b4de173b5c140fa7bf2e2c61d762f80a678a17c0824b0c465930c585d"
+      },
+      {
+        "caseId": "conflicting-parent-reuse",
+        "status": "passed",
+        "attemptCount": 1,
+        "latestReceiptHash": "6d0e9d9d57282eed17902b84c1309c393d7fa8db50aa02c013e3c3e535f8a365"
+      }
+    ],
+    "receipts": [
+      {
+        "schemaVersion": "1.0",
+        "campaignId": "fresh-start-teardown-campaign",
+        "caseId": "read-only-happy-path",
+        "attemptId": "285c83a0-ba06-4f38-9288-22b9633875df",
+        "attemptNumber": 1,
+        "source": "execution",
+        "bindingId": "northstar-fixture-binding",
+        "bindingVersion": "1.0.0",
+        "bindingDigest": "5c6544256a909973d7cfdc1f73adb97b7b9e725430cbe8b946257e61f99bebc2",
+        "declarationDigest": "2282d6ed11235addb219b9da8758d6e10f6f312158022eac1446a0dac7267661",
+        "result": {
+          "caseId": "read-only-happy-path",
+          "passed": true,
+          "intendedWrites": 0,
+          "incorrectSideEffects": 0,
+          "checks": [
+            {
+              "id": "fixture-read-only-happy-path-1",
+              "passed": true,
+              "detail": "approved read returned the expected fictional work request"
+            },
+            {
+              "id": "fixture-read-only-happy-path-2",
+              "passed": true,
+              "detail": "write counter remained zero"
+            },
+            {
+              "id": "fixture-read-only-happy-path-independent-file-read",
+              "passed": true,
+              "detail": "The rehearsal read the serialized fixture state after the case instead of trusting an action return value."
+            }
+          ],
+          "artifactReferences": [
+            "file:///Users/joeljeon/Desktop/Capability Factory/reports/fresh-start-onboarding-teardown-artifacts-2026-08-14/acceptance-evidence/read-only-happy-path.external-state.json"
+          ],
+          "completedAt": "2026-08-14T01:10:00.000Z"
+        },
+        "receiptHash": "d697c817394cf9fd37479113798b53dbb9e6f6e140ebee3cbbba15f57fdb7055"
+      },
+      {
+        "schemaVersion": "1.0",
+        "campaignId": "fresh-start-teardown-campaign",
+        "caseId": "approved-write",
+        "attemptId": "60f74f1c-2e8f-4530-9988-e05dc986fa86",
+        "attemptNumber": 1,
+        "source": "execution",
+        "bindingId": "northstar-fixture-binding",
+        "bindingVersion": "1.0.0",
+        "bindingDigest": "5c6544256a909973d7cfdc1f73adb97b7b9e725430cbe8b946257e61f99bebc2",
+        "declarationDigest": "2282d6ed11235addb219b9da8758d6e10f6f312158022eac1446a0dac7267661",
+        "result": {
+          "caseId": "approved-write",
+          "passed": true,
+          "intendedWrites": 1,
+          "incorrectSideEffects": 0,
+          "checks": [
+            {
+              "id": "fixture-approved-write-1",
+              "passed": true,
+              "detail": "one fictional draft inspection was written"
+            },
+            {
+              "id": "fixture-approved-write-2",
+              "passed": true,
+              "detail": "independent fixture state contained exactly one matching record"
+            },
+            {
+              "id": "fixture-approved-write-independent-file-read",
+              "passed": true,
+              "detail": "The rehearsal read the serialized fixture state after the case instead of trusting an action return value."
+            }
+          ],
+          "artifactReferences": [
+            "file:///Users/joeljeon/Desktop/Capability Factory/reports/fresh-start-onboarding-teardown-artifacts-2026-08-14/acceptance-evidence/approved-write.external-state.json"
+          ],
+          "completedAt": "2026-08-14T01:10:00.000Z"
+        },
+        "previousReceiptHash": "d697c817394cf9fd37479113798b53dbb9e6f6e140ebee3cbbba15f57fdb7055",
+        "receiptHash": "72dd6a5883ef6de387a4ed1672b87c68559ffb7974c81a497a5e677508e3d47b"
+      },
+      {
+        "schemaVersion": "1.0",
+        "campaignId": "fresh-start-teardown-campaign",
+        "caseId": "fresh-process-reuse",
+        "attemptId": "875b6849-eb98-40b3-bfa1-5ec808bfa927",
+        "attemptNumber": 1,
+        "source": "execution",
+        "bindingId": "northstar-fixture-binding",
+        "bindingVersion": "1.0.0",
+        "bindingDigest": "5c6544256a909973d7cfdc1f73adb97b7b9e725430cbe8b946257e61f99bebc2",
+        "declarationDigest": "2282d6ed11235addb219b9da8758d6e10f6f312158022eac1446a0dac7267661",
+        "result": {
+          "caseId": "fresh-process-reuse",
+          "passed": true,
+          "intendedWrites": 1,
+          "incorrectSideEffects": 0,
+          "checks": [
+            {
+              "id": "fixture-fresh-process-reuse-1",
+              "passed": true,
+              "detail": "a fresh executor loaded the retained fictional capability identity"
+            },
+            {
+              "id": "fixture-fresh-process-reuse-2",
+              "passed": true,
+              "detail": "no replacement capability was declared"
+            },
+            {
+              "id": "fixture-fresh-process-reuse-independent-file-read",
+              "passed": true,
+              "detail": "The rehearsal read the serialized fixture state after the case instead of trusting an action return value."
+            }
+          ],
+          "artifactReferences": [
+            "file:///Users/joeljeon/Desktop/Capability Factory/reports/fresh-start-onboarding-teardown-artifacts-2026-08-14/acceptance-evidence/fresh-process-reuse.external-state.json"
+          ],
+          "completedAt": "2026-08-14T01:10:00.000Z"
+        },
+        "previousReceiptHash": "72dd6a5883ef6de387a4ed1672b87c68559ffb7974c81a497a5e677508e3d47b",
+        "receiptHash": "5a0392a7ab7c799a2b0119ca428bf019ed335426435cee2944df5a2acbe9176b"
+      },
+      {
+        "schemaVersion": "1.0",
+        "campaignId": "fresh-start-teardown-campaign",
+        "caseId": "missing-credential",
+        "attemptId": "363ec55a-51e0-4e70-8c3f-8cec51c1f9fc",
+        "attemptNumber": 1,
+        "source": "execution",
+        "bindingId": "northstar-fixture-binding",
+        "bindingVersion": "1.0.0",
+        "bindingDigest": "5c6544256a909973d7cfdc1f73adb97b7b9e725430cbe8b946257e61f99bebc2",
+        "declarationDigest": "2282d6ed11235addb219b9da8758d6e10f6f312158022eac1446a0dac7267661",
+        "result": {
+          "caseId": "missing-credential",
+          "passed": true,
+          "intendedWrites": 0,
+          "incorrectSideEffects": 0,
+          "checks": [
+            {
+              "id": "fixture-missing-credential-1",
+              "passed": true,
+              "detail": "the exact missing credential alias was reported"
+            },
+            {
+              "id": "fixture-missing-credential-2",
+              "passed": true,
+              "detail": "write counter remained zero"
+            },
+            {
+              "id": "fixture-missing-credential-independent-file-read",
+              "passed": true,
+              "detail": "The rehearsal read the serialized fixture state after the case instead of trusting an action return value."
+            }
+          ],
+          "artifactReferences": [
+            "file:///Users/joeljeon/Desktop/Capability Factory/reports/fresh-start-onboarding-teardown-artifacts-2026-08-14/acceptance-evidence/missing-credential.external-state.json"
+          ],
+          "completedAt": "2026-08-14T01:10:00.000Z"
+        },
+        "previousReceiptHash": "5a0392a7ab7c799a2b0119ca428bf019ed335426435cee2944df5a2acbe9176b",
+        "receiptHash": "b6476f6e0629dbd3a11392b9121dd9f4c457e4d59cf4a75ecef9094570375beb"
+      },
+      {
+        "schemaVersion": "1.0",
+        "campaignId": "fresh-start-teardown-campaign",
+        "caseId": "missing-permission",
+        "attemptId": "2712d4bc-5d58-4d21-9e01-a124b2f8ecc0",
+        "attemptNumber": 1,
+        "source": "execution",
+        "bindingId": "northstar-fixture-binding",
+        "bindingVersion": "1.0.0",
+        "bindingDigest": "5c6544256a909973d7cfdc1f73adb97b7b9e725430cbe8b946257e61f99bebc2",
+        "declarationDigest": "2282d6ed11235addb219b9da8758d6e10f6f312158022eac1446a0dac7267661",
+        "result": {
+          "caseId": "missing-permission",
+          "passed": true,
+          "intendedWrites": 0,
+          "incorrectSideEffects": 0,
+          "checks": [
+            {
+              "id": "fixture-missing-permission-1",
+              "passed": true,
+              "detail": "the exact missing write permission was reported"
+            },
+            {
+              "id": "fixture-missing-permission-2",
+              "passed": true,
+              "detail": "write counter remained zero"
+            },
+            {
+              "id": "fixture-missing-permission-independent-file-read",
+              "passed": true,
+              "detail": "The rehearsal read the serialized fixture state after the case instead of trusting an action return value."
+            }
+          ],
+          "artifactReferences": [
+            "file:///Users/joeljeon/Desktop/Capability Factory/reports/fresh-start-onboarding-teardown-artifacts-2026-08-14/acceptance-evidence/missing-permission.external-state.json"
+          ],
+          "completedAt": "2026-08-14T01:10:00.000Z"
+        },
+        "previousReceiptHash": "b6476f6e0629dbd3a11392b9121dd9f4c457e4d59cf4a75ecef9094570375beb",
+        "receiptHash": "42d17e6f1950d3791b39f959f886f6745c4fd52437dff6fa15f26c34e55a6705"
+      },
+      {
+        "schemaVersion": "1.0",
+        "campaignId": "fresh-start-teardown-campaign",
+        "caseId": "lost-response-reconciliation",
+        "attemptId": "bf10d4da-9bdb-4c1e-a511-3ea6c1b213b5",
+        "attemptNumber": 1,
+        "source": "execution",
+        "bindingId": "northstar-fixture-binding",
+        "bindingVersion": "1.0.0",
+        "bindingDigest": "5c6544256a909973d7cfdc1f73adb97b7b9e725430cbe8b946257e61f99bebc2",
+        "declarationDigest": "2282d6ed11235addb219b9da8758d6e10f6f312158022eac1446a0dac7267661",
+        "result": {
+          "caseId": "lost-response-reconciliation",
+          "passed": true,
+          "intendedWrites": 1,
+          "incorrectSideEffects": 0,
+          "checks": [
+            {
+              "id": "fixture-lost-response-reconciliation-1",
+              "passed": true,
+              "detail": "the fictional write committed before response loss"
+            },
+            {
+              "id": "fixture-lost-response-reconciliation-2",
+              "passed": true,
+              "detail": "independent state reconciliation found one record and prevented retry"
+            },
+            {
+              "id": "fixture-lost-response-reconciliation-independent-file-read",
+              "passed": true,
+              "detail": "The rehearsal read the serialized fixture state after the case instead of trusting an action return value."
+            }
+          ],
+          "artifactReferences": [
+            "file:///Users/joeljeon/Desktop/Capability Factory/reports/fresh-start-onboarding-teardown-artifacts-2026-08-14/acceptance-evidence/lost-response-reconciliation.external-state.json"
+          ],
+          "completedAt": "2026-08-14T01:10:00.000Z"
+        },
+        "previousReceiptHash": "42d17e6f1950d3791b39f959f886f6745c4fd52437dff6fa15f26c34e55a6705",
+        "receiptHash": "e5ac299026c7a8f7d28ff4a346c2a314b79f976f960830e2e59e2d9ff4558067"
+      },
+      {
+        "schemaVersion": "1.0",
+        "campaignId": "fresh-start-teardown-campaign",
+        "caseId": "wrong-or-partial-outcome",
+        "attemptId": "a06d2436-7146-4e81-b7e7-cdb925044ae0",
+        "attemptNumber": 1,
+        "source": "execution",
+        "bindingId": "northstar-fixture-binding",
+        "bindingVersion": "1.0.0",
+        "bindingDigest": "5c6544256a909973d7cfdc1f73adb97b7b9e725430cbe8b946257e61f99bebc2",
+        "declarationDigest": "2282d6ed11235addb219b9da8758d6e10f6f312158022eac1446a0dac7267661",
+        "result": {
+          "caseId": "wrong-or-partial-outcome",
+          "passed": true,
+          "intendedWrites": 1,
+          "incorrectSideEffects": 0,
+          "checks": [
+            {
+              "id": "fixture-wrong-or-partial-outcome-1",
+              "passed": true,
+              "detail": "the partial fictional state was rejected as completion"
+            },
+            {
+              "id": "fixture-wrong-or-partial-outcome-2",
+              "passed": true,
+              "detail": "the fictional capability was not marked healthy"
+            },
+            {
+              "id": "fixture-wrong-or-partial-outcome-independent-file-read",
+              "passed": true,
+              "detail": "The rehearsal read the serialized fixture state after the case instead of trusting an action return value."
+            }
+          ],
+          "artifactReferences": [
+            "file:///Users/joeljeon/Desktop/Capability Factory/reports/fresh-start-onboarding-teardown-artifacts-2026-08-14/acceptance-evidence/wrong-or-partial-outcome.external-state.json"
+          ],
+          "completedAt": "2026-08-14T01:10:00.000Z"
+        },
+        "previousReceiptHash": "e5ac299026c7a8f7d28ff4a346c2a314b79f976f960830e2e59e2d9ff4558067",
+        "receiptHash": "e19e013315971bc4228079f7cfa4d78f93be4bb9247c9b7264e266fa6e3a7091"
+      },
+      {
+        "schemaVersion": "1.0",
+        "campaignId": "fresh-start-teardown-campaign",
+        "caseId": "sidecar-restart",
+        "attemptId": "a0f15797-65e4-46ad-b1e1-980871bdf882",
+        "attemptNumber": 1,
+        "source": "execution",
+        "bindingId": "northstar-fixture-binding",
+        "bindingVersion": "1.0.0",
+        "bindingDigest": "5c6544256a909973d7cfdc1f73adb97b7b9e725430cbe8b946257e61f99bebc2",
+        "declarationDigest": "2282d6ed11235addb219b9da8758d6e10f6f312158022eac1446a0dac7267661",
+        "result": {
+          "caseId": "sidecar-restart",
+          "passed": true,
+          "intendedWrites": 1,
+          "incorrectSideEffects": 0,
+          "checks": [
+            {
+              "id": "fixture-sidecar-restart-1",
+              "passed": true,
+              "detail": "the same fictional work identity survived restart"
+            },
+            {
+              "id": "fixture-sidecar-restart-2",
+              "passed": true,
+              "detail": "reconciliation prevented a duplicate"
+            },
+            {
+              "id": "fixture-sidecar-restart-independent-file-read",
+              "passed": true,
+              "detail": "The rehearsal read the serialized fixture state after the case instead of trusting an action return value."
+            }
+          ],
+          "artifactReferences": [
+            "file:///Users/joeljeon/Desktop/Capability Factory/reports/fresh-start-onboarding-teardown-artifacts-2026-08-14/acceptance-evidence/sidecar-restart.external-state.json"
+          ],
+          "completedAt": "2026-08-14T01:10:00.000Z"
+        },
+        "previousReceiptHash": "e19e013315971bc4228079f7cfa4d78f93be4bb9247c9b7264e266fa6e3a7091",
+        "receiptHash": "549b38bbcd63b39ffc58bc7cde72980882105090c937fb78aa87b33acd43d8f8"
+      },
+      {
+        "schemaVersion": "1.0",
+        "campaignId": "fresh-start-teardown-campaign",
+        "caseId": "duplicate-submission",
+        "attemptId": "1ba2e08c-4138-476e-b72c-99b5bf8bebc5",
+        "attemptNumber": 1,
+        "source": "execution",
+        "bindingId": "northstar-fixture-binding",
+        "bindingVersion": "1.0.0",
+        "bindingDigest": "5c6544256a909973d7cfdc1f73adb97b7b9e725430cbe8b946257e61f99bebc2",
+        "declarationDigest": "2282d6ed11235addb219b9da8758d6e10f6f312158022eac1446a0dac7267661",
+        "result": {
+          "caseId": "duplicate-submission",
+          "passed": true,
+          "intendedWrites": 1,
+          "incorrectSideEffects": 0,
+          "checks": [
+            {
+              "id": "fixture-duplicate-submission-1",
+              "passed": true,
+              "detail": "two identical submissions resolved to one fictional durable job"
+            },
+            {
+              "id": "fixture-duplicate-submission-2",
+              "passed": true,
+              "detail": "one fictional business write existed"
+            },
+            {
+              "id": "fixture-duplicate-submission-independent-file-read",
+              "passed": true,
+              "detail": "The rehearsal read the serialized fixture state after the case instead of trusting an action return value."
+            }
+          ],
+          "artifactReferences": [
+            "file:///Users/joeljeon/Desktop/Capability Factory/reports/fresh-start-onboarding-teardown-artifacts-2026-08-14/acceptance-evidence/duplicate-submission.external-state.json"
+          ],
+          "completedAt": "2026-08-14T01:10:00.000Z"
+        },
+        "previousReceiptHash": "549b38bbcd63b39ffc58bc7cde72980882105090c937fb78aa87b33acd43d8f8",
+        "receiptHash": "0609bf3b4de173b5c140fa7bf2e2c61d762f80a678a17c0824b0c465930c585d"
+      },
+      {
+        "schemaVersion": "1.0",
+        "campaignId": "fresh-start-teardown-campaign",
+        "caseId": "conflicting-parent-reuse",
+        "attemptId": "de5b615a-ed64-4267-9ada-bcb6943e2b0d",
+        "attemptNumber": 1,
+        "source": "execution",
+        "bindingId": "northstar-fixture-binding",
+        "bindingVersion": "1.0.0",
+        "bindingDigest": "5c6544256a909973d7cfdc1f73adb97b7b9e725430cbe8b946257e61f99bebc2",
+        "declarationDigest": "2282d6ed11235addb219b9da8758d6e10f6f312158022eac1446a0dac7267661",
+        "result": {
+          "caseId": "conflicting-parent-reuse",
+          "passed": true,
+          "intendedWrites": 0,
+          "incorrectSideEffects": 0,
+          "checks": [
+            {
+              "id": "fixture-conflicting-parent-reuse-1",
+              "passed": true,
+              "detail": "changed intent under an existing parent identity was rejected"
+            },
+            {
+              "id": "fixture-conflicting-parent-reuse-2",
+              "passed": true,
+              "detail": "existing fictional state remained unchanged"
+            },
+            {
+              "id": "fixture-conflicting-parent-reuse-independent-file-read",
+              "passed": true,
+              "detail": "The rehearsal read the serialized fixture state after the case instead of trusting an action return value."
+            }
+          ],
+          "artifactReferences": [
+            "file:///Users/joeljeon/Desktop/Capability Factory/reports/fresh-start-onboarding-teardown-artifacts-2026-08-14/acceptance-evidence/conflicting-parent-reuse.external-state.json"
+          ],
+          "completedAt": "2026-08-14T01:10:00.000Z"
+        },
+        "previousReceiptHash": "0609bf3b4de173b5c140fa7bf2e2c61d762f80a678a17c0824b0c465930c585d",
+        "receiptHash": "6d0e9d9d57282eed17902b84c1309c393d7fa8db50aa02c013e3c3e535f8a365"
+      }
+    ],
+    "createdAt": "2026-08-14T01:10:00.000Z",
+    "updatedAt": "2026-08-14T01:10:00.000Z"
+  },
+  "integrityDigest": "17ba03f34055fb1fd061a73147b0bac37751682ca61bba999c918af8f1d40948"
+}

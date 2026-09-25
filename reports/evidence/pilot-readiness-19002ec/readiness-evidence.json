@@ -1,0 +1,83 @@
+{
+  "schemaVersion": "1.0",
+  "candidateCommit": "19002ec40e527bb4f28d11aff4dc462b93582591",
+  "controlledPilotMvpEvidence": [
+    {
+      "gate": "claim-boundary",
+      "status": "passed",
+      "summary": "The local controlled-pilot claim and its exclusions are explicit and versioned.",
+      "artifactReferences": ["docs/CONTROLLED_PILOT_MVP_CONTRACT.md"]
+    },
+    {
+      "gate": "adapter-kit",
+      "status": "passed",
+      "summary": "A versioned adapter contract, preflight, mandatory ten-case harness and replaceable ERPNext reference adapter are executable.",
+      "artifactReferences": ["docs/CUSTOMER_ADAPTER_KIT.md", "reports/evidence/pilot-readiness-19002ec/deterministic-acceptance-summary.json"]
+    },
+    {
+      "gate": "joined-real-system-loop",
+      "status": "passed",
+      "summary": "The frozen candidate completed model-backed build and fresh-process reuse against genuine disposable local ERPNext, with direct external-state verification.",
+      "artifactReferences": ["reports/evidence/pilot-readiness-19002ec/model-backed-erpnext-success.json"]
+    },
+    {
+      "gate": "authority-and-secret-boundary",
+      "status": "passed",
+      "summary": "The customer-local runtime resolves credential aliases, enforces authority, stops on missing credentials or permissions, and does not expose credential values in saved evidence.",
+      "artifactReferences": ["reports/evidence/pilot-readiness-19002ec/deterministic-acceptance-summary.json"]
+    },
+    {
+      "gate": "independent-verification-and-recovery",
+      "status": "passed",
+      "summary": "Direct ERPNext checks independently detect partial outcomes; retry reconciliation, cleanup, duplicate prevention, and fail-closed behavior were exercised.",
+      "artifactReferences": ["reports/evidence/pilot-readiness-19002ec/deterministic-acceptance-summary.json", "reports/evidence/pilot-readiness-19002ec/preserved-model-failure-v2.json"]
+    },
+    {
+      "gate": "durable-operator-path",
+      "status": "passed",
+      "summary": "The durable authenticated sidecar, restart-safe jobs, real coordinator and operator console start together and expose the genuine local product path.",
+      "artifactReferences": ["docs/CONTROLLED_PILOT_RUNBOOK.md", "test/real-erpnext-sidecar-pilot.test.ts"]
+    },
+    {
+      "gate": "install-and-clean-start",
+      "status": "passed",
+      "summary": "A detached clean checkout installed from the pinned lockfile, type-checked, passed 24/24 doctor checks, and started healthy console and sidecar endpoints with fresh state.",
+      "artifactReferences": ["docs/CONTROLLED_PILOT_RUNBOOK.md", "reports/controlled-pilot-readiness-2026-07-27.md"]
+    },
+    {
+      "gate": "frozen-readiness-campaign",
+      "status": "passed",
+      "summary": "The frozen v3 commit passed the ten-case real-system campaign and both bounded model-backed confirmations without source changes.",
+      "artifactReferences": ["reports/evidence/pilot-readiness-19002ec/deterministic-acceptance-summary.json", "reports/evidence/pilot-readiness-19002ec/model-backed-erpnext-success.json", "reports/evidence/pilot-readiness-19002ec/model-backed-broad-goal-success.json"]
+    }
+  ],
+  "controlledPilotMvpAssessment": {
+    "ready": true,
+    "passed": [
+      "claim-boundary",
+      "adapter-kit",
+      "joined-real-system-loop",
+      "authority-and-secret-boundary",
+      "independent-verification-and-recovery",
+      "durable-operator-path",
+      "install-and-clean-start",
+      "frozen-readiness-campaign"
+    ],
+    "missing": [],
+    "failed": []
+  },
+  "customerPilotActivationAssessment": {
+    "ready": false,
+    "passed": [],
+    "missing": [
+      "named-safe-workflow",
+      "approved-test-environment",
+      "least-privilege-local-credentials",
+      "customer-authority-envelope",
+      "customer-adapter-acceptance",
+      "operations-and-stop-agreement"
+    ],
+    "failed": []
+  },
+  "evidenceBoundary": "This is private local readiness evidence for one constrained HTTP capability mode. It is not a customer result, formal security audit, production reliability result, or the historical evaluation's formal final green verdict."
+}

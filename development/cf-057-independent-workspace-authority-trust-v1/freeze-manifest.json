@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "checkpointId": "CF-057",
+  "frozenAt": "2026-08-14",
+  "status": "private-local-fictional",
+  "summary": "The production constrained-HTTP write-authority constructor resolves an exact signed workspace activation from a separately persisted customer-local trust ledger; rotation, revocation, expiry and local consumption fail closed, while signed restore atomically publishes audit-only state that requires a fresh post-restore activation.",
+  "verification": {
+    "deterministicTests": 58,
+    "localhostTlsIntegrationTests": 8,
+    "typescript": "passed",
+    "engineeringQueue": "valid",
+    "independentSkepticalAudit": "freeze-narrow-scope",
+    "modelCalls": 0,
+    "spendUsd": 0
+  },
+  "files": [
+    {
+      "path": "src/product/customer-local-http-authority-trust.ts",
+      "sha256": "100c7d43a3880c58e69c127a9e06adf4c27582829d4a83619c996e16101d0e5a"
+    },
+    {
+      "path": "src/product/customer-local-http-write-authority.ts",
+      "sha256": "7ddff98d0b460eb18703cf2846a1eeeac56bbbb03831e3763fbaa5fc72b80344"
+    },
+    {
+      "path": "src/product/customer-local-trust-backup.ts",
+      "sha256": "3ceacdff7b5e81b89c524d55a8f5498acd33e40087576e6432c33d353074a0df"
+    },
+    {
+      "path": "test/customer-local-http-authority-trust.test.ts",
+      "sha256": "b4af25c33b29bd3719f00c91d2a82724485733b0e52e0e9a80e8ada8d749f4c5"
+    },
+    {
+      "path": "test/fixtures/cf057-authority-trust-race-worker.ts",
+      "sha256": "c2b338d2fdd83384429ff08a0a425b9b662ad44165d072b56d998fe27a4709c0"
+    },
+    {
+      "path": "test/fixtures/cf057-authority-trust-resolve-worker.ts",
+      "sha256": "a738e7d33373188347b306defe4c1d9ac874d0bd5819d9cf5ae9364577e4be30"
+    },
+    {
+      "path": "test/http-binding-signed-authority-joined.test.ts",
+      "sha256": "abd239b797ed52277aa2bbf38969ae7271fa0639e67dc97cdee2b645063e6cce"
+    },
+    {
+      "path": "reports/cf-057-independent-workspace-authority-trust-2026-08-14.md",
+      "sha256": "5bdf849520441be9022ce04f771e94d74b6986b6de9bf25a40703bc539453ac3"
+    }
+  ],
+  "boundaries": [
+    "The frozen claim covers one local fictional constrained-HTTP authority path using SQLite and an independently pinned customer-local trust configuration.",
+    "The production constructor excludes caller-supplied admin keys, activation receipts and test clocks; the separately exported test-only constructor remains outside the production claim.",
+    "Signed restore publishes only audit-only state and requires a strictly post-restore signed activation before authority can resolve.",
+    "Normal crash/restart and local multi-process SQLite serialization are covered; privileged raw-file rollback requires an external monotonic anchor and is not resisted or claimed.",
+    "HSM or OS-keychain custody, distributed consensus, multi-host authority, customer use, production reliability, arbitrary APIs and public evidence are not claimed."
+  ],
+  "freezeRule": "Any change to a listed file requires a new checkpoint and regenerated hashes."
+}

@@ -1,0 +1,8 @@
+{
+  "schemaVersion": "1.0",
+  "classification": "accounting-assertion-failure",
+  "campaignResultBeforeAssertion": "10/10 passed",
+  "failure": "The final accounting query counted an expired authority lease from the deliberate revoked-permission case as unresolved merely because its durable audit status remained issued.",
+  "unsafeEffects": 0,
+  "repair": "Unresolved now means issued, unretired and still unexpired. Expired or revoked historical audit rows remain preserved but non-authorizing."
+}

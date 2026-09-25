@@ -1,0 +1,22 @@
+{
+  "caseId": "duplicate-submission",
+  "passed": true,
+  "intendedWrites": 1,
+  "incorrectSideEffects": 0,
+  "checks": [
+    {
+      "id": "one-durable-job",
+      "passed": true,
+      "detail": "All exact duplicates resolved to one durable parent job."
+    },
+    {
+      "id": "one-execution",
+      "passed": true,
+      "detail": "Only one worker execution and one business write occurred."
+    }
+  ],
+  "artifactReferences": [
+    "/Users/joeljeon/Desktop/Capability Factory/reports/fresh-onboarding-http-execution-2026-08-12/acceptance/duplicate-submission/evidence.json"
+  ],
+  "completedAt": "2026-08-11T23:21:25.430Z"
+}

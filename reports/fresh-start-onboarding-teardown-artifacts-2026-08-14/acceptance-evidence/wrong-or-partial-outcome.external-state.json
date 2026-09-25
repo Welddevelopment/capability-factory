@@ -1,0 +1,10 @@
+{
+  "caseId": "wrong-or-partial-outcome",
+  "intendedWrites": 1,
+  "incorrectSideEffects": 0,
+  "checks": [
+    "the partial fictional state was rejected as completion",
+    "the fictional capability was not marked healthy"
+  ],
+  "fixtureClassification": "partial-rejected"
+}

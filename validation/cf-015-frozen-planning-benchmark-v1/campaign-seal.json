@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "1.0",
+  "benchmarkId": "cf-015-frozen-planning-benchmark-v1",
+  "sealedAt": "2026-08-14T13:00:00.000Z",
+  "zeroSpend": true,
+  "networkAllowed": false,
+  "oracleVisibleDuringPlanning": false,
+  "materialFiles": [
+    { "path": "benchmark.json", "sha256": "4ea58a9b8b1f16482a9f5a4ed2b3ff730b2f0ecabb99cc11ca8a6b5a209bfae0" },
+    { "path": "oracle.json", "sha256": "d668fc71bf775c1e90e61c779e87f2b84d1a4f36e75289f47a908b358fbd0cbc" }
+  ],
+  "implementationFiles": [
+    { "path": "src/product/frozen-planning-benchmark.ts", "sha256": "89fcee9563225d2a4406b0d46f7f74dcf3e68abe6fd35699d700503ca3e035b5" },
+    { "path": "src/product/capability-resolution-compiler.ts", "sha256": "d744765a482c05f2bedaf179db7a9602da99bc037c768b69da64bbc25b5148a8" }
+  ],
+  "sealDigest": "c07c456910cadcb4cad75d2143d9c2b0a89110e830bce00b21c7185f35069942"
+}

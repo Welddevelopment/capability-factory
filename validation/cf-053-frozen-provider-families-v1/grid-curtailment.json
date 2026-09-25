@@ -1,0 +1,128 @@
+{
+  "schemaVersion": "1.0",
+  "familyId": "grid-curtailment",
+  "state": "frozen-fictional-provider-input",
+  "fictional": true,
+  "provider": {
+    "providerId": "grid-flex-dispatch",
+    "sourceKind": "minimal-sdk-index",
+    "localReference": "fixture://cf053/grid-curtailment",
+    "approvedImports": [
+      "grid-dispatch-command-sdk",
+      "grid-settlement-ledger-sdk"
+    ],
+    "documentation": {
+      "title": "Grid Flex Dispatch local SDK index",
+      "version": "2026-08-14-fixture-v1",
+      "methods": [
+        {
+          "role": "action",
+          "module": "grid-dispatch-command-sdk",
+          "className": "CurtailmentCommander",
+          "methodName": "commitCurtailment",
+          "overloadId": "numeric-event-v1",
+          "sourcePointer": "#/commands/commitCurtailment",
+          "parameters": [
+            { "name": "eventSequence", "type": "number", "required": true },
+            { "name": "siteCode", "type": "string", "required": true },
+            { "name": "shedApproved", "type": "boolean", "required": true }
+          ],
+          "returnType": "Promise<Record<string, string | number | boolean | null>>",
+          "errorTypes": ["SdkError", "Unauthorized", "Conflict", "RateLimited", "TimeoutBeforeCommit"],
+          "authAliasRequirements": ["cred.grid_dispatcher"],
+          "pagination": "none",
+          "retryCandidate": "idempotency-key",
+          "idempotencyCandidate": "eventSequence"
+        },
+        {
+          "role": "no-write-probe",
+          "module": "grid-dispatch-command-sdk",
+          "className": "CurtailmentCommander",
+          "methodName": "probeDispatchWindow",
+          "overloadId": "numeric-event-v1",
+          "sourcePointer": "#/commands/probeDispatchWindow",
+          "parameters": [
+            { "name": "eventSequence", "type": "number", "required": true }
+          ],
+          "returnType": "Promise<Record<string, string | number | boolean | null>>",
+          "errorTypes": ["SdkError", "Unauthorized", "RateLimited"],
+          "authAliasRequirements": ["cred.grid_dispatcher"],
+          "pagination": "none",
+          "retryCandidate": "read-only",
+          "idempotencyCandidate": null
+        },
+        {
+          "role": "reconciliation-readback",
+          "module": "grid-dispatch-command-sdk",
+          "className": "CurtailmentCommander",
+          "methodName": "readDispatchBySequence",
+          "overloadId": "numeric-event-v1",
+          "sourcePointer": "#/queries/readDispatchBySequence",
+          "parameters": [
+            { "name": "eventSequence", "type": "number", "required": true }
+          ],
+          "returnType": "Promise<Record<string, string | number | boolean | null>>",
+          "errorTypes": ["SdkError", "Unauthorized", "RateLimited"],
+          "authAliasRequirements": ["cred.grid_settlement_observer"],
+          "pagination": "none",
+          "retryCandidate": "read-only",
+          "idempotencyCandidate": null
+        },
+        {
+          "role": "independent-observer",
+          "module": "grid-settlement-ledger-sdk",
+          "className": "SettlementLedgerReader",
+          "methodName": "observeCommittedEvent",
+          "overloadId": "numeric-event-v1",
+          "sourcePointer": "#/ledger/observeCommittedEvent",
+          "parameters": [
+            { "name": "eventSequence", "type": "number", "required": true }
+          ],
+          "returnType": "Promise<Record<string, string | number | boolean | null>>",
+          "errorTypes": ["SdkError", "Unauthorized", "RateLimited"],
+          "authAliasRequirements": ["cred.grid_settlement_observer"],
+          "pagination": "none",
+          "retryCandidate": "read-only",
+          "idempotencyCandidate": null
+        }
+      ]
+    }
+  },
+  "blockedWorkflow": {
+    "ordinaryGoal": "Commit the approved local curtailment event and confirm it reached the settlement ledger.",
+    "requiredOutcome": "Exactly one dispatch exists for the numeric event sequence, the selected site and the explicit shed approval, and the settlement ledger independently records it.",
+    "input": {
+      "eventSequence": 74021,
+      "siteCode": "SEOUL-WEST-04",
+      "shedApproved": true
+    }
+  },
+  "reviewedSemantics": {
+    "stableIdentity": { "source": "workflow-input", "key": "eventSequence", "convert": "number" },
+    "idempotency": { "source": "workflow-input", "key": "eventSequence", "convert": "number" },
+    "actionCredentialAlias": "cred.grid_dispatcher",
+    "observerCredentialAlias": "cred.grid_settlement_observer",
+    "actionScope": "curtailment:commit",
+    "observerScope": "settlement-ledger:read-events",
+    "reconcileBeforeRetry": true,
+    "blindRetryAllowed": false,
+    "outcome": {
+      "stableIdentityPath": ["eventSequence"],
+      "siteCodePath": ["siteCode"],
+      "shedApprovedPath": ["shedApproved"],
+      "duplicateCollectionPath": ["matches"],
+      "collateralCleanPath": ["collateralClean"],
+      "freshnessPath": ["ledgerRecordedAt"],
+      "maximumAgeSeconds": 30
+    }
+  },
+  "authority": {
+    "state": "fixture-confirmed-not-granted-by-this-file",
+    "target": "grid-flex-sandbox",
+    "policyVersion": "cf053-grid-policy-v1",
+    "allowedAction": "commitCurtailment",
+    "exactInputIdentity": 74021
+  },
+  "executionAuthorityEffect": "none",
+  "activationEffect": "none"
+}

@@ -1,0 +1,99 @@
+{
+  "schemaVersion": "1.0",
+  "caseId": "read-only-happy-path",
+  "preStateDigest": "caca9d2e08083e61055c1d76aa449748d555c1642380033cccf17901c20bf7f6",
+  "postStateDigest": "0dfd106e9c0615727a166354aaeda6b09bfff533e58f0d93e0e909a769c9d606",
+  "stateSummary": {
+    "visits": 1,
+    "writeAttempts": 0,
+    "committedWrites": 0,
+    "unrelatedChanges": 0
+  },
+  "observerReceipt": {
+    "schemaVersion": "1.0",
+    "observerId": "outcome-observer-e68eb27f501a96952e4f1e28",
+    "observerVersion": "1.0",
+    "proposalDigest": "cfbff2e771486bea3d7d135c8c4d72d6fef1b2b00e46142b2331085d49caf6f6",
+    "bindingDigest": "dca4660ea67cd1f2e8bbd34715976e790265064723635584add271c492085d35",
+    "classification": "completed",
+    "passed": true,
+    "duplicateDetected": false,
+    "collateralDetected": false,
+    "stateDigest": "371a37c925d16b61d4930fbce4784952f3c17fbdffa1df06168dd50b7e1ecae4",
+    "checks": [
+      {
+        "key": "one-visit",
+        "role": "success",
+        "passed": true,
+        "detail": "Confirmed success predicate passed."
+      },
+      {
+        "key": "unique-visit-id",
+        "role": "success",
+        "passed": true,
+        "detail": "Confirmed success predicate passed."
+      },
+      {
+        "key": "draft-status",
+        "role": "success",
+        "passed": true,
+        "detail": "Confirmed success predicate passed."
+      },
+      {
+        "key": "approved-asset",
+        "role": "success",
+        "passed": true,
+        "detail": "Confirmed success predicate passed."
+      },
+      {
+        "key": "approved-date",
+        "role": "success",
+        "passed": true,
+        "detail": "Confirmed success predicate passed."
+      },
+      {
+        "key": "no-visit",
+        "role": "not-started",
+        "passed": false,
+        "detail": "Confirmed not-started predicate did not pass."
+      },
+      {
+        "key": "duplicate-cardinality",
+        "role": "duplicate",
+        "passed": true,
+        "detail": "Exact confirmed cardinality was observed."
+      },
+      {
+        "key": "asset-remains-active",
+        "role": "collateral",
+        "passed": true,
+        "detail": "Collateral-state invariant passed."
+      },
+      {
+        "key": "no-unrelated-change",
+        "role": "collateral",
+        "passed": true,
+        "detail": "Collateral-state invariant passed."
+      },
+      {
+        "key": "freshness",
+        "role": "freshness",
+        "passed": true,
+        "detail": "Confirmed external state advanced beyond the trusted pre-action baseline."
+      }
+    ],
+    "observedAt": "2026-08-11T23:21:25.381Z"
+  },
+  "checks": [
+    {
+      "id": "read-only-completed",
+      "passed": true,
+      "detail": "The independent read path confirmed the already-satisfied outcome."
+    },
+    {
+      "id": "zero-write",
+      "passed": true,
+      "detail": "No write was attempted for the already-satisfied goal."
+    }
+  ]
+}

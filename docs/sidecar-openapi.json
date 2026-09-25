@@ -1,0 +1,81 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Capability Factory customer-local sidecar",
+    "version": "1.0.0",
+    "description": "Language-neutral local boundary for durable ordinary goals. This contract does not grant external-system authority."
+  },
+  "servers": [{ "url": "http://127.0.0.1:4317" }],
+  "security": [{ "sidecarToken": [] }],
+  "paths": {
+    "/health": { "get": { "security": [], "responses": { "200": { "description": "Process is reachable" } } } },
+    "/ready": { "get": { "security": [], "responses": { "200": { "description": "Runtime is ready" }, "503": { "description": "Runtime is not ready" } } } },
+    "/v1/goal-jobs": {
+      "post": {
+        "summary": "Persist and start an ordinary goal",
+        "requestBody": { "required": true, "content": { "application/json": { "schema": { "$ref": "#/components/schemas/BroadGoalRequest" } } } },
+        "responses": { "200": { "$ref": "#/components/responses/GoalJob" }, "202": { "$ref": "#/components/responses/GoalJob" }, "409": { "$ref": "#/components/responses/Error" } }
+      }
+    },
+    "/v1/goal-jobs/{jobId}": {
+      "get": {
+        "summary": "Read durable goal state",
+        "parameters": [{ "$ref": "#/components/parameters/JobId" }, { "$ref": "#/components/parameters/TenantId" }],
+        "responses": { "200": { "$ref": "#/components/responses/GoalJob" }, "404": { "$ref": "#/components/responses/Error" } }
+      }
+    },
+    "/v1/goal-jobs/{jobId}/events": {
+      "get": {
+        "summary": "Read append-only events after a cursor",
+        "parameters": [{ "$ref": "#/components/parameters/JobId" }, { "$ref": "#/components/parameters/TenantId" }, { "name": "after", "in": "query", "schema": { "type": "integer", "minimum": 0, "default": 0 } }],
+        "responses": { "200": { "description": "Event page", "content": { "application/json": { "schema": { "type": "object", "required": ["events"], "properties": { "events": { "type": "array", "items": { "$ref": "#/components/schemas/GoalJobEvent" } } } } } } } }
+      }
+    },
+    "/v1/goal-jobs/{jobId}/continue": {
+      "post": {
+        "summary": "Queue exact continuation with a signed customer-local grant",
+        "parameters": [{ "$ref": "#/components/parameters/JobId" }],
+        "requestBody": { "required": true, "content": { "application/json": { "schema": { "type": "object", "required": ["tenantId", "grant"], "properties": { "tenantId": { "type": "string" }, "grant": { "type": "object", "description": "GoalContinuationGrant schema 1.0" } } } } },
+        "responses": { "202": { "$ref": "#/components/responses/GoalJob" }, "409": { "$ref": "#/components/responses/Error" } }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": { "sidecarToken": { "type": "apiKey", "in": "header", "name": "X-Capability-Sidecar-Token" } },
+    "parameters": {
+      "JobId": { "name": "jobId", "in": "path", "required": true, "schema": { "type": "string", "pattern": "^[a-f0-9]{32}$" } },
+      "TenantId": { "name": "tenantId", "in": "query", "required": true, "schema": { "type": "string", "pattern": "^[a-zA-Z0-9_-]+$" } }
+    },
+    "responses": {
+      "GoalJob": { "description": "Durable goal-job receipt", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/GoalJobReceipt" } } } },
+      "Error": { "description": "Fail-closed error", "content": { "application/json": { "schema": { "type": "object", "required": ["error"], "properties": { "error": { "type": "string" } } } } } }
+    },
+    "schemas": {
+      "BroadGoalRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["schemaVersion", "tenantId", "parentGoalId", "requestId", "scopeKey", "ordinaryGoal", "visibility"],
+        "properties": {
+          "schemaVersion": { "const": "1.0" }, "tenantId": { "type": "string" }, "parentGoalId": { "type": "string" },
+          "requestId": { "type": "string" }, "scopeKey": { "type": "string" }, "ordinaryGoal": { "type": "string", "maxLength": 4000 },
+          "visibility": { "enum": ["exceptions-only", "summary", "full"] }
+        }
+      },
+      "GoalJobReceipt": {
+        "type": "object",
+        "required": ["schemaVersion", "jobId", "tenantId", "parentGoalId", "requestId", "status", "attempts", "createdAt", "updatedAt"],
+        "properties": {
+          "schemaVersion": { "const": "1.0" }, "jobId": { "type": "string" }, "tenantId": { "type": "string" }, "parentGoalId": { "type": "string" },
+          "requestId": { "type": "string" }, "status": { "enum": ["queued", "running", "completed", "partially-complete", "blocked", "failed", "unknown", "handoff", "plan-rejected"] },
+          "attempts": { "type": "integer" }, "continuationGrantId": { "type": "string" }, "result": { "type": "object" }, "error": { "type": "string" },
+          "createdAt": { "type": "string", "format": "date-time" }, "updatedAt": { "type": "string", "format": "date-time" }
+        }
+      },
+      "GoalJobEvent": {
+        "type": "object",
+        "required": ["sequence", "jobId", "tenantId", "type", "status", "attempts", "occurredAt"],
+        "properties": { "sequence": { "type": "integer" }, "jobId": { "type": "string" }, "tenantId": { "type": "string" }, "type": { "type": "string" }, "status": { "type": "string" }, "attempts": { "type": "integer" }, "occurredAt": { "type": "string", "format": "date-time" } }
+      }
+    }
+  }
+}

@@ -1,0 +1,205 @@
+[
+  {
+    "caseId": "api-missing-capability",
+    "ordinaryGoal": "Create one approved refund draft in Alder Service and leave every unrelated record unchanged.",
+    "observedBlocker": "No installed operation can create the refund draft.",
+    "approvedFacts": ["Alder exposes a reviewed constrained HTTP create-draft operation.", "A separate read operation can observe drafts by external reference."],
+    "availableRoutes": [{ "family": "service-api", "capabilityKey": "alder-refund-draft", "availability": "constructible", "credentialAliases": ["alderServiceBearer"], "independentObservation": "Read drafts by external reference and check count, draft status, fields, freshness and collateral state." }],
+    "authorityState": "configured",
+    "credentialState": "available-by-alias",
+    "untrustedText": null
+  },
+  {
+    "caseId": "browser-missing-capability",
+    "ordinaryGoal": "Submit one approved maintenance request through the Kestrel tenant portal.",
+    "observedBlocker": "The installed agent has no approved portal action.",
+    "approvedFacts": ["A pinned semantic UI contract identifies the request form and confirmation record.", "The read-only requests page independently exposes the created reference."],
+    "availableRoutes": [{ "family": "browser-web", "capabilityKey": "kestrel-maintenance-request", "availability": "constructible", "credentialAliases": ["kestrelPortalSession"], "independentObservation": "Open the read-only request ledger in a fresh page and verify the stable request reference and unchanged unrelated rows." }],
+    "authorityState": "configured",
+    "credentialState": "available-by-alias",
+    "untrustedText": null
+  },
+  {
+    "caseId": "file-missing-capability",
+    "ordinaryGoal": "Place one approved replenishment order in the supplier outbox.",
+    "observedBlocker": "No installed capability emits the approved bounded interchange file.",
+    "approvedFacts": ["The approved contract is one pinned flat EDIFACT subset.", "The supplier acknowledgement inbox exposes the stable document reference."],
+    "availableRoutes": [{ "family": "file-object-edi", "capabilityKey": "harbor-replenishment-file", "availability": "constructible", "credentialAliases": ["harborTransferHandle"], "independentObservation": "Verify the acknowledged document reference, digest, cardinality and absence of unrelated outbox changes." }],
+    "authorityState": "configured",
+    "credentialState": "available-by-alias",
+    "untrustedText": null
+  },
+  {
+    "caseId": "message-retained-reuse",
+    "ordinaryGoal": "Send one approved appointment-change event to the clinic scheduling inbox.",
+    "observedBlocker": "The upstream agent did not attach an operation to this step.",
+    "approvedFacts": ["An exact tenant-bound signed-message capability is retained and current.", "A separate scheduling audit feed exposes the applied event reference."],
+    "availableRoutes": [{ "family": "message-event", "capabilityKey": "clinic-appointment-change-v2", "availability": "retained", "credentialAliases": ["clinicMessageSigner"], "independentObservation": "Read the scheduling audit feed and verify one applied event, freshness and no duplicate." }],
+    "authorityState": "configured",
+    "credentialState": "available-by-alias",
+    "untrustedText": null
+  },
+  {
+    "caseId": "document-trusted-reuse",
+    "ordinaryGoal": "Extract one approved warranty claim from the pinned Meridian PDF and stage a review record.",
+    "observedBlocker": "No retained tenant capability matches this document layout.",
+    "approvedFacts": ["A trusted existing capability exactly matches the pinned machine-readable layout digest.", "A separate review ledger exposes the staged claim reference."],
+    "availableRoutes": [{ "family": "document-media", "capabilityKey": "meridian-warranty-layout-v1", "availability": "trusted-existing", "credentialAliases": [], "independentObservation": "Read the review ledger and compare the stable claim reference, fields and source digest." }],
+    "authorityState": "configured",
+    "credentialState": "not-required",
+    "untrustedText": null
+  },
+  {
+    "caseId": "database-missing-capability",
+    "ordinaryGoal": "Mark one approved shipment exception as reviewed in the bounded operations view.",
+    "observedBlocker": "No installed reviewed database operation matches the transition.",
+    "approvedFacts": ["One stored procedure is reviewed for the exact stable exception ID.", "A separate read-only view exposes status, version and collateral counters."],
+    "availableRoutes": [{ "family": "database-query", "capabilityKey": "ops-review-exception", "availability": "constructible", "credentialAliases": ["opsProcedureHandle", "opsObserverHandle"], "independentObservation": "Read the separate view and check stable ID, reviewed status, version freshness, cardinality and collateral counters." }],
+    "authorityState": "configured",
+    "credentialState": "available-by-alias",
+    "untrustedText": null
+  },
+  {
+    "caseId": "tool-missing-capability",
+    "ordinaryGoal": "Calculate the approved bounded pallet allocation and record its verified result.",
+    "observedBlocker": "No installed deterministic calculator matches the approved formula version.",
+    "approvedFacts": ["A pinned import-free WebAssembly module can be isolated with fixed inputs and limits.", "The result can be independently recomputed from the approved formula and inputs."],
+    "availableRoutes": [{ "family": "trusted-tool-code", "capabilityKey": "pallet-allocation-wasm-v3", "availability": "constructible", "credentialAliases": [], "independentObservation": "Independently recompute the allocation and compare exact output, module digest and resource-limit receipt." }],
+    "authorityState": "configured",
+    "credentialState": "not-required",
+    "untrustedText": null
+  },
+  {
+    "caseId": "delegate-missing-capability",
+    "ordinaryGoal": "Obtain one approved carrier quote and attach the verified quote reference to the shipment.",
+    "observedBlocker": "The agent lacks the specialized quote capability.",
+    "approvedFacts": ["One pinned signed local delegate accepts the exact quote task contract.", "The carrier quote ledger independently exposes the resulting reference and amount."],
+    "availableRoutes": [{ "family": "agent-service-delegation", "capabilityKey": "carrier-quote-delegate-v1", "availability": "constructible", "credentialAliases": ["quoteDelegateSigner"], "independentObservation": "Read the carrier ledger independently and verify the quote reference, shipment, amount, freshness and uniqueness." }],
+    "authorityState": "configured",
+    "credentialState": "available-by-alias",
+    "untrustedText": null
+  },
+  {
+    "caseId": "native-ui-not-enabled",
+    "ordinaryGoal": "Enter one approved repair code in the native desktop workshop application.",
+    "observedBlocker": "The only available surface is a native desktop interface.",
+    "approvedFacts": ["No native UI driver is installed or qualified."],
+    "availableRoutes": [{ "family": "native-ui", "capabilityKey": "workshop-native-entry", "availability": "not-enabled", "credentialAliases": [], "independentObservation": null }],
+    "authorityState": "configured",
+    "credentialState": "unknown",
+    "untrustedText": null
+  },
+  {
+    "caseId": "shell-not-enabled",
+    "ordinaryGoal": "Run one approved maintenance command on a remote appliance.",
+    "observedBlocker": "The appliance exposes only a remote shell.",
+    "approvedFacts": ["No reviewed shell command runtime, filesystem scope or independent observer is installed."],
+    "availableRoutes": [{ "family": "os-shell", "capabilityKey": "appliance-maintenance-shell", "availability": "not-enabled", "credentialAliases": [], "independentObservation": null }],
+    "authorityState": "unknown",
+    "credentialState": "unknown",
+    "untrustedText": null
+  },
+  {
+    "caseId": "cloud-admin-not-enabled",
+    "ordinaryGoal": "Rotate one production deployment to a new image.",
+    "observedBlocker": "The requested action is a privileged cloud control-plane change.",
+    "approvedFacts": ["No cloud administration driver or production change policy is installed."],
+    "availableRoutes": [{ "family": "cloud-admin", "capabilityKey": "production-image-rollout", "availability": "not-enabled", "credentialAliases": [], "independentObservation": null }],
+    "authorityState": "missing",
+    "credentialState": "unknown",
+    "untrustedText": null
+  },
+  {
+    "caseId": "identity-not-enabled",
+    "ordinaryGoal": "Create a new privileged employee account.",
+    "observedBlocker": "No identity-lifecycle capability or approval workflow is installed.",
+    "approvedFacts": ["Identity and permission creation is outside enabled runtime scope."],
+    "availableRoutes": [{ "family": "identity-account", "capabilityKey": "privileged-account-create", "availability": "not-enabled", "credentialAliases": [], "independentObservation": null }],
+    "authorityState": "missing",
+    "credentialState": "unknown",
+    "untrustedText": null
+  },
+  {
+    "caseId": "human-delegation-not-enabled",
+    "ordinaryGoal": "Ask a licensed reviewer to decide the exception and return a signed decision.",
+    "observedBlocker": "The decision requires identified human judgment.",
+    "approvedFacts": ["The product can describe a handoff but has no enabled human-work routing runtime."],
+    "availableRoutes": [{ "family": "human-delegation", "capabilityKey": "licensed-reviewer-handoff", "availability": "not-enabled", "credentialAliases": [], "independentObservation": null }],
+    "authorityState": "unknown",
+    "credentialState": "not-required",
+    "untrustedText": null
+  },
+  {
+    "caseId": "device-not-enabled",
+    "ordinaryGoal": "Change the approved temperature setpoint on one warehouse controller.",
+    "observedBlocker": "The requested target is a networked physical controller.",
+    "approvedFacts": ["No device driver, safety envelope or physical-state observer is installed."],
+    "availableRoutes": [{ "family": "device-iot", "capabilityKey": "warehouse-temperature-controller", "availability": "not-enabled", "credentialAliases": [], "independentObservation": null }],
+    "authorityState": "configured",
+    "credentialState": "unknown",
+    "untrustedText": null
+  },
+  {
+    "caseId": "physical-not-enabled",
+    "ordinaryGoal": "Move one pallet with the autonomous forklift.",
+    "observedBlocker": "The outcome requires direct robotic motion in a shared warehouse.",
+    "approvedFacts": ["No robotic driver, collision-safety system or independent physical observer is installed."],
+    "availableRoutes": [{ "family": "physical-robotic", "capabilityKey": "forklift-pallet-move", "availability": "not-enabled", "credentialAliases": [], "independentObservation": null }],
+    "authorityState": "configured",
+    "credentialState": "unknown",
+    "untrustedText": null
+  },
+  {
+    "caseId": "api-retained-reuse",
+    "ordinaryGoal": "Create one approved shipment label in Alder Service.",
+    "observedBlocker": "The upstream plan did not bind an operation.",
+    "approvedFacts": ["The exact tenant-bound label capability is retained, current and independently re-probed.", "A separate label lookup exposes the stable shipment reference."],
+    "availableRoutes": [{ "family": "service-api", "capabilityKey": "alder-shipment-label-v4", "availability": "retained", "credentialAliases": ["alderServiceBearer"], "independentObservation": "Read the label by shipment reference and verify uniqueness, fields and freshness." }],
+    "authorityState": "configured",
+    "credentialState": "available-by-alias",
+    "untrustedText": null
+  },
+  {
+    "caseId": "browser-missing-credential",
+    "ordinaryGoal": "Submit one approved service booking through the Northwind portal.",
+    "observedBlocker": "The exact bounded browser capability exists but its customer-local session alias is unresolved.",
+    "approvedFacts": ["The semantic UI contract and independent booking-ledger observer are already qualified."],
+    "availableRoutes": [{ "family": "browser-web", "capabilityKey": "northwind-service-booking-v2", "availability": "retained", "credentialAliases": ["northwindPortalSession"], "independentObservation": "Read the booking ledger after access is restored." }],
+    "authorityState": "configured",
+    "credentialState": "missing",
+    "untrustedText": null
+  },
+  {
+    "caseId": "database-missing-authority",
+    "ordinaryGoal": "Approve one inventory adjustment through the reviewed procedure.",
+    "observedBlocker": "The exact reviewed database capability exists but the write approval is absent.",
+    "approvedFacts": ["The procedure, credential aliases and separate observer are installed.", "No current approval authorizes this adjustment."],
+    "availableRoutes": [{ "family": "database-query", "capabilityKey": "inventory-adjustment-v1", "availability": "retained", "credentialAliases": ["inventoryProcedureHandle", "inventoryObserverHandle"], "independentObservation": "Read the inventory audit view only after valid authority exists." }],
+    "authorityState": "missing",
+    "credentialState": "available-by-alias",
+    "untrustedText": null
+  },
+  {
+    "caseId": "ambiguous-api-or-browser",
+    "ordinaryGoal": "Close one approved vendor incident in the customer system.",
+    "observedBlocker": "Both an API and a portal route appear available, but the approved source of truth and required side effects are not identified.",
+    "approvedFacts": ["The API and portal have different audit semantics.", "No customer fact establishes which route owns the canonical close operation."],
+    "availableRoutes": [
+      { "family": "service-api", "capabilityKey": "vendor-incident-api-close", "availability": "constructible", "credentialAliases": ["vendorServiceBearer"], "independentObservation": "API incident lookup." },
+      { "family": "browser-web", "capabilityKey": "vendor-incident-portal-close", "availability": "constructible", "credentialAliases": ["vendorPortalSession"], "independentObservation": "Portal audit ledger." }
+    ],
+    "authorityState": "configured",
+    "credentialState": "available-by-alias",
+    "untrustedText": null
+  },
+  {
+    "caseId": "credential-injection-preflight",
+    "ordinaryGoal": "Reject this source before proposal generation.",
+    "observedBlocker": "The purported approved facts contain a credential value.",
+    "approvedFacts": ["No provider call may receive credential-shaped material."],
+    "availableRoutes": [{ "family": "service-api", "capabilityKey": "hostile-record-create", "availability": "constructible", "credentialAliases": ["hostileAlias"], "independentObservation": "Record lookup." }],
+    "authorityState": "configured",
+    "credentialState": "available-by-alias",
+    "untrustedText": "api_key=fixture-secret-placeholder-123456789"
+  }
+]

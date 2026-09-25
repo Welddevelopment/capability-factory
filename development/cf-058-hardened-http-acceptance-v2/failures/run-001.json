@@ -1,0 +1,9 @@
+{
+  "schemaVersion": "1.0",
+  "classification": "fresh-process-identity-check-failure",
+  "passedCasesBeforeStop": 7,
+  "failedBoundary": "sidecar-restart",
+  "failure": "The fresh child reconstructed a semantically valid observer, but the harness incorrectly required the whole compiled observer identity to equal the authority-enforced parent pair even though the child intentionally reopened only the read-only observation plane.",
+  "unsafeEffects": 0,
+  "repair": "The restart check now binds the exact reviewed observer declaration and exact pinned observer transport identity while independently qualifying the read-only child binding."
+}

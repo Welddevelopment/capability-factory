@@ -1,0 +1,8 @@
+*
+!package.json
+!pnpm-lock.yaml
+!pnpm-workspace.yaml
+!tsconfig.json
+!tsconfig.pilot-container.json
+!src/
+!src/**

@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "1.0",
+  "evidenceBoundary": "fictional-local-packaging-rehearsal-only",
+  "actionBinding": {
+    "driverId": "northstar-action-http-driver",
+    "targetAlias": "northstar_system",
+    "credentialAlias": "northstarCredential",
+    "allowedOperations": [
+      "readInspection",
+      "createDraftInspection"
+    ],
+    "implementationState": "fixture-declared-not-customer-runtime"
+  },
+  "observationBinding": {
+    "sourceId": "northstar-independent-read-model",
+    "observationKeys": [
+      "inspection",
+      "matching-inspections",
+      "incorrect-side-effects",
+      "observed-at"
+    ],
+    "independentFromActionBinding": true,
+    "implementationState": "fixture-declared-not-customer-observer"
+  },
+  "reviewDecisions": {
+    "operationInventoryReviewed": true,
+    "authorityBoundaryReviewed": true,
+    "observableCompletionReviewed": true,
+    "disposableResetReviewed": true,
+    "confirmedByAlias": "automatedFixtureOwner",
+    "confirmedAt": "2026-08-14T01:00:00.000Z"
+  }
+}

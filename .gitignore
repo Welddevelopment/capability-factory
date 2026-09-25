@@ -1,0 +1,24 @@
+.env
+.env.*
+!.env.example
+__pycache__/
+.pytest_cache/
+.venv/
+node_modules/
+dist/
+build/
+*.log
+artifacts/
+held-out/
+.pnpm-store/
+coverage/
+.local-tools/
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+apps/console/.data/
+
+# Private/raw artifacts - must not reach GitHub (protocol: sanitized reports are the publishable surface)
+private/
+output/
+tmp/

@@ -1,0 +1,153 @@
+{
+  "schemaVersion": "1.0",
+  "rehearsalType": "automated-author-independent-packaging-rehearsal",
+  "evidenceBoundary": "This is an automated local packaging rehearsal using a fictional declarative fixture. It is not a human onboarding study, customer evidence, real-system acceptance, production readiness, or an under-one-day result.",
+  "spendUsd": 0,
+  "modelCalls": 0,
+  "fixturePackage": {
+    "packageDirectory": "/Users/joeljeon/Desktop/Capability Factory/validation/fresh-start-onboarding-teardown-v1/package",
+    "intakeDigest": "5764436dd39198b211159c7927fe8f5372b5294bec2b907e3ac03d1aa476d794",
+    "bindingDeclarationDigest": "e608ab4bdc41a36a2824f9cda330762d8af4162551d80e08c7fc415afaab1eff",
+    "actionBindingDigest": "207637b95284bda89045082354e32d5582b2826a409109570c4fddb036d4f1c3",
+    "observationBindingDigest": "62f9529c37252f88fc4bc170b408c00f6aeb49fd89ce3c241efce219ec174730",
+    "genericAcceptanceBindingDigest": "5c6544256a909973d7cfdc1f73adb97b7b9e725430cbe8b946257e61f99bebc2",
+    "acceptanceFixtureDigest": "75dfab3dd0358b9cdf01c5a714802f924638ae552ed3d88f7ae75dafd993c1ae",
+    "importedRepositoryHelperFixtures": false
+  },
+  "measuredJourney": {
+    "machineWallClockMs": 346.055,
+    "participantCommands": [
+      "pnpm product:onboarding:prepare start --state /Users/joeljeon/Desktop/Capability Factory/reports/fresh-start-onboarding-teardown-artifacts-2026-08-14/preparation.sqlite --input /Users/joeljeon/Desktop/Capability Factory/validation/fresh-start-onboarding-teardown-v1/package/intake.json --include-artifacts",
+      "pnpm product:onboarding:prepare review --state /Users/joeljeon/Desktop/Capability Factory/reports/fresh-start-onboarding-teardown-artifacts-2026-08-14/preparation.sqlite --input /Users/joeljeon/Desktop/Capability Factory/reports/fresh-start-onboarding-teardown-artifacts-2026-08-14/review.json --include-artifacts",
+      "pnpm product:onboarding:prepare status --state /Users/joeljeon/Desktop/Capability Factory/reports/fresh-start-onboarding-teardown-artifacts-2026-08-14/preparation.sqlite --session fresh-start-teardown-session --include-artifacts",
+      "pnpm product:onboarding:prepare events --state /Users/joeljeon/Desktop/Capability Factory/reports/fresh-start-onboarding-teardown-artifacts-2026-08-14/preparation.sqlite --session fresh-start-teardown-session",
+      "generic acceptance executor: run fixed ten-case campaign",
+      "generic acceptance executor: reload completed campaign from durable state"
+    ],
+    "commandCount": 6,
+    "preparationStatus": "acceptance-scaffold-ready",
+    "acceptanceStatus": "completed",
+    "timeToPreparationReadyMs": 173.351,
+    "timeToAcceptanceCompleteMs": 345.603,
+    "actualHumanActiveMinutes": null,
+    "underOneDayClaimSupported": false
+  },
+  "confirmations": {
+    "explicitFixtureConfirmations": [
+      "bounded workflow and exact requested operations",
+      "approved target and credential aliases",
+      "read and write authority, limits, forbidden actions, and retry policy",
+      "observable completion, duplicate, collateral-effect, and freshness rules",
+      "independence of the fictional observation binding",
+      "disposable fixture reset and durable-state requirements"
+    ],
+    "automaticallyDigestBound": [
+      "adapter proposal",
+      "verifier contract",
+      "authority compilation",
+      "action/observer binding declarations",
+      "acceptance declaration"
+    ]
+  },
+  "generatedArtifacts": [
+    "/Users/joeljeon/Desktop/Capability Factory/reports/fresh-start-onboarding-teardown-artifacts-2026-08-14/preparation.sqlite",
+    "/Users/joeljeon/Desktop/Capability Factory/reports/fresh-start-onboarding-teardown-artifacts-2026-08-14/review.json",
+    "/Users/joeljeon/Desktop/Capability Factory/reports/fresh-start-onboarding-teardown-artifacts-2026-08-14/acceptance-state/fresh-start-teardown-campaign.generic-acceptance.json",
+    "/Users/joeljeon/Desktop/Capability Factory/reports/fresh-start-onboarding-teardown-artifacts-2026-08-14/acceptance-evidence/read-only-happy-path.external-state.json",
+    "/Users/joeljeon/Desktop/Capability Factory/reports/fresh-start-onboarding-teardown-artifacts-2026-08-14/acceptance-evidence/approved-write.external-state.json",
+    "/Users/joeljeon/Desktop/Capability Factory/reports/fresh-start-onboarding-teardown-artifacts-2026-08-14/acceptance-evidence/fresh-process-reuse.external-state.json",
+    "/Users/joeljeon/Desktop/Capability Factory/reports/fresh-start-onboarding-teardown-artifacts-2026-08-14/acceptance-evidence/missing-credential.external-state.json",
+    "/Users/joeljeon/Desktop/Capability Factory/reports/fresh-start-onboarding-teardown-artifacts-2026-08-14/acceptance-evidence/missing-permission.external-state.json",
+    "/Users/joeljeon/Desktop/Capability Factory/reports/fresh-start-onboarding-teardown-artifacts-2026-08-14/acceptance-evidence/lost-response-reconciliation.external-state.json",
+    "/Users/joeljeon/Desktop/Capability Factory/reports/fresh-start-onboarding-teardown-artifacts-2026-08-14/acceptance-evidence/wrong-or-partial-outcome.external-state.json",
+    "/Users/joeljeon/Desktop/Capability Factory/reports/fresh-start-onboarding-teardown-artifacts-2026-08-14/acceptance-evidence/sidecar-restart.external-state.json",
+    "/Users/joeljeon/Desktop/Capability Factory/reports/fresh-start-onboarding-teardown-artifacts-2026-08-14/acceptance-evidence/duplicate-submission.external-state.json",
+    "/Users/joeljeon/Desktop/Capability Factory/reports/fresh-start-onboarding-teardown-artifacts-2026-08-14/acceptance-evidence/conflicting-parent-reuse.external-state.json",
+    "/Users/joeljeon/Desktop/Capability Factory/reports/fresh-start-onboarding-teardown-artifacts-2026-08-14/teardown-report.json"
+  ],
+  "restartAndReuse": {
+    "preparationReadFromFreshCliProcess": true,
+    "preparationSnapshotDigestStable": true,
+    "acceptanceReloadedFromDurableStore": true,
+    "acceptanceReceiptCountStable": true,
+    "acceptanceAttemptsStable": true
+  },
+  "acceptance": {
+    "passed": true,
+    "cases": 10,
+    "receipts": 10,
+    "incorrectSideEffects": 0
+  },
+  "customerSpecificWork": {
+    "executableCustomerCodeWrittenInRehearsal": 0,
+    "bindingDeclarationLines": 33,
+    "acceptanceFixtureDeclarationLines": 76,
+    "explicitProxy": "The fixture uses declarative binding and case files as a measurable proxy. A real onboarding still needs executable customer-local action and observation bindings; this rehearsal does not count those declarations as working customer code."
+  },
+  "authorOnlyStepDisposition": [
+    {
+      "step": "Describe the bounded workflow, exact operations, and business outcome.",
+      "disposition": "ordinary-language-decision-artifact",
+      "detail": "Captured in intake.json with explicit customerConfirmed fields; the factory does not infer consequential scope."
+    },
+    {
+      "step": "Extract operations, credentials, request shapes, and retry risks from approved API material.",
+      "disposition": "automated",
+      "detail": "The durable preparation CLI generated a provenance-bound proposal from the local OpenAPI document."
+    },
+    {
+      "step": "Specify permissions, limits, approval, and retry rules.",
+      "disposition": "ordinary-language-decision-artifact",
+      "detail": "Captured as explicit authority-wizard answers and compiled fail-closed."
+    },
+    {
+      "step": "Calculate and copy proposal, verifier, authority, and binding digests into review input.",
+      "disposition": "automated",
+      "detail": "The teardown runner derived and wrote the exact review artifact; stale or mutated artifacts remain rejected by the workflow."
+    },
+    {
+      "step": "Implement the customer-local action runtime binding.",
+      "disposition": "precise-blocker",
+      "detail": "The current factory records and digest-binds a declaration but does not generate or prove the executable action binding."
+    },
+    {
+      "step": "Implement the independently authenticated outcome observer binding.",
+      "disposition": "precise-blocker",
+      "detail": "The current factory proposes the verifier contract but does not generate and qualify the customer-specific observation adapter."
+    },
+    {
+      "step": "Execute and resume the fixed ten-case acceptance campaign.",
+      "disposition": "automated",
+      "detail": "The generic executor preserved case order, receipts, safety accounting, durable reload, and no-repeat behavior."
+    },
+    {
+      "step": "Measure real engineer onboarding time and comprehension.",
+      "disposition": "precise-blocker",
+      "detail": "No fresh human participated; machine runtime cannot be reported as engineer active time or under-one-day evidence."
+    }
+  ],
+  "preciseRemainingBlockers": [
+    {
+      "blockerId": "customer-action-runtime-binding-not-generated",
+      "requiredWork": "Generate or implement the exact customer-local operation binding, then independently review and digest-bind it before execution.",
+      "ownerClass": "platform-engineer"
+    },
+    {
+      "blockerId": "customer-observer-binding-not-generated",
+      "requiredWork": "Generate or implement the separately authenticated observation adapter and pass negative-control qualification before it can verify outcomes.",
+      "ownerClass": "platform-engineer"
+    },
+    {
+      "blockerId": "real-credential-and-environment-activation-missing",
+      "requiredWork": "Provide customer-local credential aliases, disposable access, and an activation decision; preparation itself grants no authority.",
+      "ownerClass": "workspace-admin"
+    },
+    {
+      "blockerId": "fresh-human-onboarding-evidence-not-run",
+      "requiredWork": "A genuinely fresh platform engineer must use the frozen package while active time, questions, edits, and author interventions are observed.",
+      "ownerClass": "fresh-human-evaluator"
+    }
+  ],
+  "conclusion": "The clean package reached acceptance-scaffold-ready and completed the fictional ten-case packaging rehearsal with durable reload and zero surviving incorrect effects. The core usability gap is no longer command orchestration; it is producing and qualifying the two executable customer-specific bindings without author knowledge.",
+  "reportPath": "/Users/joeljeon/Desktop/Capability Factory/reports/fresh-start-onboarding-teardown-artifacts-2026-08-14/teardown-report.json"
+}

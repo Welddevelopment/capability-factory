@@ -1,0 +1,10 @@
+{
+  "caseId": "lost-response-reconciliation",
+  "intendedWrites": 1,
+  "incorrectSideEffects": 0,
+  "checks": [
+    "the fictional write committed before response loss",
+    "independent state reconciliation found one record and prevented retry"
+  ],
+  "fixtureClassification": "expected-case-behavior-observed"
+}

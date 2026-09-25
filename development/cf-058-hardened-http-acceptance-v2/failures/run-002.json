@@ -1,0 +1,9 @@
+{
+  "schemaVersion": "1.0",
+  "classification": "fresh-process-transport-identity-failure",
+  "passedCasesBeforeStop": 7,
+  "failedBoundary": "sidecar-restart",
+  "failure": "The child used a 120-request observation ceiling while the frozen parent observer used 240, so exact pinned transport identity correctly failed.",
+  "unsafeEffects": 0,
+  "repair": "The child now reconstructs the exact 240-request pinned observer configuration."
+}

@@ -1,0 +1,277 @@
+{
+  "schemaVersion": "1.0",
+  "planId": "acceptance-28f35f114c05a0835763cabc",
+  "adapterId": "solstice_maintenance",
+  "adapterVersion": "1.0.0",
+  "workflowKey": "schedule-approved-maintenance",
+  "executable": false,
+  "passed": false,
+  "status": "scaffold-only",
+  "cases": [
+    {
+      "caseId": "read-only-happy-path",
+      "title": "Read-only success",
+      "purpose": "Prove a bounded read can complete without creating any external write.",
+      "status": "declared-not-run",
+      "preconditions": [
+        "Disposable state is reset.",
+        "At least one approved read operation is available."
+      ],
+      "actions": [
+        "Submit a read-only work item.",
+        "Observe the result through the independent outcome source."
+      ],
+      "requiredAssertions": [
+        "The intended read result is correct.",
+        "Write attempts equal zero.",
+        "Incorrect side effects equal zero."
+      ],
+      "requiredArtifacts": [
+        "acceptance://read-only-happy-path/pre-state-digest",
+        "acceptance://read-only-happy-path/event-ledger",
+        "acceptance://read-only-happy-path/independent-outcome-receipt",
+        "acceptance://read-only-happy-path/post-state-digest"
+      ],
+      "blockers": []
+    },
+    {
+      "caseId": "approved-write",
+      "title": "Approved write",
+      "purpose": "Prove an explicitly authorized write changes only the intended external state.",
+      "status": "declared-not-run",
+      "preconditions": [
+        "Disposable state is reset.",
+        "Credential alias resolves locally.",
+        "Exact write permission is active."
+      ],
+      "actions": [
+        "Submit one bounded write.",
+        "Read external state through the independent observer."
+      ],
+      "requiredAssertions": [
+        "Exactly one intended write exists.",
+        "Completion criteria pass.",
+        "Collateral state is unchanged."
+      ],
+      "requiredArtifacts": [
+        "acceptance://approved-write/pre-state-digest",
+        "acceptance://approved-write/event-ledger",
+        "acceptance://approved-write/independent-outcome-receipt",
+        "acceptance://approved-write/post-state-digest"
+      ],
+      "blockers": []
+    },
+    {
+      "caseId": "fresh-process-reuse",
+      "title": "Fresh-process reuse",
+      "purpose": "Prove a verified retained capability can be loaded after process restart instead of rebuilt.",
+      "status": "declared-not-run",
+      "preconditions": [
+        "An earlier successful case retained a verified capability.",
+        "The process is stopped without deleting durable registry state."
+      ],
+      "actions": [
+        "Start a fresh process.",
+        "Submit an equivalent work item."
+      ],
+      "requiredAssertions": [
+        "The retained version is selected.",
+        "No new capability is built.",
+        "The external outcome independently passes."
+      ],
+      "requiredArtifacts": [
+        "acceptance://fresh-process-reuse/pre-state-digest",
+        "acceptance://fresh-process-reuse/event-ledger",
+        "acceptance://fresh-process-reuse/independent-outcome-receipt",
+        "acceptance://fresh-process-reuse/post-state-digest"
+      ],
+      "blockers": []
+    },
+    {
+      "caseId": "missing-credential",
+      "title": "Missing credential fails closed",
+      "purpose": "Prove an absent customer-local credential creates a precise handoff before external execution.",
+      "status": "declared-not-run",
+      "preconditions": [
+        "The required credential alias is declared but deliberately unresolved."
+      ],
+      "actions": [
+        "Submit a work item that requires the missing alias."
+      ],
+      "requiredAssertions": [
+        "The result is blocked for the exact alias.",
+        "Write attempts equal zero.",
+        "No credential value enters evidence."
+      ],
+      "requiredArtifacts": [
+        "acceptance://missing-credential/pre-state-digest",
+        "acceptance://missing-credential/event-ledger",
+        "acceptance://missing-credential/independent-outcome-receipt",
+        "acceptance://missing-credential/post-state-digest"
+      ],
+      "blockers": []
+    },
+    {
+      "caseId": "missing-permission",
+      "title": "Missing permission fails closed",
+      "purpose": "Prove a valid capability and credential cannot create authority.",
+      "status": "declared-not-run",
+      "preconditions": [
+        "Credential alias resolves locally.",
+        "The exact required permission is absent."
+      ],
+      "actions": [
+        "Submit a work item that requires the absent permission."
+      ],
+      "requiredAssertions": [
+        "The result is blocked for the exact permission.",
+        "Write attempts equal zero.",
+        "No broader permission is inferred."
+      ],
+      "requiredArtifacts": [
+        "acceptance://missing-permission/pre-state-digest",
+        "acceptance://missing-permission/event-ledger",
+        "acceptance://missing-permission/independent-outcome-receipt",
+        "acceptance://missing-permission/post-state-digest"
+      ],
+      "blockers": []
+    },
+    {
+      "caseId": "lost-response-reconciliation",
+      "title": "Lost-response reconciliation",
+      "purpose": "Prove a successful external write is reconciled before retry when its transport response is lost.",
+      "status": "declared-not-run",
+      "preconditions": [
+        "The transport can deterministically lose one response after committing the write.",
+        "A separate read path can observe the write."
+      ],
+      "actions": [
+        "Execute one approved write and discard its response.",
+        "Reconcile external state before considering retry."
+      ],
+      "requiredAssertions": [
+        "The committed outcome is recognized.",
+        "The write is not repeated.",
+        "Exactly one intended external record exists."
+      ],
+      "requiredArtifacts": [
+        "acceptance://lost-response-reconciliation/pre-state-digest",
+        "acceptance://lost-response-reconciliation/event-ledger",
+        "acceptance://lost-response-reconciliation/independent-outcome-receipt",
+        "acceptance://lost-response-reconciliation/post-state-digest"
+      ],
+      "blockers": []
+    },
+    {
+      "caseId": "wrong-or-partial-outcome",
+      "title": "Partial or wrong outcome is rejected",
+      "purpose": "Prove execution success cannot substitute for independently observed business completion.",
+      "status": "declared-not-run",
+      "preconditions": [
+        "A fixture can create a partial or incorrect external result."
+      ],
+      "actions": [
+        "Execute the bounded action against the partial-result fixture.",
+        "Observe completion and collateral state independently."
+      ],
+      "requiredAssertions": [
+        "The outcome does not pass.",
+        "The capability is not retained as healthy.",
+        "The incident or handoff names the failed condition."
+      ],
+      "requiredArtifacts": [
+        "acceptance://wrong-or-partial-outcome/pre-state-digest",
+        "acceptance://wrong-or-partial-outcome/event-ledger",
+        "acceptance://wrong-or-partial-outcome/independent-outcome-receipt",
+        "acceptance://wrong-or-partial-outcome/post-state-digest"
+      ],
+      "blockers": []
+    },
+    {
+      "caseId": "sidecar-restart",
+      "title": "Restart recovery",
+      "purpose": "Prove durable work identity and external reconciliation survive a customer-local runtime restart.",
+      "status": "declared-not-run",
+      "preconditions": [
+        "A work item is durably queued or executing.",
+        "The process can be terminated at a fixed checkpoint."
+      ],
+      "actions": [
+        "Terminate the process.",
+        "Restart from the same state directory.",
+        "Reconcile before continuing."
+      ],
+      "requiredAssertions": [
+        "The same parent and work-item identities are recovered.",
+        "No duplicate write occurs.",
+        "The final state is independently classified."
+      ],
+      "requiredArtifacts": [
+        "acceptance://sidecar-restart/pre-state-digest",
+        "acceptance://sidecar-restart/event-ledger",
+        "acceptance://sidecar-restart/independent-outcome-receipt",
+        "acceptance://sidecar-restart/post-state-digest"
+      ],
+      "blockers": []
+    },
+    {
+      "caseId": "duplicate-submission",
+      "title": "Duplicate parent submission",
+      "purpose": "Prove the same parent request cannot start a second business operation.",
+      "status": "declared-not-run",
+      "preconditions": [
+        "A stable parent identity and request digest are available."
+      ],
+      "actions": [
+        "Submit the identical parent request twice."
+      ],
+      "requiredAssertions": [
+        "Both submissions resolve to one durable job.",
+        "No duplicate child work or external write exists."
+      ],
+      "requiredArtifacts": [
+        "acceptance://duplicate-submission/pre-state-digest",
+        "acceptance://duplicate-submission/event-ledger",
+        "acceptance://duplicate-submission/independent-outcome-receipt",
+        "acceptance://duplicate-submission/post-state-digest"
+      ],
+      "blockers": []
+    },
+    {
+      "caseId": "conflicting-parent-reuse",
+      "title": "Conflicting parent reuse",
+      "purpose": "Prove a reused parent identity with different intent is rejected rather than merged.",
+      "status": "declared-not-run",
+      "preconditions": [
+        "One parent identity is already bound to an accepted request digest."
+      ],
+      "actions": [
+        "Submit different goal content using the same parent identity."
+      ],
+      "requiredAssertions": [
+        "The second request is rejected as a conflict.",
+        "Existing work is unchanged.",
+        "Write attempts from the conflicting request equal zero."
+      ],
+      "requiredArtifacts": [
+        "acceptance://conflicting-parent-reuse/pre-state-digest",
+        "acceptance://conflicting-parent-reuse/event-ledger",
+        "acceptance://conflicting-parent-reuse/independent-outcome-receipt",
+        "acceptance://conflicting-parent-reuse/post-state-digest"
+      ],
+      "blockers": []
+    }
+  ],
+  "blockers": [],
+  "inputDigest": "28f35f114c05a0835763cabc9b30e9ebd061e69e6c17c80c8f58b8e629f1d1b1",
+  "derivationReceipt": {
+    "adapterProposalDigest": "0085f331376568a8b281d09915f2fc88ebabe8b2283344920567f8cee716b16c",
+    "verifierContractDigest": "df78bf4bdfdf07b6986108899425f5667be858620bb0b286330ce49302727f3c",
+    "authorityCompilationDigest": "af495fa602796a50b920d6516085e018d1b7b1d8a6010581e83f7db2cdaa2fb3",
+    "authorityRuntimeBindingDigest": "75064ef739f91eca22969da6d845d4bf5af36d57355c700c6f299b2e5bf477ba",
+    "observationAdapterBindingDigest": "f2861558b60eb3032ea31a175babd58f78c9e7d379b658000d2c12078e7393dd",
+    "confirmedByAlias": "fixturePlatformEngineer",
+    "confirmedAt": "2026-08-11T23:21:25.363Z",
+    "receiptDigest": "fc7c311f0b5888269142b8df7136761608e350ef44cf61a55964b7b120620492"
+  }
+}

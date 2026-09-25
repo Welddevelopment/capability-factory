@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "1.0",
+  "campaignId": "cf-007-pinned-document-clean-family-v1",
+  "familySha256": "aa9a5c2e1471ed3156f29774df85496ebde3557327cfa010d9037f14c983d7ca",
+  "implementation": [
+    {
+      "path": "src/product/pinned-document-factory.ts",
+      "sha256": "71e77698dcf522e337c472e0422a7f3baf4b7914d94f49a090c53b988bfd62ab"
+    },
+    {
+      "path": "src/product/pinned-document-clean-family.ts",
+      "sha256": "f37f58304b102c3c512260b5321bb9368f8b41450cf537dd623ea8d3debafe0a"
+    }
+  ],
+  "sealDigest": "963633f159d1c7e7c1bba45f6dc96e672ce34273799ce5e9b141cadbe1be161f"
+}

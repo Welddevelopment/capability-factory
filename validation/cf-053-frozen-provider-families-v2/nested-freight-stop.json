@@ -1,0 +1,115 @@
+{
+  "schemaVersion": "1.0",
+  "familyId": "nested-freight-stop",
+  "state": "frozen-fictional-unsupported-control",
+  "fictional": true,
+  "provider": {
+    "providerId": "freight-consolidation-control",
+    "sourceKind": "reference-json",
+    "localReference": "fixture://cf053/nested-freight-stop",
+    "approvedImports": [
+      "freight-consolidation-write-sdk",
+      "freight-consolidation-audit-sdk"
+    ],
+    "documentation": {
+      "title": "Freight Consolidation Control local SDK reference",
+      "version": "2026-08-14-fixture-v1",
+      "methods": [
+        {
+          "role": "action",
+          "module": "freight-consolidation-write-sdk",
+          "className": "ConsolidationWriter",
+          "methodName": "createConsolidation",
+          "overloadId": "nested-lines-v1",
+          "sourcePointer": "#/methods/createConsolidation",
+          "parameters": [
+            { "name": "consolidationRef", "type": "string", "required": true },
+            { "name": "shipmentLines", "type": "Array<{ shipmentRef: string; weightKg: number }>", "required": true }
+          ],
+          "returnType": "Promise<Record<string, string | number | boolean | null>>",
+          "errorTypes": ["SdkError", "Unauthorized", "Conflict"],
+          "authAliasRequirements": ["cred.freight_writer"],
+          "pagination": "none",
+          "retryCandidate": "idempotency-key",
+          "idempotencyCandidate": "consolidationRef"
+        },
+        {
+          "role": "no-write-probe",
+          "module": "freight-consolidation-write-sdk",
+          "className": "ConsolidationWriter",
+          "methodName": "probeConsolidation",
+          "overloadId": "nested-lines-v1",
+          "sourcePointer": "#/methods/probeConsolidation",
+          "parameters": [
+            { "name": "consolidationRef", "type": "string", "required": true }
+          ],
+          "returnType": "Promise<Record<string, string | number | boolean | null>>",
+          "errorTypes": ["SdkError", "Unauthorized"],
+          "authAliasRequirements": ["cred.freight_writer"],
+          "pagination": "none",
+          "retryCandidate": "read-only",
+          "idempotencyCandidate": null
+        },
+        {
+          "role": "reconciliation-readback",
+          "module": "freight-consolidation-write-sdk",
+          "className": "ConsolidationWriter",
+          "methodName": "findConsolidation",
+          "overloadId": "nested-lines-v1",
+          "sourcePointer": "#/methods/findConsolidation",
+          "parameters": [
+            { "name": "consolidationRef", "type": "string", "required": true }
+          ],
+          "returnType": "Promise<Record<string, string | number | boolean | null>>",
+          "errorTypes": ["SdkError", "Unauthorized"],
+          "authAliasRequirements": ["cred.freight_writer"],
+          "pagination": "none",
+          "retryCandidate": "read-only",
+          "idempotencyCandidate": null
+        },
+        {
+          "role": "independent-observer",
+          "module": "freight-consolidation-audit-sdk",
+          "className": "FreightAuditReader",
+          "methodName": "observeConsolidation",
+          "overloadId": "nested-lines-v1",
+          "sourcePointer": "#/methods/observeConsolidation",
+          "parameters": [
+            { "name": "consolidationRef", "type": "string", "required": true }
+          ],
+          "returnType": "Promise<Record<string, string | number | boolean | null>>",
+          "errorTypes": ["SdkError", "Unauthorized"],
+          "authAliasRequirements": ["cred.freight_observer"],
+          "pagination": "none",
+          "retryCandidate": "read-only",
+          "idempotencyCandidate": null
+        }
+      ]
+    }
+  },
+  "blockedWorkflow": {
+    "ordinaryGoal": "Create one freight consolidation containing the approved shipment lines.",
+    "requiredOutcome": "The nested shipment-line collection is preserved exactly in one consolidation.",
+    "input": {
+      "consolidationRef": "FCS-053-009",
+      "shipmentLines": [
+        { "shipmentRef": "SHP-9301", "weightKg": 122.5 },
+        { "shipmentRef": "SHP-9302", "weightKg": 88 }
+      ]
+    }
+  },
+  "expectedStop": {
+    "phase": "strict-subset-validation-before-candidate-generation",
+    "blockerCode": "unsupported-collection-parameter",
+    "sourcePointer": "#/methods/createConsolidation/parameters/shipmentLines",
+    "messageMustMatch": "nested, collection, union or custom parameter",
+    "candidateGenerated": false,
+    "transportLaunched": false,
+    "authorityGranted": false,
+    "businessWrites": 0,
+    "observerWrites": 0
+  },
+  "executionAuthorityEffect": "none",
+  "activationEffect": "none"
+}
+

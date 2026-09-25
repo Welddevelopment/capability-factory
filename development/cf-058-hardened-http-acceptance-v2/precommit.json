@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "1.0",
+  "checkpointId": "CF-058",
+  "campaignId": "cf058-cold-chain-quarantine-v2",
+  "state": "frozen-before-v2-execution",
+  "inheritsFrozenCandidateAndCasesFrom": "../cf-058-hardened-http-acceptance-v1/precommit.json",
+  "inheritedPrecommitSha256": "6802b43ddb0a3b635cfbd271e820b5af8ea48b541be1e33b5f9c05bedd678d5a",
+  "candidateOrCaseChanges": "none",
+  "repairsAllowedBeforeThisFreeze": [
+    "durable fail-closed CF-053 production-derived candidate reopen after process restart",
+    "exercise revocation against the existing live authority binding before successor activation",
+    "propagate the current authority-bound pair after lease-generation recovery",
+    "replace in-process restart reconstruction with a genuine fresh child that reopens campaign state, current workspace-authority state and the separately authenticated observer"
+  ],
+  "v2AdditionalRequirements": [
+    "before the first acceptance case, write and integrity-bind a dynamic execution manifest containing exact source hashes, OpenAPI hashes, candidate and causal-bridge identities, TLS leaf pins, authority/activation identities, bound-pair identity and ordered case list",
+    "fresh-process reuse must reopen only the retained content-addressed registry candidate and original workspace issuer; it must not re-derive planning state",
+    "precommit lost-response recovery must prove expired-unconsumed generation replacement before a consumed not-started recovery",
+    "sidecar restart reconciliation must run in a new Node process and independently reopen the interrupted campaign, current workspace activation and read-only observer binding",
+    "credential values remain process-local environment inputs and never enter the frozen execution manifest or saved evidence"
+  ],
+  "expectedTotals": {
+    "acceptanceCases": 10,
+    "businessWrites": 7,
+    "candidateBuilds": 1,
+    "survivingIncorrectSideEffects": 0,
+    "observerWrites": 0,
+    "blindRetries": 0,
+    "unresolvedAuthorityReservations": 0,
+    "modelCalls": 0,
+    "paidSpendUsd": 0
+  },
+  "failureRule": "Any new failure is preserved under v2/failures and can be repaired only in a newly frozen version.",
+  "claimBoundary": "One author-designed fictional constrained-HTTP candidate in local disposable processes. Not customer, production, arbitrary-API, broad-generality, independent held-out, hostile-local-admin, public, universal-capability or CF-DAS integration evidence."
+}

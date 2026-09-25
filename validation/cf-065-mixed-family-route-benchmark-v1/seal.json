@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "1.0",
+  "campaignId": "cf-065-mixed-family-route-benchmark-v1",
+  "state": "frozen-prepared-not-executed",
+  "sourceFiles": [
+    { "path": "campaign.json", "sha256": "2d1e8d867373a54d63a63ea8dc876c59dca936f20f81788d5acc16b279ea007e" },
+    { "path": "materials.json", "sha256": "8fe1f13dbb70276aeb9d14bcfebfbf3ca0c59c29ed808177cf4f4a4b228aa3e4" },
+    { "path": "oracle.json", "sha256": "36d91bd0889d3566a7ea4b9f8fe97ad5d319d8d6a53c9f66143c4f306b706f06" }
+  ],
+  "modelCalls": 0,
+  "paidSpendUsd": 0,
+  "executionAuthorized": false,
+  "sealDigest": "df97a58b7fc626944bafd9742b90335325cab80a806b149da40ae43ced8cc6d2"
+}

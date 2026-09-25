@@ -1,0 +1,58 @@
+name: capability-factory-controlled-pilot
+
+# Release installation shape: both services must use the same immutable image
+# reference, for example registry.example/capability-factory/pilot@sha256:...
+x-pilot-image: &pilot-image
+  image: "${CF_IMAGE_REF:?set CF_IMAGE_REF to an immutable image@sha256 digest}"
+  pull_policy: missing
+
+services:
+  setup:
+    <<: *pilot-image
+    profiles: ["setup"]
+    user: "${CF_UID:-1000}:${CF_GID:-1000}"
+    read_only: true
+    cap_drop: ["ALL"]
+    security_opt: ["no-new-privileges:true"]
+    tmpfs: ["/tmp:rw,noexec,nosuid,size=64m"]
+    volumes:
+      - ./pilot-state:/pilot
+      - ./runtime.mjs:/bootstrap/runtime.mjs:ro
+    command:
+      - init
+      - --root
+      - /pilot
+      - --installation
+      - ${CF_INSTALLATION_ID:?set CF_INSTALLATION_ID}
+      - --tenant
+      - ${CF_TENANT_ID:?set CF_TENANT_ID}
+      - --version
+      - ${CF_PRODUCT_VERSION:?set CF_PRODUCT_VERSION}
+      - --adapter
+      - /bootstrap/runtime.mjs
+      - --port
+      - "4317"
+
+  sidecar:
+    <<: *pilot-image
+    user: "${CF_UID:-1000}:${CF_GID:-1000}"
+    init: true
+    restart: unless-stopped
+    read_only: true
+    cap_drop: ["ALL"]
+    security_opt: ["no-new-privileges:true"]
+    pids_limit: 128
+    tmpfs: ["/tmp:rw,noexec,nosuid,size=64m"]
+    environment:
+      CF_CONTAINER_LOCALHOST_PUBLISH: acknowledged
+    ports:
+      - "127.0.0.1:${CF_PORT:-4317}:4317"
+    volumes:
+      - ./pilot-state:/pilot
+    command: ["serve", "--root", "/pilot", "--container-internal"]
+    healthcheck:
+      test: ["CMD", "/usr/local/bin/node", "-e", "fetch('http://127.0.0.1:4317/ready').then(r=>{if(!r.ok)process.exit(1)}).catch(()=>process.exit(1))"]
+      interval: 10s
+      timeout: 3s
+      retries: 6
+      start_period: 10s

@@ -1,0 +1,10 @@
+{
+  "caseId": "read-only-happy-path",
+  "intendedWrites": 0,
+  "incorrectSideEffects": 0,
+  "checks": [
+    "approved read returned the expected fictional work request",
+    "write counter remained zero"
+  ],
+  "fixtureClassification": "expected-case-behavior-observed"
+}

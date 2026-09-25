@@ -1,0 +1,12 @@
+{
+  "schemaVersion": "1.0",
+  "tenantId": "cedar-local-tenant",
+  "parentGoalId": "cedar-dispatch-parent-901",
+  "requestId": "cedar-dispatch-request-901",
+  "originalGoal": "Create exactly one draft pickup slot for approved dispatch request DSP-901 using vehicle VAN-12 on 2026-08-14 and leave unrelated state unchanged.",
+  "attemptedStep": "Schedule the approved pickup slot.",
+  "observedBlocker": "No configured capability can act on Cedar Dispatch.",
+  "requiredOutcome": "Exactly one matching draft pickup slot exists and no unrelated state changed.",
+  "authorityReferenceAliases": ["cedar-dispatch-policy-v1"],
+  "nonSecretContext": { "dispatchRequestId": "DSP-901", "vehicleId": "VAN-12", "pickupDate": "2026-08-14" }
+}

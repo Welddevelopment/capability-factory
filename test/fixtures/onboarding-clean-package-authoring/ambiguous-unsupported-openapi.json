@@ -1,0 +1,49 @@
+{
+  "openapi": "3.1.0",
+  "info": { "title": "Ambiguous Queue", "version": "1.0.0" },
+  "servers": [{ "url": "https://ambiguous-queue.local.invalid/v1" }],
+  "paths": {
+    "/jobs": {
+      "post": {
+        "operationId": "createJob",
+        "security": [{ "queueWriter": [] }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["job_ref", "kind", "priority", "owner"],
+                "properties": {
+                  "job_ref": { "type": "string" },
+                  "kind": { "type": "string" },
+                  "priority": { "type": "integer" },
+                  "owner": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": { "201": { "description": "Created" } }
+      }
+    },
+    "/job-search": {
+      "get": {
+        "operationId": "searchJobs",
+        "security": [{ "queueReader": [] }],
+        "responses": {
+          "200": {
+            "description": "Unstructured result",
+            "content": { "application/json": { "schema": { "type": "array", "items": { "type": "object" } } } }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "queueWriter": { "type": "http", "scheme": "bearer" },
+      "queueReader": { "type": "http", "scheme": "bearer" }
+    }
+  }
+}

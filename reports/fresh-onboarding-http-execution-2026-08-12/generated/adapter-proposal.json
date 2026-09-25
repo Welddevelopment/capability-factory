@@ -1,0 +1,1376 @@
+{
+  "schemaVersion": "1.0",
+  "proposalState": "proposal-only",
+  "executable": false,
+  "writesAuthorized": false,
+  "systems": [
+    {
+      "systemId": {
+        "value": "solstice-maintenance-api",
+        "status": "inferred-proposal",
+        "evidence": [
+          {
+            "materialId": "solstice-maintenance-openapi-v1",
+            "materialKind": "openapi",
+            "pointer": "/",
+            "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+          }
+        ],
+        "explanation": "Stable system identifier proposed from approved OpenAPI metadata."
+      },
+      "label": {
+        "value": "Solstice Maintenance API",
+        "status": "extracted",
+        "evidence": [
+          {
+            "materialId": "solstice-maintenance-openapi-v1",
+            "materialKind": "openapi",
+            "pointer": "/info/title",
+            "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+          }
+        ],
+        "explanation": "System label extracted from the OpenAPI title or material identifier."
+      },
+      "materialKinds": {
+        "value": [
+          "openapi"
+        ],
+        "status": "observed",
+        "evidence": [
+          {
+            "materialId": "solstice-maintenance-openapi-v1",
+            "materialKind": "openapi",
+            "pointer": "/",
+            "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+          }
+        ],
+        "explanation": "Observed approved source kind."
+      }
+    }
+  ],
+  "targets": [
+    {
+      "alias": {
+        "value": "solstice_sandbox",
+        "status": "customer-confirmed",
+        "evidence": [
+          {
+            "materialId": "solstice-maintenance-openapi-v1",
+            "materialKind": "openapi",
+            "pointer": "/",
+            "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+          }
+        ],
+        "explanation": "Target alias is customer-supplied or proposed from the approved system label."
+      },
+      "systemId": {
+        "value": "solstice-maintenance-api",
+        "status": "inferred-proposal",
+        "evidence": [
+          {
+            "materialId": "solstice-maintenance-openapi-v1",
+            "materialKind": "openapi",
+            "pointer": "/",
+            "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+          }
+        ],
+        "explanation": "Target is provisionally attached to the extracted system."
+      },
+      "approvedForWorkflow": {
+        "value": true,
+        "status": "customer-confirmed",
+        "evidence": [
+          {
+            "materialId": "workflow:schedule-approved-maintenance",
+            "materialKind": "workflow",
+            "pointer": "/approvedTargetAliases",
+            "sha256": "d2e55a92770306dd5912e7a9b1491557fc3700c61d5c3c5f1ff2c183f1d0df40"
+          }
+        ],
+        "explanation": "Compared with the workflow's confirmed target allowlist."
+      }
+    }
+  ],
+  "credentialAliases": [
+    {
+      "alias": {
+        "value": "actionBearer",
+        "status": "extracted",
+        "evidence": [
+          {
+            "materialId": "solstice-maintenance-openapi-v1",
+            "materialKind": "openapi",
+            "pointer": "/components/securitySchemes/actionBearer",
+            "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+          }
+        ],
+        "explanation": "Credential identifier extracted as an alias; no secret value is stored."
+      },
+      "targetAlias": {
+        "value": "solstice_sandbox",
+        "status": "extracted",
+        "evidence": [
+          {
+            "materialId": "solstice-maintenance-openapi-v1",
+            "materialKind": "openapi",
+            "pointer": "/components/securitySchemes/actionBearer",
+            "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+          }
+        ],
+        "explanation": "Credential alias is associated with this proposed target."
+      },
+      "scheme": {
+        "value": "http",
+        "status": "extracted",
+        "evidence": [
+          {
+            "materialId": "solstice-maintenance-openapi-v1",
+            "materialKind": "openapi",
+            "pointer": "/components/securitySchemes/actionBearer",
+            "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+          }
+        ],
+        "explanation": "Authentication scheme extracted from approved metadata."
+      },
+      "valuePresent": false
+    },
+    {
+      "alias": {
+        "value": "observerBearer",
+        "status": "extracted",
+        "evidence": [
+          {
+            "materialId": "solstice-maintenance-openapi-v1",
+            "materialKind": "openapi",
+            "pointer": "/components/securitySchemes/observerBearer",
+            "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+          }
+        ],
+        "explanation": "Credential identifier extracted as an alias; no secret value is stored."
+      },
+      "targetAlias": {
+        "value": "solstice_sandbox",
+        "status": "extracted",
+        "evidence": [
+          {
+            "materialId": "solstice-maintenance-openapi-v1",
+            "materialKind": "openapi",
+            "pointer": "/components/securitySchemes/observerBearer",
+            "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+          }
+        ],
+        "explanation": "Credential alias is associated with this proposed target."
+      },
+      "scheme": {
+        "value": "http",
+        "status": "extracted",
+        "evidence": [
+          {
+            "materialId": "solstice-maintenance-openapi-v1",
+            "materialKind": "openapi",
+            "pointer": "/components/securitySchemes/observerBearer",
+            "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+          }
+        ],
+        "explanation": "Authentication scheme extracted from approved metadata."
+      },
+      "valuePresent": false
+    }
+  ],
+  "operations": [
+    {
+      "operationId": {
+        "value": "getAsset",
+        "status": "extracted",
+        "evidence": [
+          {
+            "materialId": "solstice-maintenance-openapi-v1",
+            "materialKind": "openapi",
+            "pointer": "/paths//v1/assets/{assetId}/get",
+            "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+          }
+        ],
+        "explanation": "Operation identifier was extracted or proposed deterministically from method and path."
+      },
+      "operationKey": {
+        "value": "solstice_sandbox.getAsset",
+        "status": "independently-verified",
+        "evidence": [
+          {
+            "materialId": "solstice-maintenance-openapi-v1",
+            "materialKind": "openapi",
+            "pointer": "/paths//v1/assets/{assetId}/get",
+            "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+          }
+        ],
+        "explanation": "Operation identity is qualified by its target to remain unambiguous across systems."
+      },
+      "sourceKind": {
+        "value": "http",
+        "status": "observed",
+        "evidence": [
+          {
+            "materialId": "solstice-maintenance-openapi-v1",
+            "materialKind": "openapi",
+            "pointer": "/paths//v1/assets/{assetId}/get",
+            "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+          }
+        ],
+        "explanation": "Operation came from approved OpenAPI material."
+      },
+      "targetAlias": {
+        "value": "solstice_sandbox",
+        "status": "extracted",
+        "evidence": [
+          {
+            "materialId": "solstice-maintenance-openapi-v1",
+            "materialKind": "openapi",
+            "pointer": "/paths//v1/assets/{assetId}/get",
+            "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+          }
+        ],
+        "explanation": "Operation belongs to this approved target source."
+      },
+      "description": {
+        "value": "Read one maintenance asset",
+        "status": "extracted",
+        "evidence": [
+          {
+            "materialId": "solstice-maintenance-openapi-v1",
+            "materialKind": "openapi",
+            "pointer": "/paths//v1/assets/{assetId}/get",
+            "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+          }
+        ],
+        "explanation": "Human-readable operation description from approved metadata."
+      },
+      "transportAction": {
+        "value": "GET /v1/assets/{assetId}",
+        "status": "extracted",
+        "evidence": [
+          {
+            "materialId": "solstice-maintenance-openapi-v1",
+            "materialKind": "openapi",
+            "pointer": "/paths//v1/assets/{assetId}/get",
+            "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+          }
+        ],
+        "explanation": "HTTP method and path extracted from OpenAPI."
+      },
+      "consequence": {
+        "value": "read",
+        "status": "extracted",
+        "evidence": [
+          {
+            "materialId": "solstice-maintenance-openapi-v1",
+            "materialKind": "openapi",
+            "pointer": "/paths//v1/assets/{assetId}/get",
+            "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+          }
+        ],
+        "explanation": "HTTP method is classified conservatively: POST, PUT, PATCH and DELETE are writes."
+      },
+      "requestShape": {
+        "value": {
+          "parameters": [
+            {
+              "name": "assetId",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "body": null
+        },
+        "status": "extracted",
+        "evidence": [
+          {
+            "materialId": "solstice-maintenance-openapi-v1",
+            "materialKind": "openapi",
+            "pointer": "/paths//v1/assets/{assetId}/get",
+            "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+          }
+        ],
+        "explanation": "Request parameters and body schema extracted without constructing an executable request."
+      },
+      "responseShape": {
+        "value": null,
+        "status": "extracted",
+        "evidence": [
+          {
+            "materialId": "solstice-maintenance-openapi-v1",
+            "materialKind": "openapi",
+            "pointer": "/paths//v1/assets/{assetId}/get",
+            "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+          }
+        ],
+        "explanation": "First documented success response shape, if present."
+      },
+      "credentialAliases": {
+        "value": [
+          "observerBearer"
+        ],
+        "status": "extracted",
+        "evidence": [
+          {
+            "materialId": "solstice-maintenance-openapi-v1",
+            "materialKind": "openapi",
+            "pointer": "/paths//v1/assets/{assetId}/get",
+            "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+          }
+        ],
+        "explanation": "Only security-scheme aliases are retained."
+      },
+      "idempotency": {
+        "value": "documented",
+        "status": "extracted",
+        "evidence": [
+          {
+            "materialId": "solstice-maintenance-openapi-v1",
+            "materialKind": "openapi",
+            "pointer": "/paths//v1/assets/{assetId}/get",
+            "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+          }
+        ],
+        "explanation": "Read semantics or explicit idempotency metadata is present."
+      },
+      "retryRequirement": {
+        "value": "not-applicable",
+        "status": "inferred-proposal",
+        "evidence": [
+          {
+            "materialId": "solstice-maintenance-openapi-v1",
+            "materialKind": "openapi",
+            "pointer": "/paths//v1/assets/{assetId}/get",
+            "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+          }
+        ],
+        "explanation": "Read-only candidates do not need write reconciliation, subject to engineer confirmation of side effects."
+      },
+      "reconciliationCandidates": {
+        "value": [],
+        "status": "inferred-proposal",
+        "evidence": [
+          {
+            "materialId": "solstice-maintenance-openapi-v1",
+            "materialKind": "openapi",
+            "pointer": "/paths//v1/assets/{assetId}/get",
+            "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+          }
+        ],
+        "explanation": "Populated after the full operation inventory is available."
+      },
+      "requestedByWorkflow": {
+        "value": true,
+        "status": "customer-confirmed",
+        "evidence": [
+          {
+            "materialId": "workflow:schedule-approved-maintenance",
+            "materialKind": "workflow",
+            "pointer": "/requestedOperationNames",
+            "sha256": "d2e55a92770306dd5912e7a9b1491557fc3700c61d5c3c5f1ff2c183f1d0df40"
+          },
+          {
+            "materialId": "workflow:schedule-approved-maintenance",
+            "materialKind": "workflow",
+            "pointer": "/approvedTargetAliases",
+            "sha256": "d2e55a92770306dd5912e7a9b1491557fc3700c61d5c3c5f1ff2c183f1d0df40"
+          }
+        ],
+        "explanation": "Compared only with the exact target aliases and operation names in the confirmed bounded workflow."
+      },
+      "writeAuthorized": {
+        "value": false,
+        "status": "independently-verified",
+        "evidence": [
+          {
+            "materialId": "capability-factory:adapter-discovery-policy",
+            "materialKind": "factory-policy",
+            "pointer": "/proposal-only",
+            "sha256": "a51162aeeb057ca4e3df627977231de20b581f0d0d418ca3a111bc0e408ac6cc"
+          }
+        ],
+        "explanation": "Discovery never grants write authority."
+      },
+      "executable": {
+        "value": false,
+        "status": "independently-verified",
+        "evidence": [
+          {
+            "materialId": "capability-factory:adapter-discovery-policy",
+            "materialKind": "factory-policy",
+            "pointer": "/proposal-only",
+            "sha256": "a51162aeeb057ca4e3df627977231de20b581f0d0d418ca3a111bc0e408ac6cc"
+          }
+        ],
+        "explanation": "A discovery proposal cannot execute until separate review, implementation, verification, and activation gates pass."
+      }
+    },
+    {
+      "operationId": {
+        "value": "listVisits",
+        "status": "extracted",
+        "evidence": [
+          {
+            "materialId": "solstice-maintenance-openapi-v1",
+            "materialKind": "openapi",
+            "pointer": "/paths//v1/visits/get",
+            "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+          }
+        ],
+        "explanation": "Operation identifier was extracted or proposed deterministically from method and path."
+      },
+      "operationKey": {
+        "value": "solstice_sandbox.listVisits",
+        "status": "independently-verified",
+        "evidence": [
+          {
+            "materialId": "solstice-maintenance-openapi-v1",
+            "materialKind": "openapi",
+            "pointer": "/paths//v1/visits/get",
+            "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+          }
+        ],
+        "explanation": "Operation identity is qualified by its target to remain unambiguous across systems."
+      },
+      "sourceKind": {
+        "value": "http",
+        "status": "observed",
+        "evidence": [
+          {
+            "materialId": "solstice-maintenance-openapi-v1",
+            "materialKind": "openapi",
+            "pointer": "/paths//v1/visits/get",
+            "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+          }
+        ],
+        "explanation": "Operation came from approved OpenAPI material."
+      },
+      "targetAlias": {
+        "value": "solstice_sandbox",
+        "status": "extracted",
+        "evidence": [
+          {
+            "materialId": "solstice-maintenance-openapi-v1",
+            "materialKind": "openapi",
+            "pointer": "/paths//v1/visits/get",
+            "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+          }
+        ],
+        "explanation": "Operation belongs to this approved target source."
+      },
+      "description": {
+        "value": "List visits by approved request",
+        "status": "extracted",
+        "evidence": [
+          {
+            "materialId": "solstice-maintenance-openapi-v1",
+            "materialKind": "openapi",
+            "pointer": "/paths//v1/visits/get",
+            "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+          }
+        ],
+        "explanation": "Human-readable operation description from approved metadata."
+      },
+      "transportAction": {
+        "value": "GET /v1/visits",
+        "status": "extracted",
+        "evidence": [
+          {
+            "materialId": "solstice-maintenance-openapi-v1",
+            "materialKind": "openapi",
+            "pointer": "/paths//v1/visits/get",
+            "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+          }
+        ],
+        "explanation": "HTTP method and path extracted from OpenAPI."
+      },
+      "consequence": {
+        "value": "read",
+        "status": "extracted",
+        "evidence": [
+          {
+            "materialId": "solstice-maintenance-openapi-v1",
+            "materialKind": "openapi",
+            "pointer": "/paths//v1/visits/get",
+            "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+          }
+        ],
+        "explanation": "HTTP method is classified conservatively: POST, PUT, PATCH and DELETE are writes."
+      },
+      "requestShape": {
+        "value": {
+          "parameters": [
+            {
+              "name": "requestId",
+              "in": "query",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "body": null
+        },
+        "status": "extracted",
+        "evidence": [
+          {
+            "materialId": "solstice-maintenance-openapi-v1",
+            "materialKind": "openapi",
+            "pointer": "/paths//v1/visits/get",
+            "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+          }
+        ],
+        "explanation": "Request parameters and body schema extracted without constructing an executable request."
+      },
+      "responseShape": {
+        "value": null,
+        "status": "extracted",
+        "evidence": [
+          {
+            "materialId": "solstice-maintenance-openapi-v1",
+            "materialKind": "openapi",
+            "pointer": "/paths//v1/visits/get",
+            "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+          }
+        ],
+        "explanation": "First documented success response shape, if present."
+      },
+      "credentialAliases": {
+        "value": [
+          "observerBearer"
+        ],
+        "status": "extracted",
+        "evidence": [
+          {
+            "materialId": "solstice-maintenance-openapi-v1",
+            "materialKind": "openapi",
+            "pointer": "/paths//v1/visits/get",
+            "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+          }
+        ],
+        "explanation": "Only security-scheme aliases are retained."
+      },
+      "idempotency": {
+        "value": "documented",
+        "status": "extracted",
+        "evidence": [
+          {
+            "materialId": "solstice-maintenance-openapi-v1",
+            "materialKind": "openapi",
+            "pointer": "/paths//v1/visits/get",
+            "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+          }
+        ],
+        "explanation": "Read semantics or explicit idempotency metadata is present."
+      },
+      "retryRequirement": {
+        "value": "not-applicable",
+        "status": "inferred-proposal",
+        "evidence": [
+          {
+            "materialId": "solstice-maintenance-openapi-v1",
+            "materialKind": "openapi",
+            "pointer": "/paths//v1/visits/get",
+            "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+          }
+        ],
+        "explanation": "Read-only candidates do not need write reconciliation, subject to engineer confirmation of side effects."
+      },
+      "reconciliationCandidates": {
+        "value": [],
+        "status": "inferred-proposal",
+        "evidence": [
+          {
+            "materialId": "solstice-maintenance-openapi-v1",
+            "materialKind": "openapi",
+            "pointer": "/paths//v1/visits/get",
+            "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+          }
+        ],
+        "explanation": "Populated after the full operation inventory is available."
+      },
+      "requestedByWorkflow": {
+        "value": true,
+        "status": "customer-confirmed",
+        "evidence": [
+          {
+            "materialId": "workflow:schedule-approved-maintenance",
+            "materialKind": "workflow",
+            "pointer": "/requestedOperationNames",
+            "sha256": "d2e55a92770306dd5912e7a9b1491557fc3700c61d5c3c5f1ff2c183f1d0df40"
+          },
+          {
+            "materialId": "workflow:schedule-approved-maintenance",
+            "materialKind": "workflow",
+            "pointer": "/approvedTargetAliases",
+            "sha256": "d2e55a92770306dd5912e7a9b1491557fc3700c61d5c3c5f1ff2c183f1d0df40"
+          }
+        ],
+        "explanation": "Compared only with the exact target aliases and operation names in the confirmed bounded workflow."
+      },
+      "writeAuthorized": {
+        "value": false,
+        "status": "independently-verified",
+        "evidence": [
+          {
+            "materialId": "capability-factory:adapter-discovery-policy",
+            "materialKind": "factory-policy",
+            "pointer": "/proposal-only",
+            "sha256": "a51162aeeb057ca4e3df627977231de20b581f0d0d418ca3a111bc0e408ac6cc"
+          }
+        ],
+        "explanation": "Discovery never grants write authority."
+      },
+      "executable": {
+        "value": false,
+        "status": "independently-verified",
+        "evidence": [
+          {
+            "materialId": "capability-factory:adapter-discovery-policy",
+            "materialKind": "factory-policy",
+            "pointer": "/proposal-only",
+            "sha256": "a51162aeeb057ca4e3df627977231de20b581f0d0d418ca3a111bc0e408ac6cc"
+          }
+        ],
+        "explanation": "A discovery proposal cannot execute until separate review, implementation, verification, and activation gates pass."
+      }
+    },
+    {
+      "operationId": {
+        "value": "createDraftVisit",
+        "status": "extracted",
+        "evidence": [
+          {
+            "materialId": "solstice-maintenance-openapi-v1",
+            "materialKind": "openapi",
+            "pointer": "/paths//v1/visits/post",
+            "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+          }
+        ],
+        "explanation": "Operation identifier was extracted or proposed deterministically from method and path."
+      },
+      "operationKey": {
+        "value": "solstice_sandbox.createDraftVisit",
+        "status": "independently-verified",
+        "evidence": [
+          {
+            "materialId": "solstice-maintenance-openapi-v1",
+            "materialKind": "openapi",
+            "pointer": "/paths//v1/visits/post",
+            "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+          }
+        ],
+        "explanation": "Operation identity is qualified by its target to remain unambiguous across systems."
+      },
+      "sourceKind": {
+        "value": "http",
+        "status": "observed",
+        "evidence": [
+          {
+            "materialId": "solstice-maintenance-openapi-v1",
+            "materialKind": "openapi",
+            "pointer": "/paths//v1/visits/post",
+            "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+          }
+        ],
+        "explanation": "Operation came from approved OpenAPI material."
+      },
+      "targetAlias": {
+        "value": "solstice_sandbox",
+        "status": "extracted",
+        "evidence": [
+          {
+            "materialId": "solstice-maintenance-openapi-v1",
+            "materialKind": "openapi",
+            "pointer": "/paths//v1/visits/post",
+            "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+          }
+        ],
+        "explanation": "Operation belongs to this approved target source."
+      },
+      "description": {
+        "value": "Create one draft maintenance visit",
+        "status": "extracted",
+        "evidence": [
+          {
+            "materialId": "solstice-maintenance-openapi-v1",
+            "materialKind": "openapi",
+            "pointer": "/paths//v1/visits/post",
+            "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+          }
+        ],
+        "explanation": "Human-readable operation description from approved metadata."
+      },
+      "transportAction": {
+        "value": "POST /v1/visits",
+        "status": "extracted",
+        "evidence": [
+          {
+            "materialId": "solstice-maintenance-openapi-v1",
+            "materialKind": "openapi",
+            "pointer": "/paths//v1/visits/post",
+            "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+          }
+        ],
+        "explanation": "HTTP method and path extracted from OpenAPI."
+      },
+      "consequence": {
+        "value": "write",
+        "status": "extracted",
+        "evidence": [
+          {
+            "materialId": "solstice-maintenance-openapi-v1",
+            "materialKind": "openapi",
+            "pointer": "/paths//v1/visits/post",
+            "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+          }
+        ],
+        "explanation": "HTTP method is classified conservatively: POST, PUT, PATCH and DELETE are writes."
+      },
+      "requestShape": {
+        "value": {
+          "parameters": [
+            {
+              "name": "Idempotency-Key",
+              "in": "header",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "body": {
+            "type": "object",
+            "required": [
+              "requestId",
+              "assetId",
+              "scheduledDate"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "requestId": {
+                "type": "string"
+              },
+              "assetId": {
+                "type": "string"
+              },
+              "scheduledDate": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "status": "extracted",
+        "evidence": [
+          {
+            "materialId": "solstice-maintenance-openapi-v1",
+            "materialKind": "openapi",
+            "pointer": "/paths//v1/visits/post",
+            "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+          }
+        ],
+        "explanation": "Request parameters and body schema extracted without constructing an executable request."
+      },
+      "responseShape": {
+        "value": null,
+        "status": "extracted",
+        "evidence": [
+          {
+            "materialId": "solstice-maintenance-openapi-v1",
+            "materialKind": "openapi",
+            "pointer": "/paths//v1/visits/post",
+            "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+          }
+        ],
+        "explanation": "First documented success response shape, if present."
+      },
+      "credentialAliases": {
+        "value": [
+          "actionBearer"
+        ],
+        "status": "extracted",
+        "evidence": [
+          {
+            "materialId": "solstice-maintenance-openapi-v1",
+            "materialKind": "openapi",
+            "pointer": "/paths//v1/visits/post",
+            "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+          }
+        ],
+        "explanation": "Only security-scheme aliases are retained."
+      },
+      "idempotency": {
+        "value": "documented",
+        "status": "extracted",
+        "evidence": [
+          {
+            "materialId": "solstice-maintenance-openapi-v1",
+            "materialKind": "openapi",
+            "pointer": "/paths//v1/visits/post",
+            "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+          }
+        ],
+        "explanation": "Read semantics or explicit idempotency metadata is present."
+      },
+      "retryRequirement": {
+        "value": "reconcile-before-retry",
+        "status": "independently-verified",
+        "evidence": [
+          {
+            "materialId": "capability-factory:adapter-discovery-policy",
+            "materialKind": "factory-policy",
+            "pointer": "/proposal-only",
+            "sha256": "a51162aeeb057ca4e3df627977231de20b581f0d0d418ca3a111bc0e408ac6cc"
+          }
+        ],
+        "explanation": "Every proposed write must inspect independent external state before retry."
+      },
+      "reconciliationCandidates": {
+        "value": [
+          "getAsset",
+          "listVisits",
+          "listAuditChanges"
+        ],
+        "status": "inferred-proposal",
+        "evidence": [
+          {
+            "materialId": "solstice-maintenance-openapi-v1",
+            "materialKind": "openapi",
+            "pointer": "/paths//v1/visits/post",
+            "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+          }
+        ],
+        "explanation": "Read operations on the same target are candidates only; an engineer must prove they independently observe the business result."
+      },
+      "requestedByWorkflow": {
+        "value": true,
+        "status": "customer-confirmed",
+        "evidence": [
+          {
+            "materialId": "workflow:schedule-approved-maintenance",
+            "materialKind": "workflow",
+            "pointer": "/requestedOperationNames",
+            "sha256": "d2e55a92770306dd5912e7a9b1491557fc3700c61d5c3c5f1ff2c183f1d0df40"
+          },
+          {
+            "materialId": "workflow:schedule-approved-maintenance",
+            "materialKind": "workflow",
+            "pointer": "/approvedTargetAliases",
+            "sha256": "d2e55a92770306dd5912e7a9b1491557fc3700c61d5c3c5f1ff2c183f1d0df40"
+          }
+        ],
+        "explanation": "Compared only with the exact target aliases and operation names in the confirmed bounded workflow."
+      },
+      "writeAuthorized": {
+        "value": false,
+        "status": "independently-verified",
+        "evidence": [
+          {
+            "materialId": "capability-factory:adapter-discovery-policy",
+            "materialKind": "factory-policy",
+            "pointer": "/proposal-only",
+            "sha256": "a51162aeeb057ca4e3df627977231de20b581f0d0d418ca3a111bc0e408ac6cc"
+          }
+        ],
+        "explanation": "Discovery never grants write authority."
+      },
+      "executable": {
+        "value": false,
+        "status": "independently-verified",
+        "evidence": [
+          {
+            "materialId": "capability-factory:adapter-discovery-policy",
+            "materialKind": "factory-policy",
+            "pointer": "/proposal-only",
+            "sha256": "a51162aeeb057ca4e3df627977231de20b581f0d0d418ca3a111bc0e408ac6cc"
+          }
+        ],
+        "explanation": "A discovery proposal cannot execute until separate review, implementation, verification, and activation gates pass."
+      }
+    },
+    {
+      "operationId": {
+        "value": "listAuditChanges",
+        "status": "extracted",
+        "evidence": [
+          {
+            "materialId": "solstice-maintenance-openapi-v1",
+            "materialKind": "openapi",
+            "pointer": "/paths//v1/audit/get",
+            "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+          }
+        ],
+        "explanation": "Operation identifier was extracted or proposed deterministically from method and path."
+      },
+      "operationKey": {
+        "value": "solstice_sandbox.listAuditChanges",
+        "status": "independently-verified",
+        "evidence": [
+          {
+            "materialId": "solstice-maintenance-openapi-v1",
+            "materialKind": "openapi",
+            "pointer": "/paths//v1/audit/get",
+            "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+          }
+        ],
+        "explanation": "Operation identity is qualified by its target to remain unambiguous across systems."
+      },
+      "sourceKind": {
+        "value": "http",
+        "status": "observed",
+        "evidence": [
+          {
+            "materialId": "solstice-maintenance-openapi-v1",
+            "materialKind": "openapi",
+            "pointer": "/paths//v1/audit/get",
+            "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+          }
+        ],
+        "explanation": "Operation came from approved OpenAPI material."
+      },
+      "targetAlias": {
+        "value": "solstice_sandbox",
+        "status": "extracted",
+        "evidence": [
+          {
+            "materialId": "solstice-maintenance-openapi-v1",
+            "materialKind": "openapi",
+            "pointer": "/paths//v1/audit/get",
+            "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+          }
+        ],
+        "explanation": "Operation belongs to this approved target source."
+      },
+      "description": {
+        "value": "List unrelated changes for one request",
+        "status": "extracted",
+        "evidence": [
+          {
+            "materialId": "solstice-maintenance-openapi-v1",
+            "materialKind": "openapi",
+            "pointer": "/paths//v1/audit/get",
+            "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+          }
+        ],
+        "explanation": "Human-readable operation description from approved metadata."
+      },
+      "transportAction": {
+        "value": "GET /v1/audit",
+        "status": "extracted",
+        "evidence": [
+          {
+            "materialId": "solstice-maintenance-openapi-v1",
+            "materialKind": "openapi",
+            "pointer": "/paths//v1/audit/get",
+            "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+          }
+        ],
+        "explanation": "HTTP method and path extracted from OpenAPI."
+      },
+      "consequence": {
+        "value": "read",
+        "status": "extracted",
+        "evidence": [
+          {
+            "materialId": "solstice-maintenance-openapi-v1",
+            "materialKind": "openapi",
+            "pointer": "/paths//v1/audit/get",
+            "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+          }
+        ],
+        "explanation": "HTTP method is classified conservatively: POST, PUT, PATCH and DELETE are writes."
+      },
+      "requestShape": {
+        "value": {
+          "parameters": [
+            {
+              "name": "requestId",
+              "in": "query",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "body": null
+        },
+        "status": "extracted",
+        "evidence": [
+          {
+            "materialId": "solstice-maintenance-openapi-v1",
+            "materialKind": "openapi",
+            "pointer": "/paths//v1/audit/get",
+            "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+          }
+        ],
+        "explanation": "Request parameters and body schema extracted without constructing an executable request."
+      },
+      "responseShape": {
+        "value": null,
+        "status": "extracted",
+        "evidence": [
+          {
+            "materialId": "solstice-maintenance-openapi-v1",
+            "materialKind": "openapi",
+            "pointer": "/paths//v1/audit/get",
+            "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+          }
+        ],
+        "explanation": "First documented success response shape, if present."
+      },
+      "credentialAliases": {
+        "value": [
+          "observerBearer"
+        ],
+        "status": "extracted",
+        "evidence": [
+          {
+            "materialId": "solstice-maintenance-openapi-v1",
+            "materialKind": "openapi",
+            "pointer": "/paths//v1/audit/get",
+            "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+          }
+        ],
+        "explanation": "Only security-scheme aliases are retained."
+      },
+      "idempotency": {
+        "value": "documented",
+        "status": "extracted",
+        "evidence": [
+          {
+            "materialId": "solstice-maintenance-openapi-v1",
+            "materialKind": "openapi",
+            "pointer": "/paths//v1/audit/get",
+            "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+          }
+        ],
+        "explanation": "Read semantics or explicit idempotency metadata is present."
+      },
+      "retryRequirement": {
+        "value": "not-applicable",
+        "status": "inferred-proposal",
+        "evidence": [
+          {
+            "materialId": "solstice-maintenance-openapi-v1",
+            "materialKind": "openapi",
+            "pointer": "/paths//v1/audit/get",
+            "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+          }
+        ],
+        "explanation": "Read-only candidates do not need write reconciliation, subject to engineer confirmation of side effects."
+      },
+      "reconciliationCandidates": {
+        "value": [],
+        "status": "inferred-proposal",
+        "evidence": [
+          {
+            "materialId": "solstice-maintenance-openapi-v1",
+            "materialKind": "openapi",
+            "pointer": "/paths//v1/audit/get",
+            "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+          }
+        ],
+        "explanation": "Populated after the full operation inventory is available."
+      },
+      "requestedByWorkflow": {
+        "value": true,
+        "status": "customer-confirmed",
+        "evidence": [
+          {
+            "materialId": "workflow:schedule-approved-maintenance",
+            "materialKind": "workflow",
+            "pointer": "/requestedOperationNames",
+            "sha256": "d2e55a92770306dd5912e7a9b1491557fc3700c61d5c3c5f1ff2c183f1d0df40"
+          },
+          {
+            "materialId": "workflow:schedule-approved-maintenance",
+            "materialKind": "workflow",
+            "pointer": "/approvedTargetAliases",
+            "sha256": "d2e55a92770306dd5912e7a9b1491557fc3700c61d5c3c5f1ff2c183f1d0df40"
+          }
+        ],
+        "explanation": "Compared only with the exact target aliases and operation names in the confirmed bounded workflow."
+      },
+      "writeAuthorized": {
+        "value": false,
+        "status": "independently-verified",
+        "evidence": [
+          {
+            "materialId": "capability-factory:adapter-discovery-policy",
+            "materialKind": "factory-policy",
+            "pointer": "/proposal-only",
+            "sha256": "a51162aeeb057ca4e3df627977231de20b581f0d0d418ca3a111bc0e408ac6cc"
+          }
+        ],
+        "explanation": "Discovery never grants write authority."
+      },
+      "executable": {
+        "value": false,
+        "status": "independently-verified",
+        "evidence": [
+          {
+            "materialId": "capability-factory:adapter-discovery-policy",
+            "materialKind": "factory-policy",
+            "pointer": "/proposal-only",
+            "sha256": "a51162aeeb057ca4e3df627977231de20b581f0d0d418ca3a111bc0e408ac6cc"
+          }
+        ],
+        "explanation": "A discovery proposal cannot execute until separate review, implementation, verification, and activation gates pass."
+      }
+    }
+  ],
+  "scopeWorkflow": {
+    "workflowId": {
+      "value": "schedule-approved-maintenance",
+      "status": "customer-confirmed",
+      "evidence": [
+        {
+          "materialId": "workflow:schedule-approved-maintenance",
+          "materialKind": "workflow",
+          "pointer": "/workflowId",
+          "sha256": "d2e55a92770306dd5912e7a9b1491557fc3700c61d5c3c5f1ff2c183f1d0df40"
+        }
+      ],
+      "explanation": "Bounded workflow identity supplied and confirmed by the customer/domain owner."
+    },
+    "summary": {
+      "value": "Schedule one draft maintenance visit for an approved request.",
+      "status": "customer-confirmed",
+      "evidence": [
+        {
+          "materialId": "workflow:schedule-approved-maintenance",
+          "materialKind": "workflow",
+          "pointer": "/summary",
+          "sha256": "d2e55a92770306dd5912e7a9b1491557fc3700c61d5c3c5f1ff2c183f1d0df40"
+        }
+      ],
+      "explanation": "Confirmed bounded workflow summary."
+    },
+    "requiredOutcome": {
+      "value": "Exactly one fresh draft maintenance visit exists for the approved request and asset, and no unrelated record changes.",
+      "status": "customer-confirmed",
+      "evidence": [
+        {
+          "materialId": "workflow:schedule-approved-maintenance",
+          "materialKind": "workflow",
+          "pointer": "/requiredOutcome",
+          "sha256": "d2e55a92770306dd5912e7a9b1491557fc3700c61d5c3c5f1ff2c183f1d0df40"
+        }
+      ],
+      "explanation": "Confirmed intended business outcome; not yet a verifier."
+    },
+    "targetAliases": {
+      "value": [
+        "solstice_sandbox"
+      ],
+      "status": "customer-confirmed",
+      "evidence": [
+        {
+          "materialId": "workflow:schedule-approved-maintenance",
+          "materialKind": "workflow",
+          "pointer": "/approvedTargetAliases",
+          "sha256": "d2e55a92770306dd5912e7a9b1491557fc3700c61d5c3c5f1ff2c183f1d0df40"
+        }
+      ],
+      "explanation": "Exact confirmed target allowlist."
+    },
+    "operationIds": {
+      "value": [
+        "solstice_sandbox.getAsset",
+        "solstice_sandbox.listVisits",
+        "solstice_sandbox.createDraftVisit",
+        "solstice_sandbox.listAuditChanges"
+      ],
+      "status": "inferred-proposal",
+      "evidence": [
+        {
+          "materialId": "solstice-maintenance-openapi-v1",
+          "materialKind": "openapi",
+          "pointer": "/paths//v1/assets/{assetId}/get",
+          "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+        },
+        {
+          "materialId": "solstice-maintenance-openapi-v1",
+          "materialKind": "openapi",
+          "pointer": "/paths//v1/visits/get",
+          "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+        },
+        {
+          "materialId": "solstice-maintenance-openapi-v1",
+          "materialKind": "openapi",
+          "pointer": "/paths//v1/visits/post",
+          "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+        },
+        {
+          "materialId": "solstice-maintenance-openapi-v1",
+          "materialKind": "openapi",
+          "pointer": "/paths//v1/audit/get",
+          "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+        }
+      ],
+      "explanation": "Target-qualified exact-name matches proposed for the bounded workflow; review remains mandatory."
+    },
+    "authorityState": {
+      "value": "unconfigured",
+      "status": "independently-verified",
+      "evidence": [
+        {
+          "materialId": "capability-factory:adapter-discovery-policy",
+          "materialKind": "factory-policy",
+          "pointer": "/proposal-only",
+          "sha256": "a51162aeeb057ca4e3df627977231de20b581f0d0d418ca3a111bc0e408ac6cc"
+        }
+      ],
+      "explanation": "Authority is always configured outside discovery."
+    },
+    "verifierState": {
+      "value": "unconfigured",
+      "status": "independently-verified",
+      "evidence": [
+        {
+          "materialId": "capability-factory:adapter-discovery-policy",
+          "materialKind": "factory-policy",
+          "pointer": "/proposal-only",
+          "sha256": "a51162aeeb057ca4e3df627977231de20b581f0d0d418ca3a111bc0e408ac6cc"
+        }
+      ],
+      "explanation": "A verifier must be separately implemented and accepted."
+    }
+  },
+  "unknowns": [
+    {
+      "value": "Customer-local credential values and secret-provider bindings remain unset.",
+      "status": "unknown",
+      "evidence": [
+        {
+          "materialId": "capability-factory:adapter-discovery-policy",
+          "materialKind": "factory-policy",
+          "pointer": "/credential-values",
+          "sha256": "a51162aeeb057ca4e3df627977231de20b581f0d0d418ca3a111bc0e408ac6cc"
+        }
+      ],
+      "explanation": "Discovery records aliases only."
+    },
+    {
+      "value": "External outcome observation and verifier implementation remain unset.",
+      "status": "unknown",
+      "evidence": [
+        {
+          "materialId": "workflow:schedule-approved-maintenance",
+          "materialKind": "workflow",
+          "pointer": "/requiredOutcome",
+          "sha256": "d2e55a92770306dd5912e7a9b1491557fc3700c61d5c3c5f1ff2c183f1d0df40"
+        }
+      ],
+      "explanation": "A required outcome is not itself an independent verifier."
+    },
+    {
+      "value": "Rate limits, pagination, errors, timeouts, and production drift require engineer confirmation unless explicitly covered by approved material.",
+      "status": "unknown",
+      "evidence": [
+        {
+          "materialId": "solstice-maintenance-openapi-v1",
+          "materialKind": "openapi",
+          "pointer": "/",
+          "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+        }
+      ],
+      "explanation": "Metadata extraction cannot prove live operational behavior."
+    }
+  ],
+  "engineeringBlockers": [
+    {
+      "blockerId": "authority-unconfigured",
+      "category": "authority",
+      "blocking": true,
+      "fact": {
+        "value": "Write authority has not been configured or confirmed.",
+        "status": "unknown",
+        "evidence": [
+          {
+            "materialId": "capability-factory:adapter-discovery-policy",
+            "materialKind": "factory-policy",
+            "pointer": "/proposal-only",
+            "sha256": "a51162aeeb057ca4e3df627977231de20b581f0d0d418ca3a111bc0e408ac6cc"
+          }
+        ],
+        "explanation": "Discovery never grants authority."
+      }
+    },
+    {
+      "blockerId": "credential-alias-unbound",
+      "category": "credential",
+      "blocking": true,
+      "fact": {
+        "value": "Customer-local values are not bound for aliases: observerBearer, actionBearer.",
+        "status": "unknown",
+        "evidence": [
+          {
+            "materialId": "solstice-maintenance-openapi-v1",
+            "materialKind": "openapi",
+            "pointer": "/paths//v1/assets/{assetId}/get",
+            "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+          },
+          {
+            "materialId": "solstice-maintenance-openapi-v1",
+            "materialKind": "openapi",
+            "pointer": "/paths//v1/visits/get",
+            "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+          },
+          {
+            "materialId": "solstice-maintenance-openapi-v1",
+            "materialKind": "openapi",
+            "pointer": "/paths//v1/visits/post",
+            "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+          },
+          {
+            "materialId": "solstice-maintenance-openapi-v1",
+            "materialKind": "openapi",
+            "pointer": "/paths//v1/audit/get",
+            "sha256": "59c8180bc65e972f8d7ae7cbdadd2afa36deb5c3ea0f8b2037b20bda2b6439ad"
+          }
+        ],
+        "explanation": "Discovery may identify aliases but never receives or binds credential values."
+      }
+    },
+    {
+      "blockerId": "verifier-unconfigured",
+      "category": "verifier",
+      "blocking": true,
+      "fact": {
+        "value": "No independent external-outcome verifier is configured.",
+        "status": "unknown",
+        "evidence": [
+          {
+            "materialId": "workflow:schedule-approved-maintenance",
+            "materialKind": "workflow",
+            "pointer": "/requiredOutcome",
+            "sha256": "d2e55a92770306dd5912e7a9b1491557fc3700c61d5c3c5f1ff2c183f1d0df40"
+          }
+        ],
+        "explanation": "The action response cannot serve as completion proof."
+      }
+    },
+    {
+      "blockerId": "acceptance-not-run",
+      "category": "source",
+      "blocking": true,
+      "fact": {
+        "value": "No executable acceptance campaign has run for this proposal.",
+        "status": "unknown",
+        "evidence": [
+          {
+            "materialId": "capability-factory:adapter-discovery-policy",
+            "materialKind": "factory-policy",
+            "pointer": "/proposal-only",
+            "sha256": "a51162aeeb057ca4e3df627977231de20b581f0d0d418ca3a111bc0e408ac6cc"
+          }
+        ],
+        "explanation": "Declared or generated test cases are not passing evidence."
+      }
+    }
+  ]
+}

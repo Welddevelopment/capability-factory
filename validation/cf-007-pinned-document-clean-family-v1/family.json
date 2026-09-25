@@ -1,0 +1,121 @@
+{
+  "schemaVersion": "1.0",
+  "campaignId": "cf-007-pinned-document-clean-family-v1",
+  "frozenAt": "2026-08-14T12:00:00.000Z",
+  "contracts": [
+    {
+      "contract": {
+        "schemaVersion": "1.0",
+        "contractId": "east-labeled-order",
+        "contractVersion": "1.0.0",
+        "layout": "labeled-envelope-v1",
+        "templateTitle": "EAST INDUSTRIAL PURCHASE ORDER",
+        "needKey": "convert-east-order",
+        "inputRootAlias": "east-pdf-inbox",
+        "outputRootAlias": "east-draft-store",
+        "allowedItemCodes": ["BOLT-10", "FILTER-42", "GLOVE-7"],
+        "maxLineItems": 20,
+        "maxQuantityPerLine": 500,
+        "maxInputBytes": 1000000,
+        "maximumDocumentAgeMs": 86400000,
+        "targetAlias": "east-draft-ledger",
+        "actionKey": "create-document-draft",
+        "approvalKey": "approve-east-document-draft",
+        "outcomeVerifierKey": "east-document-verifier-v1",
+        "workflowKey": "east-order-workflow"
+      },
+      "document": {
+        "documentId": "EAST-007",
+        "purchaseOrderNumber": "PO-EAST-007",
+        "shipToCode": "LONDON01",
+        "lines": [{"itemCode": "BOLT-10", "quantity": 2}, {"itemCode": "FILTER-42", "quantity": 3}]
+      },
+      "approvedAt": "2026-08-14T11:00:00.000Z",
+      "variants": {
+        "base": "45a7414f5014205fa60430b88b05adf4416917d593115682ef83da872edc8490",
+        "malformed": "9f3c706940ee3a8357d514c75241b7a6b0ef512304c932f45c083d44648ac639",
+        "ambiguous": "f22ef10a36a74f7a3ada472f3ce9da1bf99425bce9e19711ba9fd68d6acba193"
+      },
+      "cases": [
+        {"caseId": "read-only-happy-path", "acceptanceCase": "read-only-happy-path", "fault": "read-only", "variant": "base", "expectedStatus": "read-only"},
+        {"caseId": "approved-write", "acceptanceCase": "approved-write", "fault": "approved-write", "variant": "base", "expectedStatus": "completed"},
+        {"caseId": "fresh-process-reuse", "acceptanceCase": "fresh-process-reuse", "fault": "fresh-process-reuse", "variant": "base", "expectedStatus": "completed"},
+        {"caseId": "missing-credential", "acceptanceCase": "missing-credential", "fault": "missing-pin", "variant": "base", "expectedStatus": "blocked"},
+        {"caseId": "missing-permission", "acceptanceCase": "missing-permission", "fault": "missing-authority", "variant": "base", "expectedStatus": "blocked"},
+        {"caseId": "lost-response-reconciliation", "acceptanceCase": "lost-response-reconciliation", "fault": "lost-response", "variant": "base", "expectedStatus": "completed"},
+        {"caseId": "wrong-or-partial-outcome", "acceptanceCase": "wrong-or-partial-outcome", "fault": "partial-outcome", "variant": "base", "expectedStatus": "quarantined"},
+        {"caseId": "sidecar-restart", "acceptanceCase": "sidecar-restart", "fault": "restart", "variant": "base", "expectedStatus": "completed"},
+        {"caseId": "duplicate-submission", "acceptanceCase": "duplicate-submission", "fault": "duplicate-submission", "variant": "base", "expectedStatus": "completed"},
+        {"caseId": "conflicting-parent-reuse", "acceptanceCase": "conflicting-parent-reuse", "fault": "conflicting-parent", "variant": "base", "expectedStatus": "blocked"},
+        {"caseId": "changed-pin", "fault": "changed-pin", "variant": "base", "expectedStatus": "blocked"},
+        {"caseId": "malformed-layout", "fault": "malformed-layout", "variant": "malformed", "expectedStatus": "blocked"},
+        {"caseId": "ambiguous-layout", "fault": "ambiguous-layout", "variant": "ambiguous", "expectedStatus": "blocked"},
+        {"caseId": "stale-document", "fault": "stale-document", "variant": "base", "expectedStatus": "blocked"},
+        {"caseId": "duplicate-outcome", "fault": "duplicate-outcome", "variant": "base", "expectedStatus": "quarantined"},
+        {"caseId": "collateral-outcome", "fault": "collateral-outcome", "variant": "base", "expectedStatus": "quarantined"},
+        {"caseId": "incorrect-outcome", "fault": "incorrect-outcome", "variant": "base", "expectedStatus": "quarantined"},
+        {"caseId": "unknown-outcome", "fault": "unknown-outcome", "variant": "base", "expectedStatus": "blocked"},
+        {"caseId": "verifier-unavailable", "fault": "verifier-unavailable", "variant": "base", "expectedStatus": "blocked"}
+      ]
+    },
+    {
+      "contract": {
+        "schemaVersion": "1.0",
+        "contractId": "north-controlled-table",
+        "contractVersion": "2.0.0",
+        "layout": "controlled-table-v2",
+        "templateTitle": "NORTH SEA TABULAR PURCHASE ORDER",
+        "needKey": "convert-north-table-order",
+        "inputRootAlias": "north-pdf-inbox",
+        "outputRootAlias": "north-draft-store",
+        "allowedItemCodes": ["BOLT-10", "FILTER-42", "GLOVE-7"],
+        "maxLineItems": 20,
+        "maxQuantityPerLine": 500,
+        "maxInputBytes": 1000000,
+        "maximumDocumentAgeMs": 86400000,
+        "targetAlias": "north-draft-ledger",
+        "actionKey": "create-table-draft",
+        "approvalKey": "approve-north-table-draft",
+        "outcomeVerifierKey": "north-document-verifier-v1",
+        "workflowKey": "north-table-workflow"
+      },
+      "document": {
+        "documentId": "NORTH-007",
+        "purchaseOrderNumber": "PO-NORTH-007",
+        "shipToCode": "LONDON03",
+        "lines": [{"itemCode": "GLOVE-7", "quantity": 8}, {"itemCode": "BOLT-10", "quantity": 1}]
+      },
+      "approvedAt": "2026-08-14T11:00:00.000Z",
+      "variants": {
+        "base": "74cd6eee9e870b67cea88ee89063274dff5d5ecf51faae04b69fcaaaf906ccb3",
+        "malformed": "1a1102081881a8ace2e24f5b11a18114dfc7e2162ea8c0e4d3fc36e9a028672e",
+        "ambiguous": "d161d968ada5df2bae024cda6ba9be63ab031b70cf04c6f961c417fab389a2a7"
+      },
+      "cases": [
+        {"caseId": "read-only-happy-path", "acceptanceCase": "read-only-happy-path", "fault": "read-only", "variant": "base", "expectedStatus": "read-only"},
+        {"caseId": "approved-write", "acceptanceCase": "approved-write", "fault": "approved-write", "variant": "base", "expectedStatus": "completed"},
+        {"caseId": "fresh-process-reuse", "acceptanceCase": "fresh-process-reuse", "fault": "fresh-process-reuse", "variant": "base", "expectedStatus": "completed"},
+        {"caseId": "missing-credential", "acceptanceCase": "missing-credential", "fault": "missing-pin", "variant": "base", "expectedStatus": "blocked"},
+        {"caseId": "missing-permission", "acceptanceCase": "missing-permission", "fault": "missing-authority", "variant": "base", "expectedStatus": "blocked"},
+        {"caseId": "lost-response-reconciliation", "acceptanceCase": "lost-response-reconciliation", "fault": "lost-response", "variant": "base", "expectedStatus": "completed"},
+        {"caseId": "wrong-or-partial-outcome", "acceptanceCase": "wrong-or-partial-outcome", "fault": "partial-outcome", "variant": "base", "expectedStatus": "quarantined"},
+        {"caseId": "sidecar-restart", "acceptanceCase": "sidecar-restart", "fault": "restart", "variant": "base", "expectedStatus": "completed"},
+        {"caseId": "duplicate-submission", "acceptanceCase": "duplicate-submission", "fault": "duplicate-submission", "variant": "base", "expectedStatus": "completed"},
+        {"caseId": "conflicting-parent-reuse", "acceptanceCase": "conflicting-parent-reuse", "fault": "conflicting-parent", "variant": "base", "expectedStatus": "blocked"},
+        {"caseId": "changed-pin", "fault": "changed-pin", "variant": "base", "expectedStatus": "blocked"},
+        {"caseId": "malformed-layout", "fault": "malformed-layout", "variant": "malformed", "expectedStatus": "blocked"},
+        {"caseId": "ambiguous-layout", "fault": "ambiguous-layout", "variant": "ambiguous", "expectedStatus": "blocked"},
+        {"caseId": "stale-document", "fault": "stale-document", "variant": "base", "expectedStatus": "blocked"},
+        {"caseId": "duplicate-outcome", "fault": "duplicate-outcome", "variant": "base", "expectedStatus": "quarantined"},
+        {"caseId": "collateral-outcome", "fault": "collateral-outcome", "variant": "base", "expectedStatus": "quarantined"},
+        {"caseId": "incorrect-outcome", "fault": "incorrect-outcome", "variant": "base", "expectedStatus": "quarantined"},
+        {"caseId": "unknown-outcome", "fault": "unknown-outcome", "variant": "base", "expectedStatus": "blocked"},
+        {"caseId": "verifier-unavailable", "fault": "verifier-unavailable", "variant": "base", "expectedStatus": "blocked"}
+      ]
+    }
+  ],
+  "codePolicy": {
+    "caseSpecificExecutableFilesAfterFreeze": 0,
+    "genericFactoryFiles": 2
+  }
+}

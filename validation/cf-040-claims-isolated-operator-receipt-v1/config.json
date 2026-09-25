@@ -1,0 +1,27 @@
+{
+  "schemaVersion":"1.0","campaignId":"cf-040-claims-isolated-operator-receipt-v1","frozenAt":"2026-08-14T18:00:00.000Z",
+  "sourceArtifacts":[
+    {"domain":"cf039-registry","path":"src/product/durable-family-registry.ts","sha256":"8723cf5e219886b14b8e89faba91c3fa848b2f4ca20cacb752a4af99ee618810"},
+    {"domain":"cf044-executor","path":"src/product/registry-snapshot-mixed-family-executor.ts","sha256":"1b1b2e36fc763a1e87d66c246257fcfa91cad3909854b3f248ccb01985d98f2d"},
+    {"domain":"cf045-faults","path":"src/product/cf045-generated-health-fault-campaign.ts","sha256":"b9af6710a51144bfc1d5a0b8d6edc33353160ce905d974a5e8e8114829c7fa0f"},
+    {"domain":"cf044-corpus","path":"validation/cf-044-registry-snapshot-mixed-family-v2/corpus.json","sha256":"e18b44d33038b1c3baf490adce7de1b2d0b21925e21566d320aecc6a3059612b"},
+    {"domain":"cf044-seal","path":"validation/cf-044-registry-snapshot-mixed-family-v2/seal.json","sha256":"955cf73f760e8e479fd6fec31c6fde9e1c3aaf7a732128e98f2e5bbad44f375e"},
+    {"domain":"cf045-corpus","path":"validation/cf-045-generated-health-fault-v2/corpus.json","sha256":"588d470a709c219bb4c555579b96a90b321d48b8413c2870ace793f256a05544"},
+    {"domain":"cf045-seal","path":"validation/cf-045-generated-health-fault-v2/seal.json","sha256":"a75d877725b0329c489558db57aeaeea57d6a718e2f24476efa320680de06379"},
+    {"domain":"cf033-goal","path":"validation/cf-033-mixed-family-goal-v1/goal.json","sha256":"aff7decfb8f51255537f27a23f5511328a06c6148b60c62a05f9051536b90808"},
+    {"domain":"cf033-seal","path":"validation/cf-033-mixed-family-goal-v1/seal.json","sha256":"2e025290dd61ca5bb2309b3f079f2de26aec3a9f0ed0c65b0a631d18cab5cbe6"},
+    {"domain":"native-pinned-document","path":"validation/cf-007-pinned-document-clean-family-v1/campaign-seal.json","sha256":"62c3a5ddff950d2c602457350ce27dc47169ac27f70757f39f0d49c7c619e358"},
+    {"domain":"native-signed-message","path":"validation/cf-008-signed-message-clean-family-v1/campaign-seal.json","sha256":"fecd69cd565d593918295cc1b64f906dbd782e284cc278e4c511bd6952e453ef"},
+    {"domain":"native-scoped-database","path":"validation/cf-009-scoped-database-clean-family-v1/campaign-seal.json","sha256":"5d15d2d31c3b11d34a64011e3494274c47c37f52ea82d58b6332a2ebbe542375"},
+    {"domain":"cf038-result","path":"validation/cf-038-seeded-mixed-family-fault-v1/result.json","sha256":"18c881e57330e90bc53b12f619d4ca9daf25f4d9b14c3b85349f45508e113375"},
+    {"domain":"cf038-seal","path":"validation/cf-038-seeded-mixed-family-fault-v1/seal.json","sha256":"d5e1abd9f1e3f9554381d7208f0583cc5c2f68bdf37c58baf37cbef606b26ce9"}
+  ],
+  "limitations":[
+    "All evidence is local, deterministic and fictional.",
+    "No customer system, customer workflow or production environment was exercised.",
+    "The receipt preserves three family-local evidence domains and does not establish universal family coverage.",
+    "Snapshot routing and health checks do not grant activation authority.",
+    "The result is not a formal reliability, security certification, demand or production-readiness verdict.",
+    "Nothing in this private receipt is approved as a public claim."
+  ]
+}

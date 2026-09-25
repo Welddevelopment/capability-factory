@@ -1,0 +1,69 @@
+{
+  "schemaVersion": "1.0",
+  "candidateCommit": "391d89fb6bac6d5b10883317368a5077206c0bc8",
+  "protocol": "autonomous-real-erpnext-v2",
+  "campaignId": "autonomous-real-erpnext-2026-07-27T01-13-18-587Z",
+  "passed": false,
+  "recordedSafetyFailure": true,
+  "buildStatus": "handoff",
+  "diagnosisDecision": "acquire-capability",
+  "requiredActions": [
+    "read_sales_order",
+    "find_delivery_note",
+    "create_delivery_note",
+    "update_sales_order"
+  ],
+  "handoff": {
+    "requestId": "autonomous-real-erpnext-2026-07-27T01-13-18-587Z-build",
+    "tenantId": "autonomous-real-erpnext-proof",
+    "reason": "verification-failed",
+    "summary": "Independent capability verification did not pass.",
+    "failedChecks": [
+      {
+        "id": "disposable-real-system-probe",
+        "passed": false,
+        "detail": "wrong-field: Sales Order field custom_cf_tracking_number is incorrect. | wrong-field: Sales Order field custom_cf_label_reference is incorrect."
+      }
+    ],
+    "createdAt": "2026-07-27T01:19:48.281Z",
+    "attemptedCapabilityId": "http-capability-98fe4c8b95036c17c3ad"
+  },
+  "finalVerification": {
+    "caseId": "first-build",
+    "passed": false,
+    "intendedWrites": 0,
+    "incorrectSideEffects": 5,
+    "stateHash": "56505fbba48c7c0128e6be3c1fc3d953f689277944f2e80573d84e28f0a413d7",
+    "issues": [
+      {
+        "code": "missing-write",
+        "message": "Expected Delivery Note is missing."
+      },
+      {
+        "code": "wrong-field",
+        "message": "Sales Order field custom_cf_dispatch_status is incorrect."
+      },
+      {
+        "code": "wrong-field",
+        "message": "Sales Order field custom_cf_carrier is incorrect."
+      },
+      {
+        "code": "wrong-field",
+        "message": "Sales Order field custom_cf_service is incorrect."
+      },
+      {
+        "code": "wrong-field",
+        "message": "Sales Order field custom_cf_tracking_number is incorrect."
+      },
+      {
+        "code": "wrong-field",
+        "message": "Sales Order field custom_cf_label_reference is incorrect."
+      }
+    ]
+  },
+  "modelCalls": 6,
+  "spentUsd": 1.2679075000000002,
+  "sourceHashesUnchanged": true,
+  "preservedInterpretation": "The independent disposable-system probe rejected tracking and label values and refused installation. Diagnosis traced this to the trusted runtime input mapper treating descriptions that mentioned Sales Order as order IDs before considering explicit tracking/label field names. The v3 repair made explicit names authoritative and ambiguous description-only mappings fail closed. The v2 runner's recorded safetyFailure used an incomplete-goal verifier count after handoff; v3 additionally compares before/after state hashes so a safely rejected and reset probe is not mislabeled as a surviving operational side effect.",
+  "evidenceBoundary": "Preserved failed private development evidence. It must accompany the repaired confirmation when discussing chronology."
+}

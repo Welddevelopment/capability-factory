@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "1.0",
+  "checkpointId": "cf-053-author-known-local-exact-record-v1",
+  "frozenAt": "2026-08-14",
+  "claimBoundary": "Local fictional author-known development substrate only. This is not provider-family transfer, real provider SDK or transport execution, unseen evidence, customer evidence, production evidence, or a public claim.",
+  "canonicalRuntimeFamily": "local-declarative-exact-record-v1",
+  "files": [
+    {
+      "path": "src/product/local-declarative-exact-record-core.ts",
+      "sha256": "087dfe8ff6edaef984014895ec534264489069b9494840b12fd88ee359e89048"
+    },
+    {
+      "path": "src/product/provider-neutral-transfer-core.ts",
+      "sha256": "946c12f70865fd2f78140d53d46b5450a87eb0b3699c0f199a2926de6730e8b6"
+    },
+    {
+      "path": "test/provider-neutral-transfer-core.test.ts",
+      "sha256": "5c6d00b9ee3b96766b47d24999492003ab357835354755c531ac14fb9d239c96"
+    },
+    {
+      "path": "test/fixtures/cf053-author-known-upstream.ts",
+      "sha256": "b1aee2e717c08b33b80010e5dc0d6d8e08b51a0c04092d40687c5d14a7ead52a"
+    },
+    {
+      "path": "test/fixtures/cf053-generation-bootstrap-worker.ts",
+      "sha256": "19bff1de26fd2ceff5de9eb9b295d1edf558945275fc67a7ad9a96d7da421b8f"
+    },
+    {
+      "path": "test/fixtures/cf053-pending-crash-worker.ts",
+      "sha256": "6ef9ea7e2f7bc01e77fa113545cf23fec8b2f15bf3ebdd722135eaaa098c677d"
+    },
+    {
+      "path": "test/fixtures/cf053-registry-worker.ts",
+      "sha256": "b52a2b0c9bc4a49e1c710e4fb7c59b510787f50562cfb9c8480e4eeea6947bac"
+    },
+    {
+      "path": "test/fixtures/cf053-sigkill-launcher-worker.ts",
+      "sha256": "b303e0caa8947d19dbcd8c3e322a48fbfc1ff0b0d8181a52b5d83234dd9cef7f"
+    },
+    {
+      "path": "development/cf-053-author-known-core-v3/README.md",
+      "sha256": "0880baa4f6cc45ee106c77c12d11a2e962f139be5372554377ab8dd28f8dbabb"
+    },
+    {
+      "path": "development/cf-053-author-known-core-v3/contract.json",
+      "sha256": "1e063d1704b3019a75f2c7546739ec76b1f9e9bb86737cb4ba7ba4660a47d361"
+    }
+  ],
+  "verification": {
+    "selectedTests": {
+      "passed": 45,
+      "failed": 0,
+      "files": 3
+    },
+    "typescriptNoEmit": "passed",
+    "diffCheck": "passed",
+    "independentAuthorityPlanClaimReview": "approved for this exact narrow checkpoint",
+    "independentConcurrencyBoundsReview": "approved for this exact narrow checkpoint"
+  },
+  "freezeRule": "Any byte change to a listed file creates a new checkpoint. It cannot be described as this frozen checkpoint or used retroactively against cases opened under this manifest."
+}

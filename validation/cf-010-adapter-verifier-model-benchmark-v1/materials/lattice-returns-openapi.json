@@ -1,0 +1,20 @@
+{
+  "openapi": "3.1.0",
+  "info": { "title": "Lattice Returns Sandbox", "version": "1.0.0" },
+  "servers": [{ "url": "https://lattice.invalid/api" }],
+  "components": {
+    "securitySchemes": { "latticeBearer": { "type": "http", "scheme": "bearer" } }
+  },
+  "paths": {
+    "/orders/{orderId}": {
+      "get": { "operationId": "getOrder", "parameters": [{ "name": "orderId", "in": "path", "required": true, "schema": { "type": "string" } }], "responses": { "200": { "description": "Order" } } }
+    },
+    "/returns": {
+      "get": { "operationId": "listReturns", "parameters": [{ "name": "external_return_ref", "in": "query", "required": true, "schema": { "type": "string" } }], "responses": { "200": { "description": "Returns and server_updated_at" } } },
+      "post": { "operationId": "createReturnDraft", "description": "Create a draft return. Duplicate external_return_ref values are rejected.", "requestBody": { "required": true, "content": { "application/json": { "schema": { "type": "object", "required": ["order_id", "external_return_ref", "reason_code"], "properties": { "order_id": { "type": "string" }, "external_return_ref": { "type": "string" }, "reason_code": { "type": "string" } } } } } }, "responses": { "201": { "description": "Draft created" }, "409": { "description": "Duplicate external reference" } } }
+    },
+    "/returns/{returnId}": {
+      "delete": { "operationId": "deleteReturn", "parameters": [{ "name": "returnId", "in": "path", "required": true, "schema": { "type": "string" } }], "responses": { "204": { "description": "Deleted" } } }
+    }
+  }
+}

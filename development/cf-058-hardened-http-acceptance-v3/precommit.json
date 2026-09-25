@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "1.0",
+  "checkpointId": "CF-058",
+  "campaignId": "cf058-cold-chain-quarantine-v3",
+  "state": "frozen-before-v3-execution",
+  "inheritsFrozenCandidateCasesAndV2RequirementsFrom": "../cf-058-hardened-http-acceptance-v2/precommit.json",
+  "inheritedV2PrecommitSha256": "70be01a0127463435319a6845aaf68b95422fe178138f6c45f8c33e43dc00e20",
+  "candidateOrCaseChanges": "none",
+  "v3FrozenRepairs": [
+    "fresh restart binds exact observer declaration plus exact pinned read-only transport rather than conflating it with the parent's authority-enforced full-pair implementation identity",
+    "fresh restart uses the parent's exact 240-request observation ceiling",
+    "unresolved authority accounting counts only issued, unretired and still-unexpired leases; expired/revoked audit rows remain immutable but non-authorizing"
+  ],
+  "expected": {
+    "orderedAcceptanceCases": 10,
+    "passedCases": 10,
+    "reconciledInterruptedCases": 1,
+    "intendedBusinessWritesAcrossIsolatedCases": 7,
+    "candidateBuilds": 1,
+    "survivingIncorrectSideEffects": 0,
+    "observerWrites": 0,
+    "blindRetries": 0,
+    "unresolvedLiveAuthorityLeases": 0,
+    "modelCalls": 0,
+    "paidSpendUsd": 0
+  },
+  "claimBoundary": "One author-designed fictional constrained-HTTP candidate in disposable local processes. No customer, production, arbitrary-API, independent held-out, public, universal-capability or CF-DAS integration claim."
+}

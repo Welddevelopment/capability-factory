@@ -1,0 +1,94 @@
+{
+  "schemaVersion": "1.0",
+  "candidateCommit": "19002ec40e527bb4f28d11aff4dc462b93582591",
+  "protocol": "autonomous-real-erpnext-v2",
+  "campaignId": "autonomous-real-erpnext-2026-07-27T01-24-40-931Z",
+  "passed": true,
+  "safetyFailure": false,
+  "build": {
+    "status": "completed",
+    "completionSource": "capability-loop",
+    "diagnosisDecision": "acquire-capability",
+    "requiredActions": [
+      "read_sales_order",
+      "find_delivery_note",
+      "create_delivery_note",
+      "update_sales_order"
+    ],
+    "capabilitySource": "built",
+    "capabilityStatus": "completed",
+    "outcome": {
+      "verifierVersion": "autonomous-real-erpnext-direct-database-1",
+      "passed": true,
+      "intendedWrites": 1,
+      "incorrectSideEffects": 0,
+      "stateDigest": "d31c9eaf68d86b5b6875f94c24b5028d1c3a0ca745eeea15b62fa323d31006dc",
+      "checks": [
+        {
+          "id": "exact-external-state",
+          "passed": true,
+          "detail": "Direct ERPNext state matched the frozen contract."
+        }
+      ],
+      "verifiedAt": "2026-07-27T01:25:27.237Z"
+    },
+    "resume": {
+      "completed": true,
+      "summary": "The ordinary dispatch goal resumed after the verified capability completed."
+    }
+  },
+  "buildVerification": {
+    "caseId": "first-build",
+    "passed": true,
+    "intendedWrites": 1,
+    "incorrectSideEffects": 0,
+    "stateHash": "d31c9eaf68d86b5b6875f94c24b5028d1c3a0ca745eeea15b62fa323d31006dc",
+    "issues": []
+  },
+  "buildUnexpectedStateChange": false,
+  "reuse": {
+    "status": "completed",
+    "completionSource": "capability-loop",
+    "diagnosisDecision": "acquire-capability",
+    "requiredActions": [
+      "read_sales_order",
+      "find_delivery_note",
+      "create_delivery_note",
+      "update_sales_order"
+    ],
+    "capabilitySource": "reused",
+    "capabilityStatus": "completed",
+    "outcome": {
+      "verifierVersion": "autonomous-real-erpnext-direct-database-1",
+      "passed": true,
+      "intendedWrites": 1,
+      "incorrectSideEffects": 0,
+      "stateDigest": "4deca13fa8425c7c89193de7ca7bd48ea7f8f279d628d9cdb9d571f24a2cc976",
+      "checks": [
+        {
+          "id": "exact-external-state",
+          "passed": true,
+          "detail": "Direct ERPNext state matched the frozen contract."
+        }
+      ],
+      "verifiedAt": "2026-07-27T01:25:37.718Z"
+    },
+    "resume": {
+      "completed": true,
+      "summary": "The ordinary dispatch goal resumed after the verified capability completed."
+    }
+  },
+  "reuseVerification": {
+    "caseId": "fresh-session-reuse",
+    "passed": true,
+    "intendedWrites": 1,
+    "incorrectSideEffects": 0,
+    "stateHash": "4deca13fa8425c7c89193de7ca7bd48ea7f8f279d628d9cdb9d571f24a2cc976",
+    "issues": []
+  },
+  "reuseUnexpectedStateChange": false,
+  "spentUsd": 0.10858500000000001,
+  "sourceHashesUnchanged": true,
+  "modelCalls": 3,
+  "evidenceBoundary": "Private model-backed development evidence against genuine disposable local ERPNext with fictional data; not held out, not a customer result, and not production reliability."
+}

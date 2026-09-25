@@ -1,0 +1,12 @@
+{
+  "openapi": "3.1.0",
+  "info": { "title": "Blind Courier Sandbox", "version": "1.0.0" },
+  "paths": {
+    "/dispatches": {
+      "post": { "operationId": "dispatchParcel", "description": "Dispatch one parcel using a caller-supplied dispatch reference.", "requestBody": { "required": true, "content": { "application/json": { "schema": { "type": "object", "required": ["parcel_id", "dispatch_reference"], "properties": { "parcel_id": { "type": "string" }, "dispatch_reference": { "type": "string" } } } } } }, "responses": { "202": { "description": "Accepted; response is not proof of dispatch completion" } } }
+    },
+    "/health": {
+      "get": { "operationId": "getHealth", "description": "Service health only; contains no dispatch outcome.", "responses": { "200": { "description": "Healthy" } } }
+    }
+  }
+}

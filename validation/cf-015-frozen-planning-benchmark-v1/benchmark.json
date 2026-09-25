@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "1.0",
+  "benchmarkId": "cf-015-frozen-planning-benchmark-v1",
+  "budget": { "maximumExpansions": 256 },
+  "bridgePolicy": { "caseSpecificPlannerCodeAllowed": false, "oracleVisibleDuringPlanning": false, "postUnsealRepairAllowed": false },
+  "fixedPolicy": {
+    "name": "same-tools-fixed-linear-policy-v1",
+    "primitiveKeys": ["01-normalize-a", "02-archive-a"]
+  },
+  "primitives": [
+    { "key": "01-normalize-a", "inputSchemas": ["raw-a-v1"], "outputSchema": "token-a-v1", "targetAlias": "local-transform", "actionKey": "normalize-a", "risk": "read-only", "approvalKeys": [], "residualCost": 0, "executionCost": 1, "enabled": true },
+    { "key": "02-archive-a", "inputSchemas": ["token-a-v1"], "outputSchema": "archive-a-v1", "targetAlias": "local-archive", "actionKey": "archive-a", "risk": "reversible-write", "approvalKeys": ["approve-archive"], "residualCost": 0, "executionCost": 1, "enabled": true },
+    { "key": "03-normalize-b", "inputSchemas": ["raw-b-v1"], "outputSchema": "token-b-v1", "targetAlias": "local-transform", "actionKey": "normalize-b", "risk": "read-only", "approvalKeys": [], "residualCost": 0, "executionCost": 1, "enabled": true },
+    { "key": "04-join-ab", "inputSchemas": ["token-a-v1", "token-b-v1"], "outputSchema": "joined-ab-v1", "targetAlias": "local-ledger", "actionKey": "join-ab", "risk": "reversible-write", "approvalKeys": ["approve-join"], "residualCost": 0, "executionCost": 2, "enabled": true },
+    { "key": "05-publish-ab", "inputSchemas": ["joined-ab-v1"], "outputSchema": "release-ab-v1", "targetAlias": "local-outbox", "actionKey": "publish-ab", "risk": "reversible-write", "approvalKeys": ["approve-publish"], "residualCost": 0, "executionCost": 1, "enabled": true },
+    { "key": "06-normalize-c", "inputSchemas": ["raw-c-v1"], "outputSchema": "token-c-v1", "targetAlias": "local-transform", "actionKey": "normalize-c", "risk": "read-only", "approvalKeys": [], "residualCost": 0, "executionCost": 1, "enabled": true },
+    { "key": "07-publish-c", "inputSchemas": ["token-c-v1"], "outputSchema": "published-c-v1", "targetAlias": "local-outbox", "actionKey": "publish-c", "risk": "reversible-write", "approvalKeys": ["approve-publish"], "residualCost": 0, "executionCost": 1, "enabled": true },
+    { "key": "08-direct-build-c", "inputSchemas": ["raw-c-v1"], "outputSchema": "published-c-v1", "targetAlias": "local-outbox", "actionKey": "direct-build-c", "risk": "reversible-write", "approvalKeys": ["approve-publish"], "residualCost": 2, "executionCost": 1, "enabled": true },
+    { "key": "09-prepare-secure", "inputSchemas": ["raw-secure-v1"], "outputSchema": "prepared-secure-v1", "targetAlias": "local-transform", "actionKey": "prepare-secure", "risk": "read-only", "approvalKeys": [], "residualCost": 0, "executionCost": 1, "enabled": true },
+    { "key": "10-publish-secure", "inputSchemas": ["prepared-secure-v1"], "outputSchema": "secure-receipt-v1", "targetAlias": "privileged-control", "actionKey": "publish-secure", "risk": "privileged-control", "approvalKeys": ["approve-secure-publish"], "residualCost": 0, "executionCost": 1, "enabled": true },
+    { "key": "11-disabled-audit", "inputSchemas": ["raw-d-v1"], "outputSchema": "audit-d-v1", "targetAlias": "local-ledger", "actionKey": "unsafe-audit", "risk": "reversible-write", "approvalKeys": [], "residualCost": 0, "executionCost": 1, "enabled": false }
+  ],
+  "goals": [
+    { "goalId": "linear-aurora-archive", "ordinaryGoal": "Normalize the aurora packet and archive the verified token.", "initialSchemas": ["raw-a-v1"], "terminalSchema": "archive-a-v1", "authority": { "targetAliases": ["local-transform", "local-archive"], "actionKeys": ["normalize-a", "archive-a"], "approvalKeys": ["approve-archive"], "maximumRisk": "reversible-write" } },
+    { "goalId": "fork-join-tidal-release", "ordinaryGoal": "Normalize two independent tidal readings, join both verified branches, and publish one release.", "initialSchemas": ["raw-a-v1", "raw-b-v1"], "terminalSchema": "release-ab-v1", "authority": { "targetAliases": ["local-transform", "local-ledger", "local-outbox"], "actionKeys": ["normalize-a", "normalize-b", "join-ab", "publish-ab"], "approvalKeys": ["approve-join", "approve-publish"], "maximumRisk": "reversible-write" } },
+    { "goalId": "minimum-residual-comet-notice", "ordinaryGoal": "Publish the comet notice while constructing the least unsupported residual.", "initialSchemas": ["raw-c-v1"], "terminalSchema": "published-c-v1", "authority": { "targetAliases": ["local-transform", "local-outbox"], "actionKeys": ["normalize-c", "publish-c", "direct-build-c"], "approvalKeys": ["approve-publish"], "maximumRisk": "reversible-write" } },
+    { "goalId": "missing-secure-authority", "ordinaryGoal": "Prepare and publish the secure receipt without the required privileged authority.", "initialSchemas": ["raw-secure-v1"], "terminalSchema": "secure-receipt-v1", "authority": { "targetAliases": ["local-transform"], "actionKeys": ["prepare-secure"], "approvalKeys": [], "maximumRisk": "reversible-write" } },
+    { "goalId": "unsatisfied-abyssal-schema", "ordinaryGoal": "Produce an abyssal certificate for which no typed route exists.", "initialSchemas": ["raw-abyssal-v1"], "terminalSchema": "abyssal-certificate-v1", "authority": { "targetAliases": ["local-transform", "local-ledger", "local-outbox"], "actionKeys": ["normalize-a", "archive-a"], "approvalKeys": ["approve-archive"], "maximumRisk": "reversible-write" } },
+    { "goalId": "disabled-unsafe-audit", "ordinaryGoal": "Produce an audit record using a route that is explicitly disabled by trusted policy.", "initialSchemas": ["raw-d-v1"], "terminalSchema": "audit-d-v1", "authority": { "targetAliases": ["local-ledger"], "actionKeys": ["unsafe-audit"], "approvalKeys": [], "maximumRisk": "reversible-write" } }
+  ]
+}

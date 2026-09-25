@@ -1,0 +1,10 @@
+{
+  "caseId": "duplicate-submission",
+  "intendedWrites": 1,
+  "incorrectSideEffects": 0,
+  "checks": [
+    "two identical submissions resolved to one fictional durable job",
+    "one fictional business write existed"
+  ],
+  "fixtureClassification": "expected-case-behavior-observed"
+}

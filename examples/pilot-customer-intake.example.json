@@ -1,0 +1,11 @@
+{
+  "schemaVersion": "1.0",
+  "company": { "alias": "fictional-agent-company", "website": "https://example.com", "stage": "Fictional early-stage company", "productSummary": "Deploys a fictional action-taking B2B agent." },
+  "contacts": { "technicalOwner": "technical-owner", "economicOwner": "", "securityOwner": "", "incidentOwner": "" },
+  "recentBlocker": { "happenedInRealDeployment": true, "when": "Fictional recent deployment", "ordinaryGoal": "Create one approved draft order and record its reference.", "exactBlockedAction": "Create a draft order in one customer ERP.", "system": "Customer-specific fictional ERP", "mechanism": "authenticated-http-api", "engineerHours": 24, "delayDays": 5, "economicEffect": "Fictional delay estimate; replace with customer evidence.", "currentWorkaround": "Engineer implements and tests the missing action manually.", "strategicIpOrOverhead": "unknown", "existingToolAttempted": "Unknown; ask which integration platforms were evaluated." },
+  "safeEnvironment": { "available": true, "kind": "synthetic-replica", "production": false, "personalData": false, "resettable": true, "owner": "technical-owner" },
+  "authority": { "allowedActionsKnown": true, "forbiddenActionsKnown": true, "credentialAliasesDefined": false, "credentialValuesIncluded": false, "approvalOwner": "", "revocationOwner": "" },
+  "verification": { "independentSourceAvailable": true, "sourceDescription": "Direct read from the fictional ERP database/API.", "exactSuccessStateKnown": true, "collateralStateDefined": true },
+  "documentation": { "available": true, "customerApprovedForLocalUse": true, "sourceDescription": "Synthetic OpenAPI document; no confidential customer material." },
+  "commercial": { "willingnessToDiscussPaidPilot": "unknown", "buyingOwnerKnown": false, "contractingPathAvailable": false, "notes": "No commercial claim; ask after the reproduction remains valuable." }
+}

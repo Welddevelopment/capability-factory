@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "1.0",
+  "checkpointId": "cf-054-author-known-pinned-https-v1",
+  "frozenAt": "2026-08-14",
+  "claimBoundary": "Author-known local pinned-HTTPS transport primitive joined once to reviewed OpenAPI action/read bindings. No unseen, customer, external-provider, production, reliability, general-HTTPS, authority-completeness, or independent-service claim.",
+  "files": [
+    {
+      "path": "src/product/customer-local-pinned-https-transport.ts",
+      "sha256": "80004f40598a528d3b6f75c009748251f69f2e1f93f69c4fed9eb4c55e191197"
+    },
+    {
+      "path": "test/customer-local-pinned-https-transport.test.ts",
+      "sha256": "66bb8282d290d21f310c4d7f37a18593c91ba139bc5df7d15194fa2cf265d6ed"
+    },
+    {
+      "path": "test/http-binding-pinned-https-joined.test.ts",
+      "sha256": "f6add5e27f4a85badf75fd47155378b92b43d159fc55c952e543a0dab3a4a660"
+    },
+    {
+      "path": "test/fixtures/cf054-pinned-https-provider-worker.ts",
+      "sha256": "c9fd9193e67f85a9eff40f51229a6e723eb7ac8a6e2745728aa41b8c79d6b80f"
+    },
+    {
+      "path": "reports/cf-054-author-known-pinned-https-transport-2026-08-14.md",
+      "sha256": "010f0ba4c3c87e9fb01d40ddc5076cddd475759beb98896e4dc7b54bb00349c5"
+    }
+  ],
+  "verification": {
+    "selectedTests": { "files": 3, "passed": 10, "failed": 0 },
+    "typescriptNoEmit": "passed",
+    "diffCheck": "passed",
+    "independentSkepticalAudit": "approved for this exact narrow checkpoint after rejecting the mutable-config and shallow-freeze drafts"
+  },
+  "freezeRule": "Any byte change to a listed file creates a new checkpoint. Held-out provider inputs must be generated only after this manifest and commit exist, and this checkpoint cannot be edited after those cases are opened."
+}

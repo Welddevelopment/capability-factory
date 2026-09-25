@@ -1,0 +1,71 @@
+{
+  "openapi": "3.1.0",
+  "info": { "title": "Northstar Sample Vault", "version": "2.0.0" },
+  "servers": [{ "url": "https://northstar-vault.local.invalid/api" }],
+  "paths": {
+    "/sample-holds": {
+      "post": {
+        "operationId": "createSampleHold",
+        "security": [{ "northstarHoldWriter": [] }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["hold_ref", "sample_class", "hours"],
+                "properties": {
+                  "hold_ref": { "type": "string" },
+                  "sample_class": { "type": "string" },
+                  "hours": { "type": "integer" }
+                }
+              }
+            }
+          }
+        },
+        "responses": { "201": { "description": "Created" }, "400": { "description": "Invalid" }, "409": { "description": "Conflict" } }
+      },
+      "get": {
+        "operationId": "findSampleHolds",
+        "security": [{ "northstarHoldReader": [] }],
+        "parameters": [
+          { "name": "hold_ref", "in": "query", "required": true, "schema": { "type": "string" } },
+          { "name": "sample_class", "in": "query", "required": false, "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "Matches",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "hold_ref": { "type": "string" },
+                          "sample_class": { "type": "string" },
+                          "hours": { "type": "integer" }
+                        }
+                      }
+                    },
+                    "server_time": { "type": "string" },
+                    "collateral_clean": { "type": "boolean" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "northstarHoldWriter": { "type": "http", "scheme": "bearer" },
+      "northstarHoldReader": { "type": "http", "scheme": "bearer" }
+    }
+  }
+}

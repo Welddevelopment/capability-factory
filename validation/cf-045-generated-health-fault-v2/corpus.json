@@ -1,0 +1,16 @@
+{
+  "schemaVersion":"2.0",
+  "campaignId":"cf-045-generated-health-fault-v2",
+  "frozenAt":"2026-08-14T18:15:00.000Z",
+  "faults":["drift","expiry","quarantine","revocation","observer-loss","evidence-source-change"],
+  "boundaries":[{"id":"before-document","verifiedArtifacts":0},{"id":"after-document","verifiedArtifacts":1},{"id":"after-message","verifiedArtifacts":2}],
+  "replacementPolicy":{
+    "drift:before-document":"replace","drift:after-document":"handoff","drift:after-message":"handoff",
+    "expiry:before-document":"handoff","expiry:after-document":"replace","expiry:after-message":"handoff",
+    "quarantine:before-document":"handoff","quarantine:after-document":"handoff","quarantine:after-message":"replace",
+    "revocation:before-document":"replace","revocation:after-document":"handoff","revocation:after-message":"handoff",
+    "observer-loss:before-document":"handoff","observer-loss:after-document":"replace","observer-loss:after-message":"handoff",
+    "evidence-source-change:before-document":"safe-no-op","evidence-source-change:after-document":"safe-no-op","evidence-source-change:after-message":"safe-no-op"
+  },
+  "incompatibleMutations":["output-schema","authority","credentials","manifest-lineage"]
+}

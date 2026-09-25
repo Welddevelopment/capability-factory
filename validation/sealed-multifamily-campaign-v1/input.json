@@ -1,0 +1,93 @@
+{
+  "schemaVersion": "1.0",
+  "campaignId": "cf-006-lichen-transfer-v1",
+  "identity": {
+    "tenantId": "sealed-botanical-tenant",
+    "requestId": "sealed-request-006",
+    "parentGoalId": "sealed-goal-lichen-transfer-7419"
+  },
+  "ordinaryGoal": "Record the approved unfamiliar lichen-nursery transfer, create its fixed-width cold-room dispatch capsule, and mark the transfer dispatched only after both local systems independently prove the same release.",
+  "proposalSummary": "Persist the approved transfer, emit its dispatch capsule, and reconcile the verified dispatch into the ledger.",
+  "evidence": {
+    "evidenceId": "sealed-lichen-transfer-policy",
+    "summary": "One approved transfer may cross the ledger and fixed-width dispatch boundary under the exact sealed authority."
+  },
+  "authority": {
+    "targetAliases": [
+      "sealed-transfer-ledger",
+      "sealed-dispatch-outbox"
+    ],
+    "actionKeys": [
+      "upsert-transfer",
+      "write-dispatch-capsule"
+    ],
+    "approvalKeys": [
+      "approve-lichen-transfer",
+      "approve-dispatch-capsule"
+    ],
+    "maximumRisk": "reversible-write"
+  },
+  "graph": {
+    "workItems": [
+      {
+        "workItemId": "record-approved-transfer",
+        "primitiveKey": "local-sqlite.upsert-transfer-v1",
+        "primitiveVersion": "v1",
+        "dependsOn": [],
+        "binding": {
+          "inputKey": "transfer",
+          "kind": "trusted-evidence",
+          "evidenceId": "sealed-lichen-transfer-policy",
+          "valueKey": "approved-transfer"
+        }
+      },
+      {
+        "workItemId": "write-dispatch-capsule",
+        "primitiveKey": "local-fixed-width.write-capsule-v1",
+        "primitiveVersion": "v1",
+        "dependsOn": [
+          "record-approved-transfer"
+        ],
+        "binding": {
+          "inputKey": "transfer",
+          "kind": "verified-artifact",
+          "producerWorkItemId": "record-approved-transfer",
+          "outputKey": "transfer"
+        }
+      },
+      {
+        "workItemId": "mark-transfer-dispatched",
+        "primitiveKey": "local-sqlite.upsert-transfer-v1",
+        "primitiveVersion": "v1",
+        "dependsOn": [
+          "write-dispatch-capsule"
+        ],
+        "binding": {
+          "inputKey": "transfer",
+          "kind": "verified-artifact",
+          "producerWorkItemId": "write-dispatch-capsule",
+          "outputKey": "dispatched-transfer"
+        }
+      }
+    ],
+    "terminalOutputs": [
+      {
+        "workItemId": "mark-transfer-dispatched",
+        "outputKey": "transfer"
+      }
+    ]
+  },
+  "faults": {
+    "restartAfterExternalCommitWorkItemId": "record-approved-transfer",
+    "loseParentResumptionResponse": true
+  },
+  "runtimeFamilies": [
+    "local-sqlite-transaction",
+    "local-fixed-width-file"
+  ],
+  "verifierQualification": {
+    "qualifiedAt": "2026-08-14T08:00:00.000Z",
+    "expiresAt": "2026-09-13T08:00:00.000Z",
+    "corpusVersion": "cf-006-sealed-negative-controls-v1"
+  }
+}

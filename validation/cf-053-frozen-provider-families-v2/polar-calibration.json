@@ -1,0 +1,128 @@
+{
+  "schemaVersion": "1.0",
+  "familyId": "polar-calibration",
+  "state": "frozen-fictional-provider-input",
+  "fictional": true,
+  "provider": {
+    "providerId": "polar-maintenance-cloud",
+    "sourceKind": "reference-json",
+    "localReference": "fixture://cf053/polar-calibration",
+    "approvedImports": [
+      "polar-calibration-write-sdk",
+      "polar-calibration-audit-sdk"
+    ],
+    "documentation": {
+      "title": "Polar Maintenance Cloud local SDK reference",
+      "version": "2026-08-14-fixture-v1",
+      "methods": [
+        {
+          "role": "action",
+          "module": "polar-calibration-write-sdk",
+          "className": "CalibrationScheduler",
+          "methodName": "scheduleCalibration",
+          "overloadId": "v1",
+          "sourcePointer": "#/methods/scheduleCalibration",
+          "parameters": [
+            { "name": "maintenanceRequestId", "type": "string", "required": true },
+            { "name": "sensorChannel", "type": "number", "required": true },
+            { "name": "quarantineRequired", "type": "boolean", "required": true }
+          ],
+          "returnType": "Promise<Record<string, string | number | boolean | null>>",
+          "errorTypes": ["SdkError", "Unauthorized", "Conflict", "TimeoutBeforeCommit"],
+          "authAliasRequirements": ["cred.polar_calibration_writer"],
+          "pagination": "none",
+          "retryCandidate": "idempotency-key",
+          "idempotencyCandidate": "maintenanceRequestId"
+        },
+        {
+          "role": "no-write-probe",
+          "module": "polar-calibration-write-sdk",
+          "className": "CalibrationScheduler",
+          "methodName": "probeScheduling",
+          "overloadId": "v1",
+          "sourcePointer": "#/methods/probeScheduling",
+          "parameters": [
+            { "name": "maintenanceRequestId", "type": "string", "required": true }
+          ],
+          "returnType": "Promise<Record<string, string | number | boolean | null>>",
+          "errorTypes": ["SdkError", "Unauthorized"],
+          "authAliasRequirements": ["cred.polar_calibration_writer"],
+          "pagination": "none",
+          "retryCandidate": "read-only",
+          "idempotencyCandidate": null
+        },
+        {
+          "role": "reconciliation-readback",
+          "module": "polar-calibration-write-sdk",
+          "className": "CalibrationScheduler",
+          "methodName": "findCalibrationByRequest",
+          "overloadId": "v1",
+          "sourcePointer": "#/methods/findCalibrationByRequest",
+          "parameters": [
+            { "name": "maintenanceRequestId", "type": "string", "required": true }
+          ],
+          "returnType": "Promise<Record<string, string | number | boolean | null>>",
+          "errorTypes": ["SdkError", "Unauthorized"],
+          "authAliasRequirements": ["cred.polar_compliance_observer"],
+          "pagination": "none",
+          "retryCandidate": "read-only",
+          "idempotencyCandidate": null
+        },
+        {
+          "role": "independent-observer",
+          "module": "polar-calibration-audit-sdk",
+          "className": "ComplianceLogReader",
+          "methodName": "observeCalibrationByRequest",
+          "overloadId": "v1",
+          "sourcePointer": "#/methods/observeCalibrationByRequest",
+          "parameters": [
+            { "name": "maintenanceRequestId", "type": "string", "required": true }
+          ],
+          "returnType": "Promise<Record<string, string | number | boolean | null>>",
+          "errorTypes": ["SdkError", "Unauthorized"],
+          "authAliasRequirements": ["cred.polar_compliance_observer"],
+          "pagination": "none",
+          "retryCandidate": "read-only",
+          "idempotencyCandidate": null
+        }
+      ]
+    }
+  },
+  "blockedWorkflow": {
+    "ordinaryGoal": "Schedule the confirmed cold-room sensor calibration and preserve quarantine until it is complete.",
+    "requiredOutcome": "Exactly one calibration record exists for the confirmed maintenance request with the selected sensor channel and quarantine setting.",
+    "input": {
+      "maintenanceRequestId": "PMR-53017",
+      "sensorChannel": 12,
+      "quarantineRequired": true
+    }
+  },
+  "reviewedSemantics": {
+    "stableIdentity": { "source": "workflow-input", "key": "maintenanceRequestId", "convert": "string" },
+    "idempotency": { "source": "workflow-input", "key": "maintenanceRequestId", "convert": "string" },
+    "actionCredentialAlias": "cred.polar_calibration_writer",
+    "observerCredentialAlias": "cred.polar_compliance_observer",
+    "actionScope": "calibrations:schedule",
+    "observerScope": "compliance-log:read-calibrations",
+    "reconcileBeforeRetry": true,
+    "blindRetryAllowed": false,
+    "outcome": {
+      "stableIdentityPath": ["maintenanceRequestId"],
+      "sensorChannelPath": ["sensorChannel"],
+      "quarantineRequiredPath": ["quarantineRequired"],
+      "duplicateCollectionPath": ["matches"],
+      "collateralCleanPath": ["collateralClean"],
+      "freshnessPath": ["observedAt"],
+      "maximumAgeSeconds": 45
+    }
+  },
+  "authority": {
+    "state": "fixture-confirmed-not-granted-by-this-file",
+    "target": "polar-calibration-sandbox",
+    "policyVersion": "cf053-polar-policy-v1",
+    "allowedAction": "scheduleCalibration",
+    "exactInputIdentity": "PMR-53017"
+  },
+  "executionAuthorityEffect": "none",
+  "activationEffect": "none"
+}

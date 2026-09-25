@@ -1,0 +1,10 @@
+{
+  "caseId": "missing-permission",
+  "intendedWrites": 0,
+  "incorrectSideEffects": 0,
+  "checks": [
+    "the exact missing write permission was reported",
+    "write counter remained zero"
+  ],
+  "fixtureClassification": "expected-case-behavior-observed"
+}

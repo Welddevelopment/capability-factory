@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "1.0",
+  "packageId": "mistral-cold-storage",
+  "sessionId": "mistral-cold-storage-session",
+  "tenantId": "clean-package-tenant",
+  "adapterId": "mistral-cold-storage-adapter",
+  "adapterVersion": "1.0.0",
+  "targetAlias": "mistral_vault",
+  "serverUrl": "https://mistral-vault.local.invalid/v2",
+  "workflowId": "register-cold-hold",
+  "summary": "Register exactly one provisional cold-storage hold for an approved archive capsule.",
+  "requiredOutcome": "Exactly one provisional cold hold exists for the confirmed hold reference and collateral state remains unchanged.",
+  "action": {
+    "driverId": "mistral-hold-action",
+    "sourceId": "mistral-hold-write-api",
+    "operationId": "registerColdHold",
+    "credentialAlias": "mistralHoldWriter",
+    "path": "/cold-holds"
+  },
+  "observer": {
+    "driverId": "mistral-hold-observer",
+    "sourceId": "mistral-hold-read-model",
+    "operationId": "findColdHolds",
+    "credentialAlias": "mistralHoldObserver",
+    "path": "/cold-holds",
+    "queryName": "hold_ref"
+  },
+  "stableInputKey": "hold_ref",
+  "conflictInputKey": "temperature_band",
+  "workflowInput": {
+    "hold_ref": "HOLD-M42",
+    "temperature_band": "minus-40c",
+    "retention_hours": 72
+  },
+  "alternativeConflictValue": "minus-80c",
+  "approvedDocument": {
+    "localReference": "package://mistral-cold-storage/openapi.json",
+    "approvedByAlias": "fixtureAuthor",
+    "approvedAt": "2026-08-14T11:00:00.000Z",
+    "sourceOpenApiSha256": "f6aca2033c70c4d3e16b6eff58d36b922e2b31419341220c6cdc2062ca97ed47",
+    "derivedOpenApiSha256": "f6aca2033c70c4d3e16b6eff58d36b922e2b31419341220c6cdc2062ca97ed47"
+  }
+}

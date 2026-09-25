@@ -1,0 +1,9 @@
+{
+  "schemaVersion": "1.0",
+  "attempt": 1,
+  "classification": "environment-blocked",
+  "result": "not-a-product-result",
+  "failure": "The sandbox denied localhost provider binding before the campaign could execute.",
+  "unsafeEffects": 0,
+  "preservedBecause": "CF-058 keeps environment failures distinct from technical results."
+}

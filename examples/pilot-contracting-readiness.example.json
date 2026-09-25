@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "1.0",
+  "assessedAt": "2026-07-29T00:00:00.000Z",
+  "founderAge": 15,
+  "parentOrGuardianInvolved": false,
+  "qualifiedUkLegalAdviceReceived": false,
+  "qualifiedUkTaxAdviceReceived": false,
+  "contractingParty": { "kind": "unresolved", "legalName": "unresolved", "registrationOrTaxReference": "unresolved", "authorizedSigner": "unresolved", "signerAuthorityConfirmed": false },
+  "intellectualProperty": { "existingIpOwnerIdentified": false, "newIpTermsDefined": false, "customerInputsLicenceDefined": false, "openSourceReviewComplete": false },
+  "money": { "bankAccountConfirmed": false, "invoiceIssuerConfirmed": false, "paymentProvider": "unresolved", "adultRepresentativeConfirmedWhereRequired": false, "currencyAndTaxTreatmentReviewed": false, "recordKeepingOwner": "unresolved" },
+  "legalDocuments": { "pilotOrderReviewed": false, "confidentialityPathReviewed": false, "dataProtectionRolesReviewed": false, "liabilityAndTerminationReviewed": false, "publicityConsentSeparate": true },
+  "insurance": { "requirementAssessed": false, "cyberStatus": "not-assessed", "professionalIndemnityStatus": "not-assessed" },
+  "educationAndWork": { "currentSchoolObligationsReviewed": false, "post16EducationOrTrainingPathReviewed": false, "workloadPlanRecorded": false, "guardianApproved": false },
+  "notes": "Open checklist. Do not sign, invoice, accept payment, or represent an entity until appropriately resolved."
+}

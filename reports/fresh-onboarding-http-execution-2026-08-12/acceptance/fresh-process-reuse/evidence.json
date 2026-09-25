@@ -1,0 +1,99 @@
+{
+  "schemaVersion": "1.0",
+  "caseId": "fresh-process-reuse",
+  "preStateDigest": "df126900c4f81ea3712da478f61a73534aa98d1b81905ab17942d84f5b162675",
+  "postStateDigest": "ad1bdd131d6b4a96c21063f8902ad1a5ecb57f88e8781511e987e4b417ecffeb",
+  "stateSummary": {
+    "visits": 1,
+    "writeAttempts": 1,
+    "committedWrites": 1,
+    "unrelatedChanges": 0
+  },
+  "observerReceipt": {
+    "schemaVersion": "1.0",
+    "observerId": "outcome-observer-cac7705c8be9616f1b8c96b5",
+    "observerVersion": "1.0",
+    "proposalDigest": "cfbff2e771486bea3d7d135c8c4d72d6fef1b2b00e46142b2331085d49caf6f6",
+    "bindingDigest": "06a139ec3ddde60915c69e6717ff482e6d1d8989f310e650c5ac4a12d2eb0ce7",
+    "classification": "completed",
+    "passed": true,
+    "duplicateDetected": false,
+    "collateralDetected": false,
+    "stateDigest": "4e0b8f65c5ccf8d865500b5199d3210d333d31d3632ff0c645c7ecb7002e3d6a",
+    "checks": [
+      {
+        "key": "one-visit",
+        "role": "success",
+        "passed": true,
+        "detail": "Confirmed success predicate passed."
+      },
+      {
+        "key": "unique-visit-id",
+        "role": "success",
+        "passed": true,
+        "detail": "Confirmed success predicate passed."
+      },
+      {
+        "key": "draft-status",
+        "role": "success",
+        "passed": true,
+        "detail": "Confirmed success predicate passed."
+      },
+      {
+        "key": "approved-asset",
+        "role": "success",
+        "passed": true,
+        "detail": "Confirmed success predicate passed."
+      },
+      {
+        "key": "approved-date",
+        "role": "success",
+        "passed": true,
+        "detail": "Confirmed success predicate passed."
+      },
+      {
+        "key": "no-visit",
+        "role": "not-started",
+        "passed": false,
+        "detail": "Confirmed not-started predicate did not pass."
+      },
+      {
+        "key": "duplicate-cardinality",
+        "role": "duplicate",
+        "passed": true,
+        "detail": "Exact confirmed cardinality was observed."
+      },
+      {
+        "key": "asset-remains-active",
+        "role": "collateral",
+        "passed": true,
+        "detail": "Collateral-state invariant passed."
+      },
+      {
+        "key": "no-unrelated-change",
+        "role": "collateral",
+        "passed": true,
+        "detail": "Collateral-state invariant passed."
+      },
+      {
+        "key": "freshness",
+        "role": "freshness",
+        "passed": true,
+        "detail": "Confirmed external state advanced beyond the trusted pre-action baseline."
+      }
+    ],
+    "observedAt": "2026-08-11T23:21:25.397Z"
+  },
+  "checks": [
+    {
+      "id": "retained-selected",
+      "passed": true,
+      "detail": "A new execution-core instance loaded the retained manifest without rebuilding it."
+    },
+    {
+      "id": "direct-outcome",
+      "passed": true,
+      "detail": "Fresh-process reuse produced one independently verified visit."
+    }
+  ]
+}

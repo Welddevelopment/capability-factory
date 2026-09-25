@@ -1,0 +1,10 @@
+{
+  "caseId": "sidecar-restart",
+  "intendedWrites": 1,
+  "incorrectSideEffects": 0,
+  "checks": [
+    "the same fictional work identity survived restart",
+    "reconciliation prevented a duplicate"
+  ],
+  "fixtureClassification": "expected-case-behavior-observed"
+}

@@ -1,0 +1,22 @@
+{
+  "caseId": "lost-response-reconciliation",
+  "passed": true,
+  "intendedWrites": 1,
+  "incorrectSideEffects": 0,
+  "checks": [
+    {
+      "id": "reconciled",
+      "passed": true,
+      "detail": "A transport failure after commit was resolved from external state rather than by trusting the action response."
+    },
+    {
+      "id": "no-duplicate",
+      "passed": true,
+      "detail": "Reconciliation prevented a blind retry and duplicate visit."
+    }
+  ],
+  "artifactReferences": [
+    "/Users/joeljeon/Desktop/Capability Factory/reports/fresh-onboarding-http-execution-2026-08-12/acceptance/lost-response-reconciliation/evidence.json"
+  ],
+  "completedAt": "2026-08-11T23:21:25.409Z"
+}

@@ -1,0 +1,19 @@
+import{createHash}from"node:crypto";
+import{cpSync,mkdtempSync,readFileSync,rmSync,writeFileSync}from"node:fs";
+import{tmpdir}from"node:os";
+import{join}from"node:path";
+import{fileURLToPath}from"node:url";
+import{afterEach,describe,expect,it}from"vitest";
+import{runCF044Campaign}from"../src/product/registry-snapshot-mixed-family-executor.js";
+import{composedRecoveryDigest}from"../src/product/composed-runtime-recovery.js";
+import{createCF047FixtureLifecycleAuthority}from"./support/cf047-lifecycle-authority.js";
+const validation=fileURLToPath(new URL("../validation/cf-044-registry-snapshot-mixed-family-v3/",import.meta.url)),cf033=fileURLToPath(new URL("../validation/cf-033-mixed-family-goal-v1/",import.meta.url)),cf031=fileURLToPath(new URL("../validation/cf-031-family-routing-benchmark-v1/",import.meta.url)),cf032=fileURLToPath(new URL("../validation/cf-032-runtime-family-conformance-v1/",import.meta.url)),roots:string[]=[];afterEach(()=>{for(const x of roots.splice(0))rmSync(x,{recursive:true,force:true})});
+async function run(directory=validation){const root=mkdtempSync(join(tmpdir(),"cf044-"));roots.push(root);return runCF044Campaign({directory,workRoot:join(root,"work"),cf033Directory:cf033,cf031Directory:cf031,cf032Directory:cf032,lifecycleAuthority:createCF047FixtureLifecycleAuthority()})}
+describe("CF-044 registry-snapshot mixed-family execution",()=>{
+ it("uses persisted snapshots and exact native health rechecks without replay",async()=>{const r=await run();expect(r).toMatchObject({status:"passed",effects:{writes:8,blockedWrites:1,parentResumptions:2,retries:0,staleActions:0,unauthorizedActions:0,crossFamilyActions:0,evidenceSubstitutions:0},originalSealsModified:0,modelCalls:0,paidSpendUsd:0});expect(r.cases.map(x=>[x.caseId,x.outcome,x.writes,x.parentResumptions])).toEqual([["clean-snapshot-restart","completed",3,1],["quarantine-no-replacement","precise-handoff",2,0],["qualified-replacement-replan","completed",3,1]])});
+ it("requires a new snapshot and explicit lineage for the separately qualified replacement",async()=>{const r=await run(),x=r.cases[2]!;expect(x.replacementSnapshotDigest).not.toBe(x.initialSnapshotDigest);expect(x.lineage).toEqual([{fromSnapshot:x.initialSnapshotDigest,toSnapshot:x.replacementSnapshotDigest,familyId:"scoped-database",fromVersion:1,toVersion:2,reason:"qualified-higher-version-replan"}]);expect(r.cases[1]?.replacementSnapshotDigest).toBeUndefined()});
+ it("blocks cross-family and evidence substitution attacks before action",async()=>{const r=await run();expect(r.cases[0]?.attacksBlocked).toBe(2);expect(r.cases[2]?.attacksBlocked).toBe(3);expect(r.effects.crossFamilyActions+r.effects.evidenceSubstitutions).toBe(0)});
+ it("is deterministic across isolated runs",async()=>{expect((await run()).receiptDigest).toBe((await run()).receiptDigest)});
+ it("fails closed if the frozen pre-execution corpus changes",async()=>{const root=mkdtempSync(join(tmpdir(),"cf044-seal-"));roots.push(root);cpSync(validation,root,{recursive:true});const p=join(root,"corpus.json"),v=JSON.parse(readFileSync(p,"utf8"));v.cases[0].schedule.push("parent");writeFileSync(p,JSON.stringify(v));await expect(run(root)).rejects.toThrow(/drifted/)})
+ it("rejects a cryptographically resealed but future-dated corpus",async()=>{const root=mkdtempSync(join(tmpdir(),"cf044-future-"));roots.push(root);cpSync(validation,root,{recursive:true});const p=join(root,"corpus.json"),s=join(root,"seal.json"),v=JSON.parse(readFileSync(p,"utf8")),seal=JSON.parse(readFileSync(s,"utf8"));v.frozenAt="2999-01-01T00:00:00.000Z";writeFileSync(p,JSON.stringify(v));seal.corpusSha256=createHash("sha256").update(readFileSync(p)).digest("hex");const{sealDigest:_old,...unsigned}=seal;seal.sealDigest=composedRecoveryDigest(unsigned);writeFileSync(s,JSON.stringify(seal));await expect(run(root)).rejects.toThrow(/future-dated/)})
+});

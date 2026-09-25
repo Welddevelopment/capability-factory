@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "1.0",
+  "adapterId": "example-order-pilot",
+  "adapterVersion": "0.1.0",
+  "environmentId": "customer-sandbox",
+  "scopeKeys": ["approved-order-workflow"],
+  "workflowKeys": ["create-approved-order"],
+  "targetAliases": ["customer_erp"],
+  "credentialAliases": ["CUSTOMER_ERP_READ_TOKEN", "CUSTOMER_ERP_WRITE_TOKEN"],
+  "documentation": [
+    {
+      "targetAlias": "customer_erp",
+      "sourcePath": "documentation/customer-erp-openapi.json",
+      "mediaType": "application/json"
+    }
+  ],
+  "operations": [
+    {
+      "name": "read_order",
+      "targetAlias": "customer_erp",
+      "method": "GET",
+      "consequence": "read",
+      "retrySafety": "not-applicable",
+      "outcomeVerifierKey": "order_state_verifier"
+    },
+    {
+      "name": "create_order",
+      "targetAlias": "customer_erp",
+      "method": "POST",
+      "consequence": "write",
+      "retrySafety": "reconcile-before-retry",
+      "outcomeVerifierKey": "order_state_verifier"
+    }
+  ]
+}

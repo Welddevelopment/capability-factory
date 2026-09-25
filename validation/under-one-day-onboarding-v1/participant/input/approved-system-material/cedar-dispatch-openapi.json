@@ -1,0 +1,53 @@
+{
+  "openapi": "3.1.0",
+  "info": { "title": "Cedar Dispatch API", "version": "2026.8" },
+  "paths": {
+    "/api/vehicles/{vehicleId}": {
+      "get": {
+        "operationId": "getVehicle",
+        "security": [{ "cedarObserverBearer": [] }],
+        "parameters": [{ "name": "vehicleId", "in": "path", "required": true, "schema": { "type": "string" } }],
+        "responses": { "200": { "description": "Vehicle state" } }
+      }
+    },
+    "/api/pickup-slots": {
+      "get": {
+        "operationId": "listPickupSlots",
+        "security": [{ "cedarObserverBearer": [] }],
+        "parameters": [{ "name": "dispatchRequestId", "in": "query", "required": true, "schema": { "type": "string" } }],
+        "responses": { "200": { "description": "Filtered pickup slots and sequence" } }
+      },
+      "post": {
+        "operationId": "createDraftPickupSlot",
+        "security": [{ "cedarActionBearer": [] }],
+        "parameters": [{ "name": "Idempotency-Key", "in": "header", "required": true, "schema": { "type": "string" } }],
+        "requestBody": {
+          "required": true,
+          "content": { "application/json": { "schema": {
+            "type": "object",
+            "required": ["dispatchRequestId", "vehicleId", "pickupDate"],
+            "additionalProperties": false,
+            "properties": {
+              "dispatchRequestId": { "type": "string" },
+              "vehicleId": { "type": "string" },
+              "pickupDate": { "type": "string" }
+            }
+          } } }
+        },
+        "responses": { "201": { "description": "Draft pickup slot created" } }
+      }
+    },
+    "/api/dispatch-audit": {
+      "get": {
+        "operationId": "listDispatchAudit",
+        "security": [{ "cedarObserverBearer": [] }],
+        "parameters": [{ "name": "dispatchRequestId", "in": "query", "required": true, "schema": { "type": "string" } }],
+        "responses": { "200": { "description": "Unrelated changes and sequence" } }
+      }
+    }
+  },
+  "components": { "securitySchemes": {
+    "cedarActionBearer": { "type": "http", "scheme": "bearer" },
+    "cedarObserverBearer": { "type": "http", "scheme": "bearer" }
+  } }
+}

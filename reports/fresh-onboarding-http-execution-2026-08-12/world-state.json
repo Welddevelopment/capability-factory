@@ -1,0 +1,12 @@
+{
+  "asset": {
+    "id": "ASSET-7",
+    "status": "active",
+    "version": 1
+  },
+  "visits": [],
+  "unrelatedChanges": [],
+  "sequence": 0,
+  "writeAttempts": 0,
+  "committedWrites": 0
+}

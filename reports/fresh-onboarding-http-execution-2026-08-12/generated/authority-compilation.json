@@ -1,0 +1,77 @@
+{
+  "schemaVersion": "1.0",
+  "status": "review-required",
+  "activation": "not-activated",
+  "authority": {
+    "allowedTargetAliases": [],
+    "allowedSecretAliases": [],
+    "allowedMethods": [],
+    "writeAuthority": "denied",
+    "approvedWriteActions": []
+  },
+  "candidateAuthority": {
+    "allowedTargetAliases": [
+      "solstice_sandbox"
+    ],
+    "allowedSecretAliases": [
+      "actionBearer",
+      "observerBearer"
+    ],
+    "allowedMethods": [
+      "GET",
+      "POST"
+    ],
+    "writeAuthority": "preauthorized",
+    "approvedWriteActions": []
+  },
+  "guardrails": {
+    "allowedReadActions": [
+      {
+        "actionName": "getAsset",
+        "targetAlias": "solstice_sandbox"
+      },
+      {
+        "actionName": "listVisits",
+        "targetAlias": "solstice_sandbox"
+      },
+      {
+        "actionName": "listAuditChanges",
+        "targetAlias": "solstice_sandbox"
+      }
+    ],
+    "exactWriteRules": [
+      {
+        "actionName": "createDraftVisit",
+        "targetAlias": "solstice_sandbox",
+        "method": "POST",
+        "policy": "preauthorized"
+      }
+    ],
+    "forbiddenActions": [],
+    "limits": {
+      "monetary": {
+        "kind": "none",
+        "confirmed": true
+      },
+      "quantityPerAction": {
+        "kind": "limit",
+        "maximum": 1,
+        "confirmed": true
+      },
+      "actionsPerHour": {
+        "kind": "limit",
+        "maximum": 20,
+        "confirmed": true
+      }
+    },
+    "reconcileBeforeRetry": true,
+    "blindRetryAllowed": false,
+    "maximumAttempts": 1
+  },
+  "blockers": [],
+  "reviewItems": [
+    "Review every target, credential alias, read, write, forbidden action, limit, retry rule, and approval owner before installation.",
+    "Bind guardrail limits into trusted runtime enforcement; this compilation does not itself activate them."
+  ],
+  "validationErrors": []
+}

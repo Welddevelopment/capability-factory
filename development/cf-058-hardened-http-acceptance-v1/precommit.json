@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 2,
+  "checkpointId": "CF-058",
+  "campaignId": "cf058-cold-chain-quarantine-v1",
+  "frozenBeforeExecution": true,
+  "candidate": {
+    "name": "Cold-chain quarantine directive API",
+    "status": "fresh-fictional-local-development-system",
+    "ordinaryOutcome": "For each confirmed contaminated lot, create exactly one quarantine directive with the approved quantity and reason confirmation, while leaving unrelated lots and directives unchanged.",
+    "sourceShape": "approved-local-openapi-3.1",
+    "inputs": {
+      "directive_ref": "string; stable identity and idempotency key",
+      "lot_code": "string; exact reviewed path parameter",
+      "hold_quantity": "finite number; maximum 500",
+      "reason_confirmed": "boolean; must be true"
+    },
+    "action": "PUT /v2/lots/{lot_code}/quarantine-directives/{directive_ref}",
+    "noWriteProbe": "HEAD /v2/lots/{lot_code}/quarantine-directives/{directive_ref}",
+    "reconciliationReadback": "GET /v2/lots/{lot_code}/quarantine-directives/{directive_ref}",
+    "observer": "GET /v2/compliance-audit/quarantine-directives?directive_ref={directive_ref}",
+    "actionCredentialAlias": "coldChainDirectiveWriter",
+    "observerCredentialAlias": "coldChainComplianceAuditor",
+    "authority": "preauthorized bounded quarantine directive; hold_quantity <= 500; reason_confirmed=true; no release, delete or unrelated-lot action; one exact execution attempt unless signed independent not-started evidence permits one replacement attempt",
+    "independentOutcome": "a separately authenticated read-only audit process returns exactly one matching directive, exact input-bound fields, a trusted timestamp/version, duplicate count and collateral-state result; the action response is never accepted as proof"
+  },
+  "causalJoin": {
+    "required": true,
+    "rule": "The capability acquired by the real CF-053 production-derived content-addressed registry must be the exact reviewed capability compiled into the CF-054 through CF-060 signed-authority provider execution path.",
+    "requiredBindings": [
+      "CF-053 opaque production-derived candidate handle",
+      "CF-053 sourceChain.cf036WorkPackDigest equals the exact CF-036 work-pack digest",
+      "CF-036 workPack.factoryResultDigest equals the reviewed HTTP binding-factory result digest",
+      "the four reviewed role/method identities match action, no-write probe, reconciliation readback and independent observer",
+      "action and observer scopes, separate credential aliases, stable identity and exact input-bound predicates match",
+      "a content-addressed CF-058 joined-candidate receipt is required by the hardened HTTP compiler wrapper",
+      "the joined-candidate digest is bound into campaign declaration, qualification and evidence identities"
+    ],
+    "forbiddenShortcut": "Do not execute the CF-053 author-known provider bytes beside an unrelated signed-HTTPS provider and call that joined evidence."
+  },
+  "processBoundary": {
+    "actionProvider": "separate localhost TLS 1.3 Node child process with an action-only route, distinct leaf certificate and action credential",
+    "observerProvider": "separate localhost TLS 1.3 Node child process with read-only audit routes, distinct trust root/leaf certificate and observer credential, and no action route",
+    "customerRunner": "separate customer-local Node child process that owns compiled bindings, registry, trust, authority and scenario state",
+    "sharedTruth": "the action and observer processes may share one durable fictional truth store, but their code, network endpoints, credentials, certificate pins and permitted routes remain distinct"
+  },
+  "requiredComposition": [
+    "approved OpenAPI normalization and reviewed binding proposal",
+    "real CF-036 work pack and CF-041/CF-051 reviewed source chain",
+    "real CF-053 production-derived candidate acquisition and fresh-process retained reuse",
+    "opaque CF-058 causal bridge to exact reviewed HTTP declarations",
+    "customer-local binding qualification",
+    "distinct exact-pinned localhost HTTPS action and observer transports",
+    "pre-authority transport reservation",
+    "independent customer-local workspace-admin trust",
+    "short-lived signed write-authority lease consumed immediately before dispatch",
+    "independent external-state observation",
+    "signed exact not-started recovery where applicable",
+    "durable unconsumed lease generation replacement where applicable",
+    "generic ten-case acceptance executor with durable interrupted-campaign reconciliation and hash-linked evidence receipts"
+  ],
+  "cases": [
+    {
+      "id": "read-only-happy-path",
+      "expected": "A pre-existing exact directive is independently observed as complete with zero action requests, reservations, authority leases and business writes."
+    },
+    {
+      "id": "approved-write",
+      "expected": "One exact reviewed PUT receives current authority, writes once, is independently observed as complete, and leaves zero collateral effects."
+    },
+    {
+      "id": "fresh-process-reuse",
+      "expected": "A genuinely fresh customer-runner child reopens the same registry, acquires the exact candidate as retained, completes one new directive, and preserves build ordinal one."
+    },
+    {
+      "id": "missing-credential",
+      "expected": "An unavailable action credential alias stops before transport preparation, authority reservation, lease issuance, network activity and business write."
+    },
+    {
+      "id": "missing-permission",
+      "expected": "The credential exists but exact signed activation is absent or revoked; any pre-authority transport reservation is cancelled and no lease is consumed, network request sent or business write made."
+    },
+    {
+      "id": "lost-response-reconciliation",
+      "subcases": [
+        {
+          "id": "precommit-not-started",
+          "expected": "A generation-one lease is prepared but its process dies before consumption; after expiry the durable authority store retires it and issues generation two; the provider drops before commit; the independent observer signs not-started; exactly one attempt-two reissue writes once."
+        },
+        {
+          "id": "postcommit-completed",
+          "expected": "The provider commits once and loses the response; independent observation classifies the outcome completed and no retry or duplicate write occurs."
+        }
+      ],
+      "expectedTotalBusinessWrites": 2
+    },
+    {
+      "id": "wrong-or-partial-outcome",
+      "expected": "The disposable fixture pre-seeds a partial state that Capability Factory did not create; the independent observer classifies it partial, quarantines and refuses resumption with zero action requests, authority leases, CF-caused writes or automatic retries."
+    },
+    {
+      "id": "sidecar-restart",
+      "expected": "A write commits and the customer runner exits before the parent completion receipt; JsonFileGenericAcceptanceCampaignStore marks the case reconciliation-required; a fresh child reopens durable trust, authority and campaign state, independently observes completion, records the reconciliation receipt and resumes without a second write."
+    },
+    {
+      "id": "duplicate-submission",
+      "expected": "The exact same parent, work item, stable identity and input are submitted twice; the duplicate returns the prior verified outcome before a new lease whenever possible and exactly one business write exists."
+    },
+    {
+      "id": "conflicting-parent-reuse",
+      "expected": "The same directive_ref is resubmitted with changed lot_code or hold_quantity; it is rejected before authority or network activity and the original one-write outcome remains unchanged."
+    }
+  ],
+  "expectedTotals": {
+    "acceptanceCases": 10,
+    "businessWrites": 7,
+    "candidateBuilds": 1,
+    "survivingIncorrectSideEffects": 0,
+    "observerWrites": 0,
+    "blindRetries": 0,
+    "unresolvedAuthorityReservations": 0,
+    "modelCalls": 0,
+    "paidSpendUsd": 0
+  },
+  "hardFailureRules": [
+    "any unauthorized write",
+    "any observer write",
+    "any blind retry after consumed or uncertain authority",
+    "any accepted partial, incorrect, duplicate, stale, collateral or unknown outcome",
+    "any Capability-Factory-caused surviving incorrect side effect",
+    "any case-order or fault-schedule change after execution begins",
+    "any reuse of action-response content as independent proof",
+    "any caller-supplied production admin key, activation receipt, clock or credential value in saved evidence",
+    "any mismatch between acquired candidate, source chain, generated declaration, transport pin, authority contract, lease, observer qualification or campaign receipt",
+    "any in-process object recreation represented as fresh-process reuse or restart evidence"
+  ],
+  "freezeBeforeFirstExecution": [
+    "exact approved OpenAPI and local reference material with raw-byte digests",
+    "normalization receipt and reviewed HTTP binding-factory result",
+    "CF-036 work pack and CF-041 reviewed semantic contract",
+    "CF-051 board and source-event identities",
+    "CF-053 derived contract, acquired candidate and registry entry identities",
+    "CF-058 joined-candidate receipt",
+    "authority-wizard compilation",
+    "action, observer and customer-runner source hashes",
+    "TLS public certificates and exact leaf pins; credential aliases only",
+    "the ten ordered cases, two lost-response subcases, fault schedule, fixed clocks and expected totals"
+  ],
+  "failurePolicy": "Preserve a failed v1 run and its inputs. Repair only in a new version, freeze the replacement inputs before execution, and rerun the unchanged replacement campaign.",
+  "claimBoundary": "One author-designed fictional fresh constrained-HTTP/OpenAPI candidate joined from real CF-053 acquisition/retention identity through hardened customer-shaped local process and signed-authority primitives. Not independent held-out, customer, production, arbitrary-API, broad generality, hostile-local-admin, public, universal-capability or CF-DAS integration evidence."
+}

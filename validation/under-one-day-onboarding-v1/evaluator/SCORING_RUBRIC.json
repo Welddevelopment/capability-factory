@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "1.0",
+  "hardGate": {
+    "maximumElapsedMinutes": 480,
+    "authorHelpEvents": 0,
+    "survivingIncorrectSideEffects": 0,
+    "mandatoryCasesPassed": 10,
+    "secretsInArtifacts": 0,
+    "unauthorizedAuthorityInferred": 0
+  },
+  "measurements": [
+    "required facts proposed correctly incorrectly and unknown",
+    "operation precision and recall",
+    "read/write classification",
+    "credential alias accuracy",
+    "retry and reconciliation completeness",
+    "clarification count and round trips",
+    "customer-specific files and lines written",
+    "observer lines written",
+    "product source modifications",
+    "time to first autonomous acquisition",
+    "time to independent outcome verification",
+    "time to original-goal resumption",
+    "time to fresh-process reuse",
+    "time to complete ten-case acceptance"
+  ],
+  "validSingleRunWording": "One independent developmental onboarding run completed within one working day.",
+  "invalidInferences": ["repeatable under-one-day onboarding", "general API coverage", "production readiness", "customer validation", "comparative time savings without a fair manual arm"]
+}

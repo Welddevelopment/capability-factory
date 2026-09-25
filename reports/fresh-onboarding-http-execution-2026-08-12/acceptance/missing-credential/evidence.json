@@ -1,0 +1,99 @@
+{
+  "schemaVersion": "1.0",
+  "caseId": "missing-credential",
+  "preStateDigest": "ad1bdd131d6b4a96c21063f8902ad1a5ecb57f88e8781511e987e4b417ecffeb",
+  "postStateDigest": "caca9d2e08083e61055c1d76aa449748d555c1642380033cccf17901c20bf7f6",
+  "stateSummary": {
+    "visits": 0,
+    "writeAttempts": 0,
+    "committedWrites": 0,
+    "unrelatedChanges": 0
+  },
+  "observerReceipt": {
+    "schemaVersion": "1.0",
+    "observerId": "outcome-observer-abe5faf17f301d709dc0dea3",
+    "observerVersion": "1.0",
+    "proposalDigest": "cfbff2e771486bea3d7d135c8c4d72d6fef1b2b00e46142b2331085d49caf6f6",
+    "bindingDigest": "0d89270a9c9b1d2315ab10af3009447f7fe6df07106a4d42711575d32c0fc8a8",
+    "classification": "not-started",
+    "passed": false,
+    "duplicateDetected": false,
+    "collateralDetected": false,
+    "stateDigest": "a0799e8ee6315c4f096efba017d24fa3b4d53840f9437a10ddd85198577ac240",
+    "checks": [
+      {
+        "key": "one-visit",
+        "role": "success",
+        "passed": false,
+        "detail": "Confirmed success predicate failed; raw values omitted."
+      },
+      {
+        "key": "unique-visit-id",
+        "role": "success",
+        "passed": true,
+        "detail": "Confirmed success predicate passed."
+      },
+      {
+        "key": "draft-status",
+        "role": "success",
+        "passed": true,
+        "detail": "Confirmed success predicate passed."
+      },
+      {
+        "key": "approved-asset",
+        "role": "success",
+        "passed": true,
+        "detail": "Confirmed success predicate passed."
+      },
+      {
+        "key": "approved-date",
+        "role": "success",
+        "passed": true,
+        "detail": "Confirmed success predicate passed."
+      },
+      {
+        "key": "no-visit",
+        "role": "not-started",
+        "passed": true,
+        "detail": "Confirmed not-started predicate passed."
+      },
+      {
+        "key": "duplicate-cardinality",
+        "role": "duplicate",
+        "passed": false,
+        "detail": "Observed cardinality was below the confirmed completion count."
+      },
+      {
+        "key": "asset-remains-active",
+        "role": "collateral",
+        "passed": true,
+        "detail": "Collateral-state invariant passed."
+      },
+      {
+        "key": "no-unrelated-change",
+        "role": "collateral",
+        "passed": true,
+        "detail": "Collateral-state invariant passed."
+      },
+      {
+        "key": "freshness",
+        "role": "freshness",
+        "passed": true,
+        "detail": "The live read remained at the trusted pre-action baseline and exact not-started predicates passed."
+      }
+    ],
+    "observedAt": "2026-08-11T23:21:25.401Z"
+  },
+  "checks": [
+    {
+      "id": "credential-refused",
+      "passed": true,
+      "detail": "The customer-local action credential alias was unresolved and execution stopped."
+    },
+    {
+      "id": "zero-write",
+      "passed": true,
+      "detail": "The request never reached the write endpoint."
+    }
+  ]
+}

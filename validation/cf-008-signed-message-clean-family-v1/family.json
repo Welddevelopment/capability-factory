@@ -1,0 +1,87 @@
+{
+  "schemaVersion": "1.0",
+  "campaignId": "cf-008-signed-message-clean-family-v1",
+  "frozenAt": "2026-08-14T12:00:00.000Z",
+  "contracts": [
+    {
+      "contract": {
+        "schemaVersion": "1.0",
+        "contractId": "json-detached-orders",
+        "contractVersion": "1.0.0",
+        "tenantId": "tenant-json-orders",
+        "envelope": "canonical-json-detached-v1",
+        "algorithm": "hmac-sha256",
+        "trustPolicyId": "json-order-signers",
+        "keys": [
+          { "keyId": "json-current", "algorithm": "hmac-sha256", "keyDigest": "984d60de440f1ef0172cb1d3d3d40bcde54f7043d1dd2810e2854922bfec57f2", "status": "active", "notBefore": "2026-08-01T00:00:00.000Z", "expiresAt": "2026-09-01T00:00:00.000Z" },
+          { "keyId": "json-revoked", "algorithm": "hmac-sha256", "keyDigest": "d073c1065e9da1d59c05dd3529ae434919bec6773c16e3038188cf874003ac0f", "status": "revoked", "notBefore": "2026-08-01T00:00:00.000Z", "expiresAt": "2026-09-01T00:00:00.000Z" },
+          { "keyId": "json-expired", "algorithm": "hmac-sha256", "keyDigest": "a3dd0c9778bd5d041ee005f647e41e8b502998efde2046de8cf0754b20611930", "status": "active", "notBefore": "2026-07-01T00:00:00.000Z", "expiresAt": "2026-08-13T00:00:00.000Z" },
+          { "keyId": "json-next", "algorithm": "hmac-sha256", "keyDigest": "cda6422014a2841e19329ba3fb29543f29d2c69a135faf2a8093160490dfc810", "status": "active", "notBefore": "2026-08-10T00:00:00.000Z", "expiresAt": "2026-10-01T00:00:00.000Z" }
+        ],
+        "maximumAgeMs": 300000,
+        "maximumFutureSkewMs": 30000,
+        "orderingPolicy": "strict-monotonic",
+        "allowedItemCodes": ["bearing-6204", "seal-kit-a"],
+        "maxQuantityPerLine": 20,
+        "targetAlias": "erpnext-procurement-sandbox",
+        "actionKey": "create-draft-purchase-order",
+        "approvalKey": "purchase-order-draft-approved",
+        "outcomeVerifierKey": "purchase-order-independent-reader",
+        "workflowKey": "signed-order-intake"
+      },
+      "keys": [
+        { "keyId": "json-current", "secretBase64": "Y2YwMDgtanNvbi1jdXJyZW50LWZpeHR1cmUta2V5LTAwMDAwMQ==", "status": "active", "notBefore": "2026-08-01T00:00:00.000Z", "expiresAt": "2026-09-01T00:00:00.000Z" },
+        { "keyId": "json-revoked", "secretBase64": "Y2YwMDgtanNvbi1yZXZva2VkLWZpeHR1cmUta2V5LTAwMDAwMQ==", "status": "revoked", "notBefore": "2026-08-01T00:00:00.000Z", "expiresAt": "2026-09-01T00:00:00.000Z" },
+        { "keyId": "json-expired", "secretBase64": "Y2YwMDgtanNvbi1leHBpcmVkLWZpeHR1cmUta2V5LTAwMDAwMQ==", "status": "active", "notBefore": "2026-07-01T00:00:00.000Z", "expiresAt": "2026-08-13T00:00:00.000Z" },
+        { "keyId": "json-next", "secretBase64": "Y2YwMDgtanNvbi1uZXh0LWZpeHR1cmUta2V5LTAwMDAwMDAx", "status": "active", "notBefore": "2026-08-10T00:00:00.000Z", "expiresAt": "2026-10-01T00:00:00.000Z" }
+      ],
+      "message": {
+        "sentAt": "2026-08-14T11:59:00.000Z",
+        "nonce": "json-nonce",
+        "messageId": "json-message",
+        "payload": { "schemaVersion": "1", "sequence": 10, "purchaseOrderNumber": "PO-CF008-JSON", "shipToCode": "london-lab", "lines": [{ "lineNumber": 1, "itemCode": "bearing-6204", "quantity": 4 }, { "lineNumber": 2, "itemCode": "seal-kit-a", "quantity": 2 }] }
+      }
+    },
+    {
+      "contract": {
+        "schemaVersion": "1.0",
+        "contractId": "fixed-embedded-orders",
+        "contractVersion": "2.0.0",
+        "tenantId": "tenant-fixed-orders",
+        "envelope": "fixed-header-embedded-v1",
+        "algorithm": "hmac-sha512",
+        "trustPolicyId": "fixed-order-signers",
+        "keys": [
+          { "keyId": "fixed-current", "algorithm": "hmac-sha512", "keyDigest": "493f5b4c551559f4e5d41c90eab25602f8887e5f923c0b4374240f0314f848ef", "status": "active", "notBefore": "2026-08-01T00:00:00.000Z", "expiresAt": "2026-09-01T00:00:00.000Z" },
+          { "keyId": "fixed-revoked", "algorithm": "hmac-sha512", "keyDigest": "beb7b5d7dd5ac2007f292af45caf6e5fc2c729329634ad96c1910a4d888eeb54", "status": "revoked", "notBefore": "2026-08-01T00:00:00.000Z", "expiresAt": "2026-09-01T00:00:00.000Z" },
+          { "keyId": "fixed-expired", "algorithm": "hmac-sha512", "keyDigest": "74e6d3ba31d364fb88a570182a04900922c6aa407d33efa09b5e9cf7cf086df8", "status": "active", "notBefore": "2026-07-01T00:00:00.000Z", "expiresAt": "2026-08-13T00:00:00.000Z" },
+          { "keyId": "fixed-next", "algorithm": "hmac-sha512", "keyDigest": "da030651771a3aea00e95b208d487801b16e7319e83b75a3af765b4c5f9c8895", "status": "active", "notBefore": "2026-08-10T00:00:00.000Z", "expiresAt": "2026-10-01T00:00:00.000Z" }
+        ],
+        "maximumAgeMs": 300000,
+        "maximumFutureSkewMs": 30000,
+        "orderingPolicy": "unique-message-only",
+        "allowedItemCodes": ["bearing-6204", "seal-kit-a"],
+        "maxQuantityPerLine": 20,
+        "targetAlias": "erpnext-procurement-sandbox",
+        "actionKey": "create-draft-purchase-order",
+        "approvalKey": "purchase-order-draft-approved",
+        "outcomeVerifierKey": "purchase-order-independent-reader",
+        "workflowKey": "signed-order-intake"
+      },
+      "keys": [
+        { "keyId": "fixed-current", "secretBase64": "Y2YwMDgtZml4ZWQtY3VycmVudC1maXh0dXJlLWtleS0wMDAwMQ==", "status": "active", "notBefore": "2026-08-01T00:00:00.000Z", "expiresAt": "2026-09-01T00:00:00.000Z" },
+        { "keyId": "fixed-revoked", "secretBase64": "Y2YwMDgtZml4ZWQtcmV2b2tlZC1maXh0dXJlLWtleS0wMDAwMQ==", "status": "revoked", "notBefore": "2026-08-01T00:00:00.000Z", "expiresAt": "2026-09-01T00:00:00.000Z" },
+        { "keyId": "fixed-expired", "secretBase64": "Y2YwMDgtZml4ZWQtZXhwaXJlZC1maXh0dXJlLWtleS0wMDAwMQ==", "status": "active", "notBefore": "2026-07-01T00:00:00.000Z", "expiresAt": "2026-08-13T00:00:00.000Z" },
+        { "keyId": "fixed-next", "secretBase64": "Y2YwMDgtZml4ZWQtbmV4dC1maXh0dXJlLWtleS0wMDAwMDAx", "status": "active", "notBefore": "2026-08-10T00:00:00.000Z", "expiresAt": "2026-10-01T00:00:00.000Z" }
+      ],
+      "message": {
+        "sentAt": "2026-08-14T11:59:00.000Z",
+        "nonce": "fixed-nonce",
+        "messageId": "fixed-message",
+        "payload": { "schemaVersion": "1", "sequence": 20, "purchaseOrderNumber": "PO-CF008-FIXED", "shipToCode": "seoul-lab", "lines": [{ "lineNumber": 1, "itemCode": "seal-kit-a", "quantity": 3 }, { "lineNumber": 2, "itemCode": "bearing-6204", "quantity": 1 }] }
+      }
+    }
+  ],
+  "faults": ["read-only", "approved-write", "fresh-process-reuse", "missing-credential", "missing-authority", "lost-response", "partial-outcome", "restart", "duplicate-submission", "conflicting-parent", "tampered", "unknown-key", "revoked-key", "expired-key", "rotated-key", "algorithm-confusion", "cross-tenant", "stale-timestamp", "future-timestamp", "replayed-message", "reordered-message", "schema-ambiguity", "incorrect-outcome", "duplicate-outcome", "collateral-outcome", "unknown-outcome", "unavailable-outcome"],
+  "codePolicy": { "caseSpecificExecutableFilesAfterFreeze": 0, "genericFactoryFiles": 2 }
+}

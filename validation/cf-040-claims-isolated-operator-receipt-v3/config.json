@@ -1,0 +1,24 @@
+{
+  "schemaVersion":"2.0","campaignId":"cf-040-claims-isolated-operator-receipt-v3","frozenAt":"2026-08-13T19:34:49.000Z",
+  "lifecycleAuthority":{"trustConfigurationDigest":"892ee5efeffe54fadade93496ffb1f074e5e8203dd9b4a72779c95c3242406d9","maximumLifecycleAgeMs":86400000,"maximumSnapshotTtlMs":3600000,"trustedLifecycleKeys":[{"keyId":"cf047-test-ed25519-v1","issuer":"cf047-test-fixture-issuer","algorithm":"Ed25519","publicKeyDigest":"2ff1538ea7832ead90deba392255c3663ab87b45802f62fdf807ca415b71cfb6"}]},
+  "sourceArtifacts":[
+    {"domain":"cf049-registry","path":"src/product/durable-family-registry.ts","sha256":"138e47e98de418a24053b585fb56fdc910597922c317c0d84f23260fadee27c4"},
+    {"domain":"cf049-bounds","path":"src/product/customer-local-resource-bounds.ts","sha256":"5a8b328280ff5eab4389984c38065030e0b62dda41df4cef108c425ee3023f43"},
+    {"domain":"cf049-onboarding","path":"src/product/customer-local-onboarding-journey.ts","sha256":"6797dc87ed9491dff5966a16ac0d0a35d4f129a32c200a3544e7b1aa1c6a6107"},
+    {"domain":"cf049-provider-work","path":"src/product/customer-local-provider-work-board.ts","sha256":"53c6d55701ac052193344ebc453aee8f19b566127c8e116bd8577341c6d4f27e"},
+    {"domain":"cf049-trust-backup","path":"src/product/customer-local-trust-backup.ts","sha256":"3ceacdff7b5e81b89c524d55a8f5498acd33e40087576e6432c33d353074a0df"},
+    {"domain":"cf049-bounded-replay","path":"src/product/bounded-claims-replay.ts","sha256":"21002b7396390a1600fab8a344b594b808535a6c3fa30d3a2bb52b577de67c5e"},
+    {"domain":"cf044-executor-v3","path":"src/product/registry-snapshot-mixed-family-executor.ts","sha256":"fbc0e9224add3ccbe68e33cfbb18a712c82c41e55634b8f02797ee77450f42ad"},
+    {"domain":"cf045-faults-v3","path":"src/product/cf045-generated-health-fault-campaign.ts","sha256":"457f19e73051c99053bf9a2125d27754d8e007de2b67e01330381efdb6c80b57"},
+    {"domain":"cf044-corpus-v3","path":"validation/cf-044-registry-snapshot-mixed-family-v3/corpus.json","sha256":"97e929ddae62a21fff426630ec361eb5e3d6604c4dd41768a4f41040740c0492"},
+    {"domain":"cf044-seal-v3","path":"validation/cf-044-registry-snapshot-mixed-family-v3/seal.json","sha256":"b145c3a45ecb79fd30147b73fed0b9f448aa989af4d33af99deb40d5d4fb4470"},
+    {"domain":"cf045-corpus-v3","path":"validation/cf-045-generated-health-fault-v3/corpus.json","sha256":"37dca9dd12fc0b9fadc30bd94113494999148076d83bc55f701912392564bbcf"},
+    {"domain":"cf045-seal-v3","path":"validation/cf-045-generated-health-fault-v3/seal.json","sha256":"af3180665494af5ee5206e61faa77d43350429bff3027be0c01b1eb5456fa9f9"},
+    {"domain":"cf033-goal","path":"validation/cf-033-mixed-family-goal-v1/goal.json","sha256":"aff7decfb8f51255537f27a23f5511328a06c6148b60c62a05f9051536b90808"},
+    {"domain":"cf033-seal","path":"validation/cf-033-mixed-family-goal-v1/seal.json","sha256":"2e025290dd61ca5bb2309b3f079f2de26aec3a9f0ed0c65b0a631d18cab5cbe6"},
+    {"domain":"native-pinned-document","path":"validation/cf-007-pinned-document-clean-family-v1/campaign-seal.json","sha256":"62c3a5ddff950d2c602457350ce27dc47169ac27f70757f39f0d49c7c619e358"},
+    {"domain":"native-signed-message","path":"validation/cf-008-signed-message-clean-family-v1/campaign-seal.json","sha256":"fecd69cd565d593918295cc1b64f906dbd782e284cc278e4c511bd6952e453ef"},
+    {"domain":"native-scoped-database","path":"validation/cf-009-scoped-database-clean-family-v1/campaign-seal.json","sha256":"5d15d2d31c3b11d34a64011e3494274c47c37f52ea82d58b6332a2ebbe542375"}
+  ],
+  "limitations":["All evidence is local, deterministic and fictional.","No customer system, workflow or production environment was exercised.","Resource ceilings bound hostile input and require explicit successor handoff at history limits.","Registry-v3 event binding and action-time checks do not grant activation authority.","The result is not a reliability, security, demand or production-readiness verdict.","Nothing in this private receipt is approved as a public claim."]
+}

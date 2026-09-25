@@ -1,0 +1,114 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "CF-058 Fictional Cold-Chain Quarantine API",
+    "version": "1.0.0",
+    "description": "Approved local fixture material only. It grants no runtime authority and contains no credential values."
+  },
+  "servers": [
+    {
+      "url": "https://localhost:9443"
+    }
+  ],
+  "paths": {
+    "/v2/lots/{lot_code}/quarantine-directives/{directive_ref}": {
+      "parameters": [
+        {
+          "name": "lot_code",
+          "in": "path",
+          "required": true,
+          "schema": { "type": "string" }
+        },
+        {
+          "name": "directive_ref",
+          "in": "path",
+          "required": true,
+          "schema": { "type": "string" }
+        }
+      ],
+      "put": {
+        "operationId": "putQuarantineDirective",
+        "security": [{ "cf058ActionBearer": [] }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["hold_quantity", "reason_confirmed"],
+                "properties": {
+                  "hold_quantity": { "type": "number", "minimum": 0 },
+                  "reason_confirmed": { "type": "boolean" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "The exact idempotent quarantine directive exists." },
+          "201": { "description": "The quarantine directive was created." },
+          "400": { "description": "The bounded request is invalid." },
+          "401": { "description": "The action credential is missing or invalid." },
+          "409": { "description": "The stable directive reference conflicts with different content." },
+          "500": { "description": "The fictional provider could not complete the write." }
+        }
+      },
+      "head": {
+        "operationId": "probeQuarantineDirective",
+        "security": [{ "cf058ActionBearer": [] }],
+        "responses": {
+          "200": { "description": "The exact directive is reachable." },
+          "401": { "description": "The read credential is missing or invalid." },
+          "404": { "description": "The directive does not exist." }
+        }
+      },
+      "get": {
+        "operationId": "readQuarantineDirective",
+        "security": [{ "cf058ObserverBearer": [] }],
+        "responses": {
+          "200": {
+            "description": "Current directive state for reconciliation.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/QuarantineDirective" }
+              }
+            }
+          },
+          "401": { "description": "The read credential is missing or invalid." },
+          "404": { "description": "The directive does not exist." }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "cf058ActionBearer": { "type": "http", "scheme": "bearer" },
+      "cf058ObserverBearer": { "type": "http", "scheme": "bearer" }
+    },
+    "schemas": {
+      "QuarantineDirective": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "directive_ref",
+          "lot_code",
+          "hold_quantity",
+          "reason_confirmed",
+          "status",
+          "version",
+          "updated_at"
+        ],
+        "properties": {
+          "directive_ref": { "type": "string" },
+          "lot_code": { "type": "string" },
+          "hold_quantity": { "type": "number" },
+          "reason_confirmed": { "type": "boolean" },
+          "status": { "type": "string", "const": "quarantined" },
+          "version": { "type": "integer", "minimum": 1 },
+          "updated_at": { "type": "string", "format": "date-time" }
+        }
+      }
+    }
+  }
+}
