@@ -28,7 +28,7 @@ goal—and keep that ability for the next task.
 [Website](https://capability-factory-website.vercel.app) ·
 [How it works](#how-it-works) ·
 [Architecture](docs/ARCHITECTURE_MAP.md) ·
-[Demo runbook](docs/BROAD_GOAL_RECORDING_RUNBOOK.md)
+[Demo bank](#the-demonstration-bank)
 
 ## Why this matters
 
@@ -45,65 +45,89 @@ This repository implements that control loop and explores how far it can extend.
 
 ## How it works
 
-### 1. Start with the work you want done
+The **14-route demo bank** shows the acquisition loop, retained reuse,
+cross-system workflows, and recovery in real local systems. The screenshots below
+are actual saved-run panels, captured on 25 September 2026. Each route identifies
+how it was executed.
 
-> Complete every fictional order due by 21:00 today, and place one safe restock
-> for every required item that is short.
+### 1. Give the agent a goal—not an integration specification
 
-The user gives a business goal, not a request to build an integration. The
-playground is the demo entrance; in a connected deployment, the goal would come
-from the company's existing agent through the SDK or sidecar.
+> Prepare sales order SO-REAL-0002 for dispatch today with ParcelFlow Standard
+> Overnight. Record tracking PF-SO-REAL-0002 and label LABEL-SO-REAL-0002, and do
+> not alter any other order.
 
-![Ordinary business goal entered into the Capability Factory demo playground](docs/images/how-it-works/01-goal.png)
+In the model-backed ERPNext route, the agent discovers that its configured
+inventory cannot complete this goal. CF searches for a retained or trusted
+capability, constructs the missing constrained HTTP manifest from approved
+documentation, and probes it before business use. Trusted code checks authority;
+a separate observer checks the actual ERP state after execution. The original
+goal resumes, and the verified capability is retained.
 
-*Actual console captures from 25 September 2026: fictional local order data,
-a deterministic reference planner and manifest builder, and real execution and
-independent checks. Separate model-backed demonstrations are listed below.*
+The same campaign then demonstrates **fresh-process reuse**, repair of a rejected
+candidate, and recovery after a write succeeds but its reply is lost. CF checks
+the ERP state before retrying, finds the existing delivery record, completes the
+source update, and avoids creating a duplicate.
 
-### 2. Find the gap inside the goal
+![Actual model-backed ERPNext demo results: acquisition, fresh-process reuse, repair, reconciliation and authority checks](docs/images/demo-bank/reliability-v3.png)
 
-This example covers seven bounded work items. Some are already satisfied;
-others use existing abilities. The East Industrial restock needs a capability
-that is not yet configured. CF isolates that missing operation without expanding
-the authority of the other work.
+*Model-backed local ERPNext campaign, recorded 23 August 2026: eight cases passed.
+The screenshot is the bank's genuine saved result, captured 25 September.*
 
-![East Industrial work item completes through the New Capability path](docs/images/how-it-works/02-new-capability.png)
+### 2. Carry verified work across different kinds of systems
 
-### 3. Search first. Build the missing piece. Test it.
+The **Ledger to the World** route extends the story beyond one API. A signed order
+notice is authenticated, its pinned PDF is parsed, and each line enters a reviewed
+database ledger. Independently verified ledger state then gates a procurement
+action in disposable ERPNext and a bounded action in a native macOS Dealer Desk
+app. Each leg checks its result through a separate observation channel.
 
-The event trail shows the causal chain: a missing capability, no retained match,
-no suitable trusted match, then a constrained HTTP manifest. Before business use,
-an independent probe checks the required actions, runtime policy and disposable
-test state.
+```text
+signed order notice → pinned PDF → reviewed ledger
+                                       ↓
+                              verified ledger state
+                                       ↓
+                          ERPNext + native Dealer Desk
+```
 
-![Actual event trail: blocker diagnosed, retained and trusted searches, constrained manifest construction and independent pre-use verification](docs/images/how-it-works/03-acquire-and-test.png)
+This demonstrates a shared safety and verification approach across distinct
+execution mechanisms—not just another generated connector.
 
-### 4. Check what actually happened, then resume
+![Actual five-leg demo: signed notice, pinned PDF, reviewed database, real ERPNext and native macOS action, with independent checks](docs/images/demo-bank/ledger-to-world.png)
 
-Execution is only half the job. A separate observer checks external state:
-was the required restock created exactly once, and were unrelated records left
-alone? Here it verifies one intended write and zero incorrect side effects.
-Only then does the coordinator resume the original work.
+*Genuine deterministic trusted-script pipeline, recorded 24 August 2026; its paid
+model-drafting route has not run. The ERP leg uses a seeded Material Request;
+the native leg records the first audited ledger line. Native desktop execution
+remains a disabled research route, not a supported pilot mode.*
 
-![Actual execution, independent external-outcome verification and original-goal resumption](docs/images/how-it-works/04-verify-and-resume.png)
+### 3. Expand what the agent can do—not what it is allowed to do
 
-### 5. Keep the ability. Finish the next goal without rebuilding it.
+The acquisition loop operates inside explicit boundaries. In **Six Refusals**,
+the same bank challenges six families with tampered documents, duplicate signed
+messages, unapproved database writes, unsafe computation, an undeclared desktop
+control, and a restricted ERP credential.
 
-For the next run, the fictional business world is reset while the verified
-capability registry is retained. The same East Industrial operation now follows
-**Retained Reuse**.
+Each request is refused for the expected reason. Business actions receive
+independent external-state checks; WebAssembly receives structural, behavioural
+and isolation checks. These controls allow useful autonomous execution without
+letting a generated capability grant itself permission.
 
-![A fresh business-world run uses the retained East Industrial capability](docs/images/how-it-works/05-retained-reuse.png)
+![Actual six-family adversarial demo results: all six refusal checks passed](docs/images/demo-bank/six-refusals.png)
 
-The parent goal completes with **7 required, 7 satisfied, 0 blocked and 0
-incorrect**. The useful result is the completed work—and an ability the agent
-can use again.
+*Deterministic local run recorded 24 August 2026; zero model calls. All examples
+use fictional local data, not customer-production systems.*
 
-![Aggregate independent verification: seven required, seven satisfied, zero blocked, zero incorrect](docs/images/how-it-works/06-goal-complete.png)
+### Explore the full bank
 
-Run this sequence yourself with `./scripts/run-broad-goal-recording-demo.sh`,
-then open `http://127.0.0.1:4317/playground?present=1`.
-[Capture details and reproduction](docs/images/how-it-works/README.md).
+```bash
+pnpm demo:bank
+```
+
+Open **`http://127.0.0.1:4340/?all=1`** for all fourteen routes, including browser
+discovery, EDI, signed delegation, and **One Goal, Many Hands**—dependency-ordered
+work across three families followed by retained plan and capability reuse.
+
+[Demo catalogue and evidence states](#the-demonstration-bank) ·
+[Screenshot provenance and reproduction](docs/images/demo-bank/README.md)
 
 ## Current system
 
