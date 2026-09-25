@@ -26,6 +26,7 @@ The result: an agent can expand what it can do while working toward the original
 goal—and keep that ability for the next task.
 
 [Website](https://capability-factory-website.vercel.app) ·
+[How it works](#how-it-works) ·
 [Architecture](docs/ARCHITECTURE_MAP.md) ·
 [Demo runbook](docs/BROAD_GOAL_RECORDING_RUNBOOK.md)
 
@@ -41,6 +42,68 @@ The long-term target is effectively universal resolution of authorized digital
 work across a finite set of trusted runtime families. The hard part is binding
 each new action to the right authority, observable outcome, and recovery rules.
 This repository implements that control loop and explores how far it can extend.
+
+## How it works
+
+### 1. Start with the work you want done
+
+> Complete every fictional order due by 21:00 today, and place one safe restock
+> for every required item that is short.
+
+The user gives a business goal, not a request to build an integration. The
+playground is the demo entrance; in a connected deployment, the goal would come
+from the company's existing agent through the SDK or sidecar.
+
+![Ordinary business goal entered into the Capability Factory demo playground](docs/images/how-it-works/01-goal.png)
+
+*Actual console captures from 25 September 2026: fictional local order data,
+a deterministic reference planner and manifest builder, and real execution and
+independent checks. Separate model-backed demonstrations are listed below.*
+
+### 2. Find the gap inside the goal
+
+This example covers seven bounded work items. Some are already satisfied;
+others use existing abilities. The East Industrial restock needs a capability
+that is not yet configured. CF isolates that missing operation without expanding
+the authority of the other work.
+
+![East Industrial work item completes through the New Capability path](docs/images/how-it-works/02-new-capability.png)
+
+### 3. Search first. Build the missing piece. Test it.
+
+The event trail shows the causal chain: a missing capability, no retained match,
+no suitable trusted match, then a constrained HTTP manifest. Before business use,
+an independent probe checks the required actions, runtime policy and disposable
+test state.
+
+![Actual event trail: blocker diagnosed, retained and trusted searches, constrained manifest construction and independent pre-use verification](docs/images/how-it-works/03-acquire-and-test.png)
+
+### 4. Check what actually happened, then resume
+
+Execution is only half the job. A separate observer checks external state:
+was the required restock created exactly once, and were unrelated records left
+alone? Here it verifies one intended write and zero incorrect side effects.
+Only then does the coordinator resume the original work.
+
+![Actual execution, independent external-outcome verification and original-goal resumption](docs/images/how-it-works/04-verify-and-resume.png)
+
+### 5. Keep the ability. Finish the next goal without rebuilding it.
+
+For the next run, the fictional business world is reset while the verified
+capability registry is retained. The same East Industrial operation now follows
+**Retained Reuse**.
+
+![A fresh business-world run uses the retained East Industrial capability](docs/images/how-it-works/05-retained-reuse.png)
+
+The parent goal completes with **7 required, 7 satisfied, 0 blocked and 0
+incorrect**. The useful result is the completed work—and an ability the agent
+can use again.
+
+![Aggregate independent verification: seven required, seven satisfied, zero blocked, zero incorrect](docs/images/how-it-works/06-goal-complete.png)
+
+Run this sequence yourself with `./scripts/run-broad-goal-recording-demo.sh`,
+then open `http://127.0.0.1:4317/playground?present=1`.
+[Capture details and reproduction](docs/images/how-it-works/README.md).
 
 ## Current system
 
